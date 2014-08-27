@@ -1,0 +1,162 @@
+USE [PinYouThink]
+GO
+
+/****** Object:  Table [dbo].[DialogueInfo]    Script Date: 08/28/2014 00:05:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DialogueInfo](
+	[AutoId] [int] IDENTITY(1,1) NOT NULL,
+	[DialogueId] [uniqueidentifier] NULL,
+	[PublishId] [uniqueidentifier] NULL,
+	[PreId] [uniqueidentifier] NULL,
+	[FromUserId] [uniqueidentifier] NULL,
+	[ToUserId] [uniqueidentifier] NULL,
+	[Msg] [nvarchar](max) NULL,
+	[DialogueType] [int] NULL,
+	[Lat] [float] NULL,
+	[Lng] [float] NULL,
+	[CreateTime] [datetime2](7) NULL,
+ CONSTRAINT [PK_DialogueInfo] PRIMARY KEY CLUSTERED 
+(
+	[AutoId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'À˘ Ù∂‘ª∞ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DialogueInfo', @level2type=N'COLUMN',@level2name=N'PreId'
+GO
+
+
+USE [PinYouThink]
+GO
+
+/****** Object:  Table [dbo].[JoinInfo]    Script Date: 08/28/2014 00:05:26 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[JoinInfo](
+	[AutoId] [int] IDENTITY(1,1) NOT NULL,
+	[PublishId] [uniqueidentifier] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+	[JoinRole] [int] NOT NULL,
+	[Lat] [float] NULL,
+	[Lng] [float] NULL,
+	[JoinTime] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_JoinInfo] PRIMARY KEY CLUSTERED 
+(
+	[AutoId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[JoinInfo] ADD  CONSTRAINT [DF_JoinInfo_JoinRole]  DEFAULT ((0)) FOR [JoinRole]
+GO
+
+ALTER TABLE [dbo].[JoinInfo] ADD  CONSTRAINT [DF_JoinInfo_JoinTime]  DEFAULT (getdate()) FOR [JoinTime]
+GO
+
+USE [PinYouThink]
+GO
+
+/****** Object:  Table [dbo].[PublishInfo]    Script Date: 08/28/2014 00:05:34 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PublishInfo](
+	[AutoId] [int] IDENTITY(1,1) NOT NULL,
+	[PublishId] [uniqueidentifier] NULL,
+	[ProjectId] [uniqueidentifier] NULL,
+	[UserId] [uniqueidentifier] NULL,
+	[PubType] [int] NULL,
+	[Status] [int] NULL,
+	[PubTitle] [nvarchar](500) NULL,
+	[PubContent] [nvarchar](max) NULL,
+	[Lat] [float] NULL,
+	[Lng] [float] NULL,
+	[UserLimCount] [int] NULL,
+	[CreateTime] [datetime2](7) NULL,
+ CONSTRAINT [PK_PublishInfo] PRIMARY KEY CLUSTERED 
+(
+	[AutoId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+USE [PinYouThink]
+GO
+
+/****** Object:  Table [dbo].[UserInfo]    Script Date: 08/28/2014 00:05:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[UserInfo](
+	[AutoId] [int] IDENTITY(1,1) NOT NULL,
+	[ProjectId] [uniqueidentifier] NULL,
+	[UserId] [uniqueidentifier] NULL,
+	[UserName] [nvarchar](250) NULL,
+	[Email] [nvarchar](250) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[CurrLat] [float] NULL,
+	[CurrLng] [float] NULL,
+	[Avatar] [nvarchar](500) NULL,
+	[LastLoginIp] [varchar](50) NULL,
+	[LastLoginTime] [datetime2](7) NULL,
+	[LoginCount] [int] NULL,
+ CONSTRAINT [PK_UserInfo] PRIMARY KEY CLUSTERED 
+(
+	[AutoId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+
+USE [PinYouThink]
+GO
+
+/****** Object:  Table [dbo].[NoticeInfo]    Script Date: 08/28/2014 00:05:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[NoticeInfo](
+	[AutoId] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [uniqueidentifier] NULL,
+	[Msg] [nvarchar](max) NULL,
+	[SendTime] [datetime2](7) NULL,
+	[NoticeType] [int] NULL,
+ CONSTRAINT [PK_NoticeInfo] PRIMARY KEY CLUSTERED 
+(
+	[AutoId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
