@@ -42,7 +42,7 @@ namespace PinEverything.Services
             }
         }
 
-        public EntityList<PublishInfo> QueryPublishInfo(int pageIndex = 1,int pageSize = int.MaxValue)
+        public EntityList<PublishInfo> QueryPublishInfo(int pageIndex = 1, int pageSize = int.MaxValue)
         {
             EntityList<PublishInfo> result = new EntityList<PublishInfo>();
 
@@ -62,9 +62,9 @@ namespace PinEverything.Services
         }
 
         public bool AddPublishInfo(
-            Guid publishId, 
-            Guid projectId, 
-            Guid userId, 
+            Guid publishId,
+            Guid projectId,
+            Guid userId,
             int pubType,
             int status,
             string pubTitle,
@@ -72,9 +72,10 @@ namespace PinEverything.Services
             string lat,
             string lng,
             int userLimCount
-            ) 
+            )
         {
-            PublishInfo model = new PublishInfo() {
+            PublishInfo model = new PublishInfo()
+            {
                 PublishId = publishId,
                 ProjectId = projectId,
                 UserId = userId,
@@ -91,6 +92,68 @@ namespace PinEverything.Services
             this.db.Set<PublishInfo>().Add(model);
 
             return this.db.SaveChanges().Equals(1);
+        }
+
+        public bool AddUser(
+            Guid projectId,
+            Guid userId,
+            string mdToken,
+            string userName,
+            string email,
+            string phone,
+            string currLat,
+            string currLng,
+            string avatar
+            )
+        {
+            UserInfo model = new UserInfo()
+            {
+                ProjectId = projectId,
+                UserId = userId,
+                MDToken = mdToken,
+                UserName = userName,
+                Email = email,
+                Phone = phone,
+                CurrLat = currLat,
+                CurrLng = currLat,
+                Avatar = avatar,
+                LastLoginIp = MySpider.MySpider.GetClientIP(),
+                LastLoginTime = DateTime.Now,
+                LoginCount = 1
+            };
+
+            this.db.Set<UserInfo>().Add(model);
+            return this.db.SaveChanges().Equals(1);
+        }
+
+        public bool UpdateUserLBS(
+                Guid userId,
+                string currLat,
+                string currLng
+            )
+        {
+            UserInfo model = this.db.Set<UserInfo>().FirstOrDefault(p => p.UserId.Equals(userId));
+
+            model.CurrLat = currLat;
+            model.CurrLng = currLng;
+
+            return this.db.SaveChanges().Equals(1);
+        }
+
+        public bool UpdateUserMDToken(
+                Guid userId,
+                string mdToken
+            )
+        {
+            UserInfo model = this.db.Set<UserInfo>().FirstOrDefault(p => p.UserId.Equals(userId));
+            model.MDToken = mdToken;
+            
+            return this.db.SaveChanges().Equals(1);
+        }
+
+        public UserInfo GetUser(Guid userId)
+        {
+            return this.db.Set<UserInfo>().FirstOrDefault(p => p.UserId.Equals(userId));
         }
 
     }
