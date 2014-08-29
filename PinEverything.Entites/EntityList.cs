@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PinEverything.Entites
 {
     [Serializable]
-    public class EntityListBase<T>
+    public class EntityList<T>
     {
         public List<T> Table { get; set; }
 

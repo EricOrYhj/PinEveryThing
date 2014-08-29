@@ -15,8 +15,8 @@ namespace PinEverything.Entites
         private Guid _publishid;
         private Guid _userid;
         private int _joinrole = 0;
-        private decimal? _lat;
-        private decimal? _lng;
+        private string _lat;
+        private string _lng;
         private DateTime _jointime;
         /// <summary>
         /// 
@@ -53,7 +53,7 @@ namespace PinEverything.Entites
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Lat
+        public string Lat
         {
             set { _lat = value; }
             get { return _lat; }
@@ -61,7 +61,7 @@ namespace PinEverything.Entites
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Lng
+        public string Lng
         {
             set { _lng = value; }
             get { return _lng; }

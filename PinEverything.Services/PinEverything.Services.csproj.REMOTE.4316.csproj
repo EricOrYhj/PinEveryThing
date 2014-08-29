@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0C4BE350-F5CD-466F-9519-FC50CF6AACA4}</ProjectGuid>
+    <ProjectGuid>{FF35E308-3B78-4911-8D71-B24CE5F2027B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PinEverything.Entites</RootNamespace>
-    <AssemblyName>PinEverything.Entites</AssemblyName>
+    <RootNamespace>PinEverything.Services</RootNamespace>
+    <AssemblyName>PinEverything.Services</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\PinEverything.Web\DLL\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySpider">
+      <HintPath>..\PinEverything.Web\DLL\MySpider.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PinEverything.Web\DLL\Newtonsoft.Json.dll</HintPath>
@@ -44,15 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthModel.cs" />
-    <Compile Include="DialogueInfo.cs" />
-    <Compile Include="EntityBase.cs" />
-    <Compile Include="EntityList.cs" />
-    <Compile Include="JoinInfo.cs" />
-    <Compile Include="NoticeInfo.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="APIService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublishInfo.cs" />
-    <Compile Include="UserInfo.cs" />
+    <Compile Include="PYTService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PinEverything.Data\PinEverything.Data.csproj">
+      <Project>{d27deb8d-7e0f-4ce0-9bb6-96f3ec2c22fc}</Project>
+      <Name>PinEverything.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PinEverything.Entites\PinEverything.Entites.csproj">
+      <Project>{0c4be350-f5cd-466f-9519-fc50cf6aaca4}</Project>
+      <Name>PinEverything.Entites</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,8 +17,8 @@ namespace PinEverything.Entites
         private string _username;
         private string _email;
         private string _phone;
-        private decimal? _currlat;
-        private decimal? _currlng;
+        private string _currlat;
+        private string _currlng;
         private string _avatar;
         private string _lastloginip;
         private DateTime _lastlogintime;
@@ -74,7 +74,7 @@ namespace PinEverything.Entites
         /// <summary>
         /// 
         /// </summary>
-        public decimal? CurrLat
+        public string CurrLat
         {
             set { _currlat = value; }
             get { return _currlat; }
@@ -82,7 +82,7 @@ namespace PinEverything.Entites
         /// <summary>
         /// 
         /// </summary>
-        public decimal? CurrLng
+        public string CurrLng
         {
             set { _currlng = value; }
             get { return _currlng; }
@@ -119,6 +119,7 @@ namespace PinEverything.Entites
             set { _logincount = value; }
             get { return _logincount; }
         }
+        public string MDToken { get; set; }
         #endregion Model
     }
 }
