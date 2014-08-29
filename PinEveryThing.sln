@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinEverything.Entites", "Pi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinEverything.Services", "PinEverything.Services\PinEverything.Services.csproj", "{FF35E308-3B78-4911-8D71-B24CE5F2027B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{C4139078-EAE3-4843-895A-84E701C6C7B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{9A37F222-A0AD-49D7-B0A3-7FEB4F1D176C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E2191370-F1FD-46E9-985F-2F4A7399AD13} = {C4139078-EAE3-4843-895A-84E701C6C7B2}
+		{D27DEB8D-7E0F-4CE0-9BB6-96F3EC2C22FC} = {9A37F222-A0AD-49D7-B0A3-7FEB4F1D176C}
+		{0C4BE350-F5CD-466F-9519-FC50CF6AACA4} = {9A37F222-A0AD-49D7-B0A3-7FEB4F1D176C}
+		{FF35E308-3B78-4911-8D71-B24CE5F2027B} = {9A37F222-A0AD-49D7-B0A3-7FEB4F1D176C}
 	EndGlobalSection
 EndGlobal
