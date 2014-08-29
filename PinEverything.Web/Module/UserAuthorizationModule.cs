@@ -89,7 +89,7 @@ namespace PinEverything.Web.Module
 
                 }
 
-                application.Response.Write("hello world.");
+                //application.Response.Write("hello world.");
 
 
             }
