@@ -57,15 +57,51 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\css.css" />
     <Content Include="DLL\EntityFramework.dll" />
     <Content Include="DLL\MySpider.dll" />
     <Content Include="DLL\Newtonsoft.Json.dll" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\arrow.jpg" />
+    <Content Include="images\bin\Newtonsoft.Json.dll" />
+    <Content Include="images\bin\PinEverything.Web.dll" />
+    <Content Include="images\Dll\Newtonsoft.Json.dll" />
+    <Content Include="images\Home.aspx" />
+    <Content Include="images\icon1.jpg" />
+    <Content Include="images\icon10.jpg" />
+    <Content Include="images\icon2.jpg" />
+    <Content Include="images\icon3.jpg" />
+    <Content Include="images\icon4.jpg" />
+    <Content Include="images\icon5.jpg" />
+    <Content Include="images\icon6.jpg" />
+    <Content Include="images\icon7.jpg" />
+    <Content Include="images\icon8.jpg" />
+    <Content Include="images\icon9.jpg" />
+    <Content Include="images\pinchebg.jpg" />
+    <Content Include="images\sz.jpg" />
+    <Content Include="images\sz1.jpg" />
+    <Content Include="images\weizhi.jpg" />
+    <Content Include="index.html" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="owner.html" />
+    <Content Include="passenger.html" />
+    <Content Include="pinche.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\css.scss" />
+    <Content Include="images\Dll\Newtonsoft.Json.dll.refresh" />
+    <Content Include="images\Web.config" />
+    <Content Include="Main.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
