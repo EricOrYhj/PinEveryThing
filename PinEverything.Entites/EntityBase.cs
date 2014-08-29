@@ -11,7 +11,7 @@ namespace PinEverything.Entites
     {
         public override string ToString()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+            return Newtonsoft.Json.JavaScriptConvert.SerializeObject(this);
         }
     }
 }

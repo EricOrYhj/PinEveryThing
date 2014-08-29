@@ -6,6 +6,8 @@ using PinEverything.Entites;
 using MySpider;
 using System.Text;
 
+using PinEverything.Services;
+
 namespace PinEverything.Web.Module
 {
     public class UserAuthorizationModule : IHttpModule
@@ -50,9 +52,12 @@ namespace PinEverything.Web.Module
                 {
                     //获取code
                     string code = application.Request["code"];
+                    string access_token=string.Empty;
+
+                    if (!string.IsNullOrEmpty(code))
+                        access_token = PinEverything.Services.APIService.GetAccessToken(code);
 
                     application.Session["login"] = 1;
-
                     /*
                      * TODO:
                      * 获取token
@@ -74,7 +79,6 @@ namespace PinEverything.Web.Module
                     {
                         application.Response.Redirect(MySpider.ConfigHelper.GetConfigString("Index"));
                     }
-
 
                 }
                 else
@@ -113,8 +117,7 @@ namespace PinEverything.Web.Module
 
             application.Response.Redirect(reqUrl);
         }
-
-       
+  
 
     }
 }
