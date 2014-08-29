@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="DialogueInfo.cs" />
     <Compile Include="EntityBase.cs" />
-    <Compile Include="EntityListBase.cs" />
+    <Compile Include="EntityList.cs" />
     <Compile Include="JoinInfo.cs" />
     <Compile Include="NoticeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
