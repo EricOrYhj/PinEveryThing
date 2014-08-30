@@ -76,13 +76,15 @@
     <Content Include="ajaxpage\user.aspx" />
     <Content Include="callback.aspx" />
     <Content Include="css\css.css" />
+    <Content Include="css\jquery.mobile-1.4.3.min.css" />
     <Content Include="detail.aspx" />
-    <Content Include="html\detail.html" />
+    <Content Include="detail.html" />
     <Content Include="DLL\EntityFramework.dll" />
     <Content Include="DLL\MySpider.dll" />
     <Content Include="DLL\Newtonsoft.Json.dll" />
     <Content Include="Global.asax" />
     <Content Include="images\1.jpg" />
+    <Content Include="images\ajax-loader.gif" />
     <Content Include="images\arrow.jpg" />
     <Content Include="images\arrow.png" />
     <Content Include="images\history.png" />
@@ -115,19 +117,20 @@
     <Content Include="images\weizhi.jpg" />
     <Content Include="images\weizhi.png" />
     <Content Include="Index.aspx" />
-    <Content Include="html\index.html" />
+    <Content Include="index.html" />
     <Content Include="js\detail.js" />
     <Content Include="js\index.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.mobile-1.4.3.min.js" />
     <Content Include="js\owner.js" />
     <Content Include="js\passenger.js" />
-    <Content Include="html\list.html" />
+    <Content Include="list.html" />
     <Content Include="owner.aspx" />
-    <Content Include="html\owner.html" />
+    <Content Include="owner.html" />
     <Content Include="passenger.aspx" />
-    <Content Include="html\passenger.html" />
+    <Content Include="passenger.html" />
     <Content Include="pinche.html" />
-    <Content Include="html\play.html" />
+    <Content Include="play.html" />
     <Content Include="test.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -225,7 +228,9 @@
       <Name>PinEverything.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="html\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
