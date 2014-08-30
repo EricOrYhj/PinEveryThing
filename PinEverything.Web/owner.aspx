@@ -1,3 +1,5 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="owner.aspx.cs" Inherits="PinEverything.Web.owner" %>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -7,6 +9,7 @@
 <link href="css/css.css" rel="stylesheet">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.mobile-1.4.3.min.js"></script>
+<script src="js/owner.js"></script>
 <title>我是车主</title>
 </head>
 <body>
@@ -24,9 +27,9 @@
     <div class="owner">
         <ul>
             <li>
-                <a href="#fromAddress" data-transition="flow" >
+                <a href="#fromAddress" data-transition="flow">
                     <div class="ownerICon1"></div>
-                    <div class="ownerTitle">
+                    <div class="ownerTitle" id="startPlace">
                         中山西路虹桥路口
                     </div>
                     <div class="ownerArrow"></div>
@@ -35,7 +38,7 @@
             <li>
                 <a href="#toAddress" data-transition="flow" >
                     <div class="ownerICon2"></div>
-                    <div class="ownerTitle">
+                    <div class="ownerTitle"  id="destination">
                         长宁龙之梦
                     </div>
                     <div class="ownerArrow"></div>
@@ -62,7 +65,7 @@
             <li>
                 <a href="#brand" data-transition="flow" >
                     <div class="ownerICon5"></div>
-                    <div class="ownerTitle">
+                    <div class="ownerTitle"  id="carType">
                         特斯拉
                     </div>
                     <div class="ownerArrow"></div>
@@ -71,7 +74,7 @@
             <li style="display: none;" id="ifTaxi">
                 <a>
                     <div class="ownerICon5"></div>
-                    <div class="ownerTitle">
+                    <div class="ownerTitle" id="taxi">
                         出租车
                     </div>
                 </a>
@@ -79,7 +82,7 @@
             <li>
                 <a href="#color" data-transition="flow" >
                     <div class="ownerICon6"></div>
-                    <div class="ownerTitle">
+                    <div class="ownerTitle" id="carColor">
                         蓝色
                     </div>
                     <div class="ownerArrow"></div>
@@ -88,7 +91,7 @@
             <li>
                 <a href="#tel" data-transition="flow" >
                     <div class="ownerICon7"></div>
-                    <div class="ownerTitle ownerTitleClear">
+                    <div class="ownerTitle ownerTitleClear" id="ownerPhone">
                         13333333333333333
                     </div>
                     <div class="ownerArrow"></div>
@@ -98,13 +101,13 @@
         <a href="#messageBox" data-transition="flow" >
             <div class="message">
                 <div class="ownerICon8"></div>
-                <div class="ownerTitle ownerTitleClear">
+                <div class="ownerTitle ownerTitleClear" id="note">
                     填写留言信息
                 </div>
                 <div class="ownerArrow"></div>
             </div>
         </a>
-        <a href="passenger.html" id="messageBtn">发布线路</a>
+        <div id="messageBtn" style="cursor:pointer;">发布线路</div>
     </div>
 </div>
 
@@ -113,9 +116,9 @@
     <input type="text" class="address"/>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="fromAddressBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             $("#fromAddress").find(".address").val($(".owner li").eq(0).find(".ownerTitle").text().trim());
-            $("#fromAddressBtn").click(function(){
+            $("#fromAddressBtn").click(function () {
                 $(".owner li").eq(0).find(".ownerTitle").html($(this).parent().find("input").val());
             });
         })
@@ -127,9 +130,9 @@
     <input type="text" class="address"/>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="toAddressBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             $("#toAddress").find(".address").val($(".owner li").eq(1).find(".ownerTitle").text().trim());
-            $("#toAddressBtn").click(function(){
+            $("#toAddressBtn").click(function () {
                 $(".owner li").eq(1).find(".ownerTitle").html($(this).parent().find("input").val());
             });
         })
@@ -141,9 +144,9 @@
     <input type="text" class="address"/>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="brandBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             $("#brand").find(".address").val($(".owner li").eq(4).find(".ownerTitle").text().trim());
-            $("#brandBtn").click(function(){
+            $("#brandBtn").click(function () {
                 $(".owner li").eq(4).find(".ownerTitle").html($(this).parent().find("input").val());
             });
         })
@@ -170,24 +173,24 @@
     </fieldset>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="weekDayBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             var weekDay = $(".owner li").eq(2).find(".ownerTitle").text().trim().split("、");
             var $name = $("[name=checkbox-v-2c]");
-            for(var i=0;i < weekDay.length;i++){
-                for(var j=0;j<$name.length;j++){
-                    if($name.eq(j).val() == weekDay[i]){
-                        $name.eq(j).attr("checked","checked");
+            for (var i = 0; i < weekDay.length; i++) {
+                for (var j = 0; j < $name.length; j++) {
+                    if ($name.eq(j).val() == weekDay[i]) {
+                        $name.eq(j).attr("checked", "checked");
                     }
                 }
             }
-            $("#weekDayBtn").click(function(){
-                var $lable = $("#weekDay").find("label"),html = "";
-                for(var i=0;i<$lable.length;i++){
-                    if($lable.eq(i).hasClass("ui-checkbox-on")){
+            $("#weekDayBtn").click(function () {
+                var $lable = $("#weekDay").find("label"), html = "";
+                for (var i = 0; i < $lable.length; i++) {
+                    if ($lable.eq(i).hasClass("ui-checkbox-on")) {
                         html += $($name[i]).val() + "、";
                     }
                 }
-                html = html.replace(/、$/,"");
+                html = html.replace(/、$/, "");
                 $(".owner li").eq(2).find(".ownerTitle").html(html);
             });
         })
@@ -199,7 +202,7 @@
 
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="timeBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
 
         })
     </script>
@@ -221,15 +224,15 @@
     </fieldset>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="colorBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             var colorName = $(".owner li").eq(6).find(".ownerTitle").text().trim();
             var $name = $("[name=radio-choice-v-2]");
-            for(var i=0;i < $name.length;i++){
-                if($name.eq(i).val() == colorName){
-                    $name.eq(i).attr("checked","checked");
+            for (var i = 0; i < $name.length; i++) {
+                if ($name.eq(i).val() == colorName) {
+                    $name.eq(i).attr("checked", "checked");
                 }
             }
-            $("#colorBtn").click(function(){
+            $("#colorBtn").click(function () {
                 $(".owner li").eq(6).find(".ownerTitle").html($("[name=radio-choice-v-2]:checked").val());
             });
         })
@@ -241,9 +244,9 @@
     <input type="text" class="address"/>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="telBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             $("#tel").find(".address").val($(".owner li").eq(7).find(".ownerTitle").text().trim());
-            $("#telBtn").click(function(){
+            $("#telBtn").click(function () {
                 $(".owner li").eq(7).find(".ownerTitle").html($(this).parent().find("input").val());
             });
         })
@@ -255,9 +258,9 @@
     <textarea class="address"></textarea>
     <a href="#pageMain" data-transition="flow" data-direction="reverse" class="ui-btn" id="messageBoxBtn">确定</a>
     <script>
-        $(function(){
+        $(function () {
             $("#messageBox").find(".address").val($(".message").find(".ownerTitle").text().trim());
-            $("#messageBoxBtn").click(function(){
+            $("#messageBoxBtn").click(function () {
                 $(".message").find(".ownerTitle").html($(this).parent().find("textarea").val());
             });
         })
@@ -265,3 +268,4 @@
 </div>
 </body>
 </html>
+

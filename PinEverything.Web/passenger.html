@@ -8,150 +8,156 @@
 </head>
 <body>
 <div class="sidebarBg">
-    <div class="project">
-        <div class="sidebarLeft">
-            <a href="javascript:history.go(-1)"><img src="images/arrow.jpg" alt=""/></a>
-        </div>
-        <div class="sidebarPlay">
-            <a href="">一起打的</a>
-        </div>
-        <div class="sidebarTitle">
-            我是乘客
-        </div>
-        <div class="clear"></div>
+    <div class="sidebarLeft sidebarPlayWidth"></div>
+    <div class="sidebarPlay">
+        <a href="play.html">打车</a>
     </div>
+    <div class="sidebarTitle">
+        我是乘客
+    </div>
+    <div class="clear"></div>
 </div>
-<div class="project">
-    <div class="passengerTab">
-        <div class="passengerTabLeft active">
-            <span class="passengerTabLeftIcon"></span>计划
-            <div class="passengerTabArrow"></div>
-        </div>
-        <div class="passengerTabRight">
-            <span class="passengerTabRightIcon"></span>附近
-            <div class="passengerTabArrow"></div>
-        </div>
-        <div class="clear"></div>
+<div class="passengerTab">
+    <div class="passengerTabLeft active passengerTabClick" rel="passengerList">
+        <span class="passengerTabLeftIcon"></span>计划
+        <div class="passengerTabArrow"></div>
     </div>
-    <div class="passengerList">
-        <ul>
-            <li>
-                <div class="passengerListLeft">
-                    <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
-                    <div class="passengerListLeftName">Elen</div>
-                </div>
-                <div class="passengerListRight">
-                    <span class="passengerListArrow"></span>
-                    <span class="passengerListArrowInner"></span>
-                    <div class="passengerListFromAddress">中山西路虹桥路</div>
-                    <div class="passengerListToAddress">长宁龙之梦</div>
-                    <div class="passengerListTime">9:10 至 18:00</div>
-                    <div class="passengerListCar">特斯拉</div>
-                </div>
-                <div class="clear"></div>
-            </li>
-            <li class="passengerListPosition">
-                <div class="passengerListLeft">
-                    <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
-                    <div class="passengerListLeftName">Elen</div>
-                </div>
-                <div class="passengerListRight">
-                    <span class="passengerListArrow"></span>
-                    <span class="passengerListArrowInner"></span>
-                    <div class="passengerListFromAddress">中山西路虹桥路</div>
-                    <div class="passengerListToAddress">长宁龙之梦</div>
-                    <div class="passengerListTime">9:10 至 18:00</div>
-                    <div class="passengerListCar">特斯拉</div>
-                </div>
-                <div class="clear"></div>
-            </li>
-            <li>
-                <div class="passengerListLeft">
-                    <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
-                    <div class="passengerListLeftName">Elen</div>
-                </div>
-                <div class="passengerListRight">
-                    <span class="passengerListArrow"></span>
-                    <span class="passengerListArrowInner"></span>
-                    <div class="passengerListFromAddress">中山西路虹桥路</div>
-                    <div class="passengerListToAddress">长宁龙之梦</div>
-                    <div class="passengerListTime">9:10 至 18:00</div>
-                    <div class="passengerListCar">特斯拉</div>
-                </div>
-                <div class="clear"></div>
-            </li>
-            <li class="passengerListPosition">
-                <div class="passengerListLeft">
-                    <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
-                    <div class="passengerListLeftName">Elen</div>
-                </div>
-                <div class="passengerListRight">
-                    <span class="passengerListArrow"></span>
-                    <span class="passengerListArrowInner"></span>
-                    <div class="passengerListFromAddress">中山西路虹桥路</div>
-                    <div class="passengerListToAddress">长宁龙之梦</div>
-                    <div class="passengerListTime">9:10 至 18:00</div>
-                    <div class="passengerListCar">特斯拉</div>
-                </div>
-                <div class="clear"></div>
-            </li>
-            <li>
-                <div class="passengerListLeft">
-                    <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
-                    <div class="passengerListLeftName">Elen</div>
-                </div>
-                <div class="passengerListRight">
-                    <span class="passengerListArrow"></span>
-                    <span class="passengerListArrowInner"></span>
-                    <div class="passengerListFromAddress">中山西路虹桥路</div>
-                    <div class="passengerListToAddress">长宁龙之梦</div>
-                    <div class="passengerListTime">9:10 至 18:00</div>
-                    <div class="passengerListCar">特斯拉</div>
-                </div>
-                <div class="clear"></div>
-            </li>
-            <li class="passengerListPosition">
-                <div class="passengerListLeft">
-                    <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
-                    <div class="passengerListLeftName">Elen</div>
-                </div>
-                <div class="passengerListRight">
-                    <span class="passengerListArrow"></span>
-                    <span class="passengerListArrowInner"></span>
-                    <div class="passengerListFromAddress">中山西路虹桥路</div>
-                    <div class="passengerListToAddress">长宁龙之梦</div>
-                    <div class="passengerListTime">9:10 至 18:00</div>
-                    <div class="passengerListCar">特斯拉</div>
-                </div>
-                <div class="clear"></div>
-            </li>
-        </ul>
+    <div class="passengerTabRight passengerTabClick" rel="passengerMap">
+        <span class="passengerTabRightIcon"></span>附近
+        <div class="passengerTabArrow"></div>
     </div>
+    <div class="clear"></div>
+</div>
+<div class="passengerList">
+    <ul>
+        <li>
+            <div class="passengerListLeft">
+                <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
+                <div class="passengerListLeftName">Elen</div>
+            </div>
+            <div class="passengerListRight">
+                <a href="detail.html">
+                    <span class="passengerListArrow"></span>
+                    <span class="passengerListArrowInner"></span>
+                    <div class="passengerListFromAddress">中山西路虹桥路</div>
+                    <div class="passengerListToAddress">长宁龙之梦</div>
+                    <div class="passengerListTime">9:10 至 18:00</div>
+                    <div class="passengerListCar">特斯拉</div>
+                    <div class="passengerListDate">8月28日 16:00</div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </li>
+        <li class="passengerListPosition">
+            <div class="passengerListLeft">
+                <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
+                <div class="passengerListLeftName">Elen</div>
+            </div>
+            <div class="passengerListRight">
+                <a href="detail.html">
+                    <span class="passengerListArrow"></span>
+                    <span class="passengerListArrowInner"></span>
+                    <div class="passengerListFromAddress">中山西路虹桥路</div>
+                    <div class="passengerListToAddress">长宁龙之梦</div>
+                    <div class="passengerListTime">9:10 至 18:00</div>
+                    <div class="passengerListCar">特斯拉</div>
+                    <div class="passengerListDate">8月28日 16:00</div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </li>
+        <li>
+            <div class="passengerListLeft">
+                <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
+                <div class="passengerListLeftName">Elen</div>
+            </div>
+            <div class="passengerListRight">
+                <a href="detail.html">
+                    <span class="passengerListArrow"></span>
+                    <span class="passengerListArrowInner"></span>
+                    <div class="passengerListFromAddress">中山西路虹桥路</div>
+                    <div class="passengerListToAddress">长宁龙之梦</div>
+                    <div class="passengerListTime">9:10 至 18:00</div>
+                    <div class="passengerListCar">特斯拉</div>
+                    <div class="passengerListDate">8月28日 16:00</div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </li>
+        <li class="passengerListPosition">
+            <div class="passengerListLeft">
+                <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
+                <div class="passengerListLeftName">Elen</div>
+            </div>
+            <div class="passengerListRight">
+                <a href="detail.html">
+                    <span class="passengerListArrow"></span>
+                    <span class="passengerListArrowInner"></span>
+                    <div class="passengerListFromAddress">中山西路虹桥路</div>
+                    <div class="passengerListToAddress">长宁龙之梦</div>
+                    <div class="passengerListTime">9:10 至 18:00</div>
+                    <div class="passengerListCar">特斯拉</div>
+                    <div class="passengerListDate">8月28日 16:00</div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </li>
+        <li>
+            <div class="passengerListLeft">
+                <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
+                <div class="passengerListLeftName">Elen</div>
+            </div>
+            <div class="passengerListRight">
+                <a href="detail.html">
+                    <span class="passengerListArrow"></span>
+                    <span class="passengerListArrowInner"></span>
+                    <div class="passengerListFromAddress">中山西路虹桥路</div>
+                    <div class="passengerListToAddress">长宁龙之梦</div>
+                    <div class="passengerListTime">9:10 至 18:00</div>
+                    <div class="passengerListCar">特斯拉</div>
+                    <div class="passengerListDate">8月28日 16:00</div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </li>
+        <li class="passengerListPosition">
+            <div class="passengerListLeft">
+                <div class="passengerListLeftHead"><img src="images/1.jpg" alt=""/></div>
+                <div class="passengerListLeftName">Elen</div>
+            </div>
+            <div class="passengerListRight">
+                <a href="detail.html">
+                    <span class="passengerListArrow"></span>
+                    <span class="passengerListArrowInner"></span>
+                    <div class="passengerListFromAddress">中山西路虹桥路</div>
+                    <div class="passengerListToAddress">长宁龙之梦</div>
+                    <div class="passengerListTime">9:10 至 18:00</div>
+                    <div class="passengerListCar">特斯拉</div>
+                    <div class="passengerListDate">8月28日 16:00</div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </li>
+    </ul>
+</div>
+<div class="passengerMap">
+
 </div>
 </body>
 </html>
 <script src="js/jquery.min.js"></script>
 <script>
     $(function(){
-        $(".passengerList li").find(".passengerListRight").click(function(){
-            var alertHtml = "";
-            alertHtml += '<div class="Popup" id="Popup">';
-            alertHtml += '<a href="" class="join">加入</a>';
-            alertHtml += '<a href="" class="detail">详情</a>';
-            alertHtml += '<a href="javascript:void(0);" class="close">关闭</a>';
-            alertHtml += '</div>';
-            $("body").append(alertHtml);
-            var $Popup = $("#Popup");
-            $Popup.css({
-                "left" : window.innerWidth/2 - 130 + "px",
-                "top" : ($(document).scrollTop() + window.innerHeight/2) - 25 + "px",
-                "display" : "block"
-            });
-            $(".sidebarBg,.project").css("opacity", 0.3);
-            $Popup.find(".close").click(function(){
-                $(".sidebarBg,.project").css("opacity", 1);
-                $(this).parent().remove();
-            });
+        $(".passengerTabClick").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            var className = $(this).attr("rel");
+            if(className == 'passengerList'){
+                $(".passengerList").fadeIn();
+                $(".passengerMap").fadeOut();
+            }else{
+                $(".passengerList").fadeOut();
+                $(".passengerMap").fadeIn();
+            }
         });
     });
 </script>
