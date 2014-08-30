@@ -31,7 +31,7 @@
     <div class="project">
         <div class="indexContentMain">
             <ul>
-                <li class="borderColor1"><a href="pinche.html">拼车</a></li>
+                <li class="borderColor1"><a href="/pinche.html">拼车</a></li>
                 <li class="borderColor2"><a href="">拼吃</a></li>
                 <li class="borderColor3"><a href="">拼旅</a></li>
                 <li class="borderColor4"><a href="">拼玩</a></li>
