@@ -72,7 +72,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 36px;
     height: 36px;
     background: url("../images/weizhi.png") no-repeat;
-    display: block; }
+    display: block; 
+  }
+  .headerLeft .headerLeftIconHover {
+    background-color: #708A07;
+    border-radius: 50px;
+  }
 
 .headerRight {
   float: right;

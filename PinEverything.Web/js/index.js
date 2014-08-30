@@ -35,9 +35,19 @@ Index.LoadAuditUsersHtml = function (JSON) {
 
 //事件绑定
 Index.BindEvent = function () {
+    $(document).on('click','.headerLeft .headerLeftIcon',function () {
+        if ($(this).hasClass('headerLeftIconHover')) {
+            $(this).removeClass('headerLeftIconHover');
+            $('.passengerMap').slideUp();
+        } else {
+            $(this).addClass('headerLeftIconHover');
+            $('.passengerMap').slideDown();
+        }
+    });
 }
 
 //脚本加载事件
 $(function () {
     Index.LoadUserDetail();
+    Index.BindEvent();
 });

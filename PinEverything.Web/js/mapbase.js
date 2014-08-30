@@ -23,13 +23,15 @@ function initialize() {
         //加载工具条
         tool = new AMap.ToolBar({
             direction: false,//隐藏方向导航
-            ruler: false,//隐藏视野级别控制尺
-            autoPosition: false//禁止自动定位
+            ruler: true,//隐藏视野级别控制尺
+            autoPosition: true//禁止自动定位
         });
         mapObj.addControl(tool);
+
         //加载鹰眼
         view = new AMap.OverView();
         mapObj.addControl(view);
+
         //加载比例尺
         scale = new AMap.Scale();
         mapObj.addControl(scale);

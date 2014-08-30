@@ -7,6 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <script src="js/jquery.min.js"></script>
 <script src="js/index.js"></script>
+<script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
+</script>
+<script src="/js/mapbase.js"></script>
 <link href="css/css.css" rel="stylesheet">
 <title>拼你所想</title>
 </head>
@@ -14,7 +18,7 @@
 <div class="project">
     <div class="header">
         <div class="headerLeft">
-            <a href="" class="headerLeftIcon"></a>
+            <a href="javascript:;" class="headerLeftIcon"></a>
         </div>
         <div class="headerRight">
             <a href="" class="headerRightIcon"></a>
@@ -28,6 +32,9 @@
     </div>
 </div>
 <div class="indexContent">
+    <div class="passengerMap">
+        <div id="container"></div>
+    </div>
     <div class="project">
         <div class="indexContentMain">
             <ul>
