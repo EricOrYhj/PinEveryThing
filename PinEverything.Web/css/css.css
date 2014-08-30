@@ -503,3 +503,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     font-family: "Microsoft YaHei";
     display: block;
     text-decoration: none; }
+
+owner .content {
+    outline:none;
+}

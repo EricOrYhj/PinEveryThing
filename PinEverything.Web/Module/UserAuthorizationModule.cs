@@ -7,6 +7,7 @@ using MySpider;
 using System.Text;
 
 using PinEverything.Services;
+using Newtonsoft.Json;
 
 namespace PinEverything.Web.Module
 {
@@ -52,12 +53,7 @@ namespace PinEverything.Web.Module
                 {
                     //获取code
                     string code = application.Request["code"];
-                    string access_token=string.Empty;
-
-                    if (!string.IsNullOrEmpty(code))
-                        access_token = PinEverything.Services.APIService.GetAccessToken(code);
-
-                    application.Session["login"] = 1;
+                    string access_token = string.Empty;
                     /*
                      * TODO:
                      * 获取token
@@ -66,7 +62,52 @@ namespace PinEverything.Web.Module
                      * 保存Session
                      * 
                      */
+                    if (!string.IsNullOrEmpty(code))
+                        access_token = APIService.GetAccessToken(code);
 
+                    JavaScriptObject userObj = new JavaScriptObject();
+                    UserInfo userDetail = new UserInfo();
+                    if (!string.IsNullOrEmpty(access_token))
+                    {
+
+                        userObj = APIService.getUserDetail(access_token);
+                        if (userObj != null)
+                        {
+                            //用户信息
+                            userDetail.UserId = Guid.Parse(userObj["id"].ToString());
+                            userDetail.UserName = userObj["name"].ToString();
+                            userDetail.Avatar = userObj["avatar"].ToString();
+                            userDetail.Email = userObj["email"].ToString();
+                            userDetail.Phone = userObj["mobile_phone"].ToString();
+                            userDetail.MDToken = access_token;
+
+                            //用户公司信息
+                            JavaScriptObject projectObj = (JavaScriptObject)userObj["project"];
+                            userDetail.ProjectId = Guid.Parse(projectObj["id"].ToString());
+
+                            PYTService PYTService = new PYTService();
+
+                            //是否已经有该用户
+                            UserInfo userInfo = PYTService.GetUser(Guid.Parse(userObj["id"].ToString()));
+                            if (userInfo != null)
+                            {
+                                //更新Token
+                                bool updateFlag = PYTService.UpdateUserMDToken(Guid.Parse(userObj["id"].ToString()), access_token);
+                            }
+                            else
+                            {
+                                //插入用户
+                                bool addFlag = PYTService.AddUser(userDetail.ProjectId, userDetail.UserId, userDetail.MDToken, userDetail.UserName, userDetail.Email, userDetail.Phone,
+                                    userDetail.CurrLat, userDetail.CurrLng, userDetail.Avatar);
+                            }
+
+                        }
+
+                    }
+                    if (userObj != null)
+                        application.Session["user"] = userDetail;
+
+                    application.Session["login"] = 1;
 
                     //获取Token
                     if (application.Session["currRowUrl"] != null)
@@ -93,9 +134,6 @@ namespace PinEverything.Web.Module
 
                 }
 
-                //application.Response.Write("hello world.");
-
-
             }
             catch (Exception ex)
             {
@@ -103,7 +141,7 @@ namespace PinEverything.Web.Module
             }
         }
 
-        private void GotoLogin(HttpApplication application) 
+        private void GotoLogin(HttpApplication application)
         {
             //未登录构造授权链接并跳转
             string reqUrl = string.Format("{0}/auth2/authorize.aspx?app_key={1}&redirect_uri={2}",
@@ -117,7 +155,7 @@ namespace PinEverything.Web.Module
 
             application.Response.Redirect(reqUrl);
         }
-  
+
 
     }
 }

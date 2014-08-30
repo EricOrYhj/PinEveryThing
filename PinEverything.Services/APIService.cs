@@ -65,7 +65,7 @@ namespace PinEverything.Services
         /// </summary>
         /// <param name="access_token"></param>
         /// <returns>用户对象</returns>
-        public JavaScriptObject getUserDetail(string access_token)
+        public static JavaScriptObject getUserDetail(string access_token)
         {
             JavaScriptObject userDetailObj = new JavaScriptObject();
 
