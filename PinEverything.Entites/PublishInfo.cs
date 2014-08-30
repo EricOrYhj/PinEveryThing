@@ -119,6 +119,14 @@ namespace PinEverything.Entites
             set { _createtime = value; }
             get { return _createtime; }
         }
+        /// <summary>
+        /// 开始位置地点
+        /// </summary>
+        public string StartPosition { get; set; }
+        /// <summary>
+        /// 结束位置地点
+        /// </summary>
+        public string EndPosition { get; set; }
         #endregion Model
     }
 }

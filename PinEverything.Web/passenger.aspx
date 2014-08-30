@@ -12,7 +12,9 @@
 </head>
 <body>
     <div class="sidebarBg">
-        <div class="sidebarLeft sidebarPlayWidth"></div>
+        <div class="sidebarLeft sidebarPlayWidth">
+            <a href="javascript:history.go(-1)"><img src="images/arrow.png" alt=""/></a>
+        </div>
         <div class="sidebarPlay">
             <a href="play.html">打车</a>
         </div>

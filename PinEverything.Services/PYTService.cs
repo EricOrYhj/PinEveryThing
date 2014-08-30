@@ -70,7 +70,9 @@ namespace PinEverything.Services
             string pubContent,
             string lat,
             string lng,
-            int userLimCount
+            int userLimCount,
+            string startPosition = "",
+            string endPosition = ""
             )
         {
             PublishInfo model = new PublishInfo()
@@ -85,7 +87,9 @@ namespace PinEverything.Services
                 Lat = lat,
                 Lng = lng,
                 UserLimCount = userLimCount,
-                CreateTime = DateTime.Now
+                CreateTime = DateTime.Now,
+                StartPosition = startPosition,
+                EndPosition = endPosition
             };
 
             this.db.Set<PublishInfo>().Add(model);
