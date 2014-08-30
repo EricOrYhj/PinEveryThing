@@ -35,6 +35,9 @@ namespace PinEverything.Web.ajaxpage
                     case "LoadDialogMsg":
                         LoadDialogMsg();
                         break;
+                    case "ContactOwner":
+                        ContactOwner();
+                        break;
                 }
             }
         }
@@ -211,7 +214,7 @@ namespace PinEverything.Web.ajaxpage
                 {
                     PYTService PYTService = new PYTService();
                     Entites.EntityList<DialogueInfo> dialogList = new EntityList<DialogueInfo>();
-                    dialogList = PYTService.QueryDialogInfo( Guid.Parse(publishId),pageIndex, pageSize);
+                    dialogList = PYTService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
 
                     List<DialogueInfo> dialogInfo = new List<DialogueInfo>();
                     dialogInfo = dialogList.Table;
@@ -239,6 +242,47 @@ namespace PinEverything.Web.ajaxpage
                         dialogArr.Add(publicObj);
                     }
                     resultObj.Add("dialogList", dialogArr);
+                    resultObj.Add("MSG", "Y");
+                }
+                else
+                    resultObj.Add("MSG", "N");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// 加入
+        /// </summary>
+        private void ContactOwner()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                string publishId = Request["publishId"];
+                string contacText = Request["contacText"];
+                if (!string.IsNullOrEmpty(publishId))
+                {
+                    string Lat = string.Empty;
+                    string Lng = string.Empty;
+
+                    UserInfo userInfo = new UserInfo();
+                    userInfo = Session["user"] as UserInfo;
+
+                    PYTService PYTService = new PYTService();
+
+                    APIService APIService = new Services.APIService();
+                    PublishInfo publicInfo = PYTService.GetPublicInfo(Guid.Parse(publishId));
+                    string toUser = publicInfo.UserId.ToString();
+                    string msg = "测试忽略";
+                    int dialogType = 1;
+                    //插入对话表
+                    bool dialogFlag = PYTService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
+                    //发送私信
+                    if (dialogFlag && !userInfo.UserId.Equals(Guid.Parse(toUser)))
+                        APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
                     resultObj.Add("MSG", "Y");
                 }
                 else

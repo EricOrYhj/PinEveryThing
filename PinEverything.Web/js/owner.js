@@ -20,7 +20,6 @@ Owner.AddPublic = function () {
     this.options.ownerPhone = $("#ownerPhone").text();
     this.options.note = $("#note").text();
 
-
     $.ajax({
         type: "POST",
         url: "/ajaxpage/user.aspx",

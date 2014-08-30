@@ -67,12 +67,40 @@ Detail.LoadDialogMsg = function () {
     });
 };
 
+//联系Owner
+Detail.ContactOwner = function () {
+    Detail.options.publishId = $("#hidPublishId").val();
+    var contacText = $(".contacText").val();
+    $.ajax({
+        url: "/ajaxpage/user.aspx",
+        dataType: "JSON",
+        data: { op: "ContactOwner", publishId: Detail.options.publishId, contacText: contacText },
+        beforeSend: function () {
+        },
+        success: function (data) {
+            if (data.MSG == "N") {
+                alert("发送失败");
+            } else if (data.MSG == "Y") {
+                $(".contactDiv").css("display", "none");
+                alert("消息已发");
+            }
+        }
+    });
+};
+
+Detail.Cancel = function () {
+    $(".contactDiv").css("display", "none");
+};
 
 //事件绑定
 Detail.BindEvent = function () {
+    $("#contactOwner").click(function () {
+        $(".contactDiv").css("display", "block")
+    });
 }
 
 //脚本加载事件
 $(function () {
+    Detail.BindEvent();
     Detail.LoadDialogMsg();
 });

@@ -29,10 +29,18 @@
     <div class="detailMeaasgeHead" id="userAvatar" runat="server"></div>
     <div class="detailMeaasgeName" id="userName" runat="server"></div>
     <div class="detailMeaasgeContact">
-        <a href="">联系TA</a>
+       <div id="contactOwner">联系TA</div>
     </div>
     <div class="clear"></div>
 </div>
+<div class="contactDiv">
+            <div class="contactWord">输入</div>
+            <div style="padding-left:20px;"><textarea class="contacText" ></textarea></div>
+            <div style="float:left"><input type="button" class="contacTextSubmit" value="提交" onclick="javascript: Detail.ContactOwner()" /></div>
+            <div style="float:left"><input type="button" class="contacTextCancel" value="取消" onclick="javascript: Detail.Cancel()" /></div>
+            <div class="clear"></div>
+        </div>
+
 <div class="owner" style="padding: 0;">
     <ul>
         <li>
