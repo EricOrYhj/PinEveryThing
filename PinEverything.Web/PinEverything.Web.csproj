@@ -123,6 +123,7 @@
     <Content Include="js\index.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.mobile-1.4.3.min.js" />
+    <Content Include="js\mapbase.js" />
     <Content Include="js\owner.js" />
     <Content Include="js\passenger.js" />
     <Content Include="list.html" />
@@ -136,7 +137,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ajaxpage\user.aspx.cs">
@@ -199,13 +199,6 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
