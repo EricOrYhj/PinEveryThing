@@ -76,6 +76,7 @@
     <Content Include="ajaxpage\user.aspx" />
     <Content Include="callback.aspx" />
     <Content Include="css\css.css" />
+    <Content Include="css\images\ajax-loader.gif" />
     <Content Include="css\jquery.mobile-1.4.3.min.css" />
     <Content Include="detail.aspx" />
     <Content Include="detail.html" />
@@ -228,9 +229,7 @@
       <Name>PinEverything.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="html\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

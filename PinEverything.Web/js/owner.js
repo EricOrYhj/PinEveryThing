@@ -47,7 +47,7 @@ Owner.AddPublic = function () {
 
 //事件绑定
 Owner.BindEvent = function () {
-    $(".messageBtn").click(function () {
+    $("#messageBtn").click(function () {
         Owner.AddPublic();
     });
 }
