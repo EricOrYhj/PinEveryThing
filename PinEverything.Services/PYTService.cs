@@ -93,6 +93,11 @@ namespace PinEverything.Services
             return this.db.SaveChanges().Equals(1);
         }
 
+        public PublishInfo GetPublicInfo(Guid publishId)
+        {
+            return this.db.Set<PublishInfo>().FirstOrDefault(p => p.PublishId.Equals(publishId));
+        }
+
         public bool AddUser(
             Guid projectId,
             Guid userId,
@@ -146,13 +151,85 @@ namespace PinEverything.Services
         {
             UserInfo model = this.db.Set<UserInfo>().FirstOrDefault(p => p.UserId.Equals(userId));
             model.MDToken = mdToken;
-            
+
             return this.db.SaveChanges().Equals(1);
         }
 
         public UserInfo GetUser(Guid userId)
         {
             return this.db.Set<UserInfo>().FirstOrDefault(p => p.UserId.Equals(userId));
+        }
+
+        public bool JoinPublishInfo(
+                Guid publishId,
+                Guid userId,
+                int joinRole,
+                string Lat,
+                string Lng
+            )
+        {
+            JoinInfo model = new JoinInfo()
+            {
+                PublishId = publishId,
+                UserId = userId,
+                JoinRole = joinRole,
+                Lat = Lat,
+                Lng = Lng,
+                JoinTime = DateTime.Now
+            };
+
+            this.db.Set<JoinInfo>().Add(model);
+            return this.db.SaveChanges().Equals(1);
+        }
+
+        public bool AddDialogMsg(
+               Guid dialogueId,
+               Guid publishId,
+               Guid preId,
+               Guid fromUserId,
+               Guid toUserId,
+               string msg,
+               int dialogueType,
+               string Lat,
+               string Lng
+
+           )
+        {
+            DialogueInfo model = new DialogueInfo()
+            {
+                DialogueId = dialogueId,
+                PublishId = publishId,
+                PreId = preId,
+                FromUserId = fromUserId,
+                ToUserId = toUserId,
+                Msg=msg,
+                DialogueType = dialogueType,
+                Lat=Lat,
+                Lng = Lng,
+                CreateTime = DateTime.Now
+            };
+
+            this.db.Set<DialogueInfo>().Add(model);
+            return this.db.SaveChanges().Equals(1);
+        }
+
+        public EntityList<DialogueInfo> QueryDialogInfo(Guid publishId,int pageIndex = 1, int pageSize = int.MaxValue)
+        {
+            EntityList<DialogueInfo> result = new EntityList<DialogueInfo>();
+
+            result.Table = this.db.Set<DialogueInfo>().Where(p => p.PublishId.Equals(publishId)).OrderByDescending(
+                    p => p.AutoId
+                ).Skip(
+                    (pageIndex - 1) * pageSize
+                ).Take(
+                    pageSize
+                ).ToList();
+
+            result.TotalCount = this.db.Set<PublishInfo>().Count();
+            result.PageIndex = pageIndex;
+            result.PageSize = pageSize;
+
+            return result;
         }
 
     }

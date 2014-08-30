@@ -59,9 +59,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: #384160;
   width: 100%; }
 
-.project {
-  margin: 0 auto; }
-
 .header {
   width: 85%;
   margin: 0 auto;
@@ -69,16 +66,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .headerLeft {
   float: left;
-  width: 36px; }
+  width: 36px;
+  height: 36px; }
   .headerLeft .headerLeftIcon {
     width: 36px;
     height: 36px;
-    background: url("../images/weizhi.jpg") no-repeat;
+    background: url("../images/weizhi.png") no-repeat;
     display: block; }
 
 .headerRight {
   float: right;
-  width: 36px; }
+  width: 36px;
+  height: 36px; }
   .headerRight .headerRightIcon {
     width: 36px;
     height: 36px;
@@ -177,10 +176,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-left: 15px; }
     .sidebarBg .sidebarLeft img {
       padding-top: 6px; }
+  .sidebarBg .sidebarPlayWidth {
+    width: 46px; }
   .sidebarBg .sidebarRight {
     float: right;
-    width: 27px;
-    margin-right: 15px; }
+    width: 32px;
+    margin-right: 15px;
+    height: 32px; }
     .sidebarBg .sidebarRight img {
       padding-top: 9px; }
   .sidebarBg .sidebarTitle {
@@ -190,35 +192,35 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     padding-top: 15px; }
   .sidebarBg .sidebarPlay {
     float: right;
-    width: 70px;
+    width: 46px;
     margin-right: 15px;
     font-size: 12px;
-    padding-top: 8px; }
+    padding-top: 10px; }
     .sidebarBg .sidebarPlay a {
       display: block;
-      padding: 8px 10px;
-      background: #0066cc;
+      padding: 6px 0;
       color: #fff;
       text-decoration: none;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
-      border-radius: 5px; }
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px;
+      border: 1px solid #fff;
+      text-align: center; }
 
 .pincheBg {
-  width: 100%;
   background: url("../images/pinchebg.jpg") no-repeat top center; }
 
 .pincheDescription {
-  padding-top: 100px;
+  padding-top: 40px;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Microsoft YaHei"; }
   .pincheDescription p {
     width: 100%;
     text-align: center;
-    line-height: 40px; }
+    line-height: 24px; }
 
 .pinchePassenger {
   width: 90%;
@@ -227,7 +229,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border: 2px solid #86a6a1;
   text-align: center;
   font-size: 20px;
-  margin: 230px auto 0;
+  margin: 60px auto 0;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -284,13 +286,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .passengerTab .passengerTabLeftIcon, .passengerTab .passengerTabRightIcon {
     width: 25px;
     height: 25px;
-    background: url("../images/icon1.jpg") no-repeat;
+    background: url("../images/icon1.png") no-repeat;
     display: inline-block;
     vertical-align: top;
     margin-top: 17px;
     margin-right: 8px; }
   .passengerTab .passengerTabRightIcon {
-    background: url("../images/icon2.jpg") no-repeat; }
+    background: url("../images/icon2.png") no-repeat; }
 
 .passengerList {
   padding: 15px 20px;
@@ -303,8 +305,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
       margin-right: 10px; }
     .passengerList li .passengerListRight {
       float: left;
-      width: 188px;
-      margin-left: 10px;
+      width: 193px;
+      margin-left: 5px;
       height: 103px;
       border: 1px solid #6dc5d7;
       background: #fff;
@@ -317,6 +319,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
       font-family: "Microsoft YaHei";
       font-size: 14px;
       color: #6a6a6a; }
+      .passengerList li .passengerListRight a {
+        text-decoration: none;
+        color: #6a6a6a; }
     .passengerList li .passengerListArrow {
       position: absolute;
       top: 22px;
@@ -337,6 +342,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
       width: 0;
       height: 0;
       border-style: solid; }
+    .passengerList li .passengerListDate {
+      position: absolute;
+      bottom: 7px;
+      right: 6px;
+      font-size: 12px;
+      color: #999; }
   .passengerList .passengerListPosition .passengerListLeft {
     width: 70px;
     float: right;
@@ -345,13 +356,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .passengerList .passengerListPosition .passengerListRight {
     float: right;
     margin-left: 0;
-    margin-right: 10px; }
+    margin-right: 5px; }
   .passengerList .passengerListPosition .passengerListArrow {
-    left: 189px;
+    left: 194px;
     border-color: transparent;
     border-left-color: #6dc5d7; }
   .passengerList .passengerListPosition .passengerListArrowInner {
-    left: 188px;
+    left: 193px;
     border-color: transparent;
     border-left-color: #fff; }
   .passengerList .passengerListLeftHead {
@@ -383,44 +394,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     line-height: 18px;
     margin-top: 6px; }
   .passengerList .passengerListFromAddress {
-    background: url("../images/icon3.jpg") no-repeat; }
+    background: url("../images/icon3.png") no-repeat; }
   .passengerList .passengerListToAddress {
-    background: url("../images/icon4.jpg") no-repeat; }
+    background: url("../images/icon4.png") no-repeat; }
   .passengerList .passengerListTime {
-    background: url("../images/icon5.jpg") no-repeat; }
+    background: url("../images/icon5.png") no-repeat; }
   .passengerList .passengerListCar {
-    background: url("../images/icon6.jpg") no-repeat; }
+    background: url("../images/icon6.png") no-repeat; }
 
-.Popup {
-  width: 260px;
-  height: 50px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #6dc5d7;
-  position: absolute;
-  z-index: 500;
-  background: #fff;
-  text-align: center;
-  font-size: 12px;
+.passengerMap {
   display: none; }
-  .Popup .join, .Popup .detail, .Popup .close {
-    width: 60px;
-    background: #6dc5d7;
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    margin: 10px 8px; }
 
 .owner {
   background: #f0f0f0;
@@ -432,28 +415,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: box;
     position: relative;
     background: #fff; }
-  .owner .ownerICon1, .owner .ownerICon2, .owner .ownerICon3, .owner .ownerICon4, .owner .ownerICon5, .owner .ownerICon6, .owner .ownerICon7, .owner .ownerICon8 {
+  .owner .ownerICon1, .owner .ownerICon2, .owner .ownerICon3, .owner .ownerICon4, .owner .ownerICon5, .owner .ownerICon6, .owner .ownerICon7, .owner .ownerICon8, .owner .ownerICon9 {
     width: 18px;
     height: 18px;
     display: inline-block;
     margin-top: 11px;
     padding-left: 15px; }
   .owner .ownerICon1 {
-    background: url("../images/icon3.jpg") no-repeat top right; }
+    background: url("../images/icon3.png") no-repeat top right; }
   .owner .ownerICon2 {
-    background: url("../images/icon4.jpg") no-repeat top right; }
+    background: url("../images/icon4.png") no-repeat top right; }
   .owner .ownerICon3 {
-    background: url("../images/icon8.jpg") no-repeat top right; }
+    background: url("../images/icon8.png") no-repeat top right; }
   .owner .ownerICon4 {
-    background: url("../images/icon5.jpg") no-repeat top right; }
+    background: url("../images/icon5.png") no-repeat top right; }
   .owner .ownerICon5 {
-    background: url("../images/icon6.jpg") no-repeat top right; }
+    background: url("../images/icon6.png") no-repeat top right; }
   .owner .ownerICon6 {
-    background: url("../images/icon9.jpg") no-repeat top right; }
+    background: url("../images/icon9.png") no-repeat top right; }
   .owner .ownerICon7 {
-    background: url("../images/icon10.jpg") no-repeat top right; }
+    background: url("../images/icon10.png") no-repeat top right; }
   .owner .ownerICon8 {
-    background: url("../images/icon10.jpg") no-repeat top right; }
+    width: 24px;
+    height: 24px;
+    margin-top: 8px;
+    background: url("../images/icon11.png") no-repeat top right; }
+  .owner .ownerICon9 {
+    background: url("../images/icon12.png") no-repeat top right; }
   .owner .ownerTitle {
     height: 39px;
     line-height: 39px;
@@ -471,7 +459,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     position: absolute;
     top: 8px;
     right: 10px;
-    background: url("../images/icon7.jpg") no-repeat;
+    background: url("../images/icon7.png") no-repeat;
     width: 24px;
     height: 24px; }
   .owner .message {
@@ -504,6 +492,164 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
     text-decoration: none; }
 
-owner .content {
+.list {
+  background: #f0f0f0; }
+  .list li {
+    border-bottom: 1px solid #dfdfdf;
+    color: #595959;
+    height: 30px;
+    line-height: 30px;
+    position: relative; }
+  .list .listTitle {
+    font-size: 12px;
+    font-family: "Microsoft YaHei";
+    color: #595959;
+    text-decoration: none;
+    text-indent: 15px;
+    display: inline-block;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .list .listTime {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 12px; }
+  .list .listBg {
+    background: #f7f7f7; }
+  .list .loadMore {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #3ecfd4; }
+
+#join, #exit {
+  display: none; }
+
+.detail span {
+  width: 20px;
+  padding-top: 10px;
+  display: inline-block;
+  margin-right: 5px; }
+  .detail span img {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    display: block; }
+
+.detailMeaasge {
+  background: #fff;
+  padding: 10px 15px; }
+  .detailMeaasge .detailMeaasgeHead {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    float: left; }
+  .detailMeaasge .detailMeaasgeName {
+    float: left;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    color: #6bc9cb;
+    width: 130px;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .detailMeaasge .detailMeaasgeContact {
+    width: 70px;
+    float: right;
+    margin-top: 20px; }
+    .detailMeaasge .detailMeaasgeContact a {
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      color: #fff;
+      font-size: 12px;
+      background: #7fd48f;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px;
+      display: block;
+      text-decoration: none;
+      text-align: center; }
+
+.messageTitle {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-indent: 15px;
+  font-size: 14px;
+  color: #999;
+  font-family: "Microsoft YaHei";
+  border-top: 1px solid #ccc; }
+
+.thinkMessage {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-family: "Microsoft YaHei";
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  color: #7fd1d4; }
+  .thinkMessage span {
+    width: 20px;
+    height: 18px;
+    background: url("../images/icon13.png") no-repeat;
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 5px 0 0; }
+
+.messageList li {
+  padding: 0 15px;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  border-bottom: 1px solid #ccc;
+  font-family: "Microsoft YaHei";
+  padding-bottom: 10px; }
+.messageList li:last-child {
+  border: 0; }
+.messageList .messageListLeft {
+  width: 20px; }
+.messageList .messageListRight {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  margin-left: 10px; }
+  .messageList .messageListRight .messageListTitle {
+    padding-top: 12px;
+    font-size: 16px; }
+  .messageList .messageListRight .messageListContent {
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    margin-top: 5px; }
+  .messageList .messageListRight .messageListTime {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px; }
+
+  owner .content {
     outline:none;
 }
+

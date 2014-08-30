@@ -11,7 +11,7 @@ Owner.options = {
     pubType: "1"//发布类型
 };
 
-//加载用户信息
+//发布信息
 Owner.AddPublic = function () {
     this.options.startPlace = $("#startPlace").text();
     this.options.destination = $("#destination").text();
@@ -38,7 +38,7 @@ Owner.AddPublic = function () {
             if (data.MSG == "N") {
                 alert("发布失败");
             } else if (data.MSG == "Y") {
-                alert("发布成功");
+                window.location.href = "/passenger.aspx";
             }
         }
     });
