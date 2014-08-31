@@ -32,37 +32,42 @@ List.hisPubList = function () {
                     html = html + '<div class="listTime">' + createTime + '</div>';
                     html = html + '</li>';
                 }
-                $(".list").find(" #listUl").append(html);
+                $("#publist").find(" #pubUl").append(html);
             }
         }
     });
 };
 
-////加载历史加入列表
-//List.hisJoinList = function () {
-//    $.ajax({
-//        url: "/ajaxpage/user.aspx",
-//        dataType: "JSON",
-//        data: { op: "HisJoinList", pageIndex: List.options.pageIndex, pageSize: List.options.pageSize },
-//        beforeSend: function () {
-//        },
-//        success: function (data) {
-//            if (data.MSG == "N") {
-//                parent.location.replace("../callback.aspx");
-//            } else if (data.MSG == "Y") {
-//                var pubList = data.pubList;
-//                var len = pubList.length;
-//                var html = '<ul>';
-//                for (var i = 0; i < len; i++) {
-//                    var pubItem = pubList[i];
-//                    var publishId = pubItem.PublishId;
-//                }
-//                html = html + '</ul>';
-//                $("#list").append(html);
-//            }
-//        }
-//    });
-//};
+//加载历史加入列表
+List.hisJoinList = function () {
+    $.ajax({
+        url: "/ajaxpage/user.aspx",
+        dataType: "JSON",
+        data: { op: "HisJoinList", pageIndex: List.options.pageIndex, pageSize: List.options.pageSize },
+        beforeSend: function () {
+        },
+        success: function (data) {
+            if (data.MSG == "N") {
+                parent.location.replace("../callback.aspx");
+            } else if (data.MSG == "Y") {
+                var hisJoinList = data.hisJoinList;
+                var len = hisJoinList.length;
+                var html = '';
+                for (var i = 0; i < len; i++) {
+                    var pubItem = hisJoinList[i];
+                    var publishId = pubItem.PublishId;
+                    var pubTitle = pubItem.PubTitle;
+                    var createTime = pubItem.CreateTime;
+                    html = html + '<li>';
+                    html = html + ' <a href="/detail.aspx?publishId=' + publishId + '" class="listTitle">' + pubTitle + '</a>';
+                    html = html + '<div class="listTime">' + createTime + '</div>';
+                    html = html + '</li>';
+                }
+                $("#joinList").find(" #joinUl").append(html);
+            }
+        }
+    });
+};
 
 //事件绑定
 List.BindEvent = function () {

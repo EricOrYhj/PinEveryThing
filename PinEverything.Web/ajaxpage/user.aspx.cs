@@ -186,24 +186,30 @@ namespace PinEverything.Web.ajaxpage
                     userInfo = Session["user"] as UserInfo;
 
                     PYTService PYTService = new PYTService();
-                    bool flag = PYTService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng);
-
-                    if (flag)
+                    //是否已经加入
+                    JoinInfo joinInfo = PYTService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
+                    if (joinInfo == null)
                     {
-                        APIService APIService = new Services.APIService();
-                        PublishInfo publicInfo = PYTService.GetPublicInfo(Guid.Parse(publishId));
-                        string toUser = publicInfo.UserId.ToString();
-                        string msg = "测试忽略";
-                        int dialogType = 1;
-                        //插入对话表
-                        bool dialogFlag = PYTService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
-                        //发送私信
-                        if (dialogFlag)
-                            APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
-                        resultObj.Add("MSG", "Y");
-                    }
-                    else
-                        resultObj.Add("MSG", "N");
+                        bool flag = PYTService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng);
+
+                        if (flag)
+                        {
+                            APIService APIService = new Services.APIService();
+                            PublishInfo publicInfo = PYTService.GetPublicInfo(Guid.Parse(publishId));
+                            string toUser = publicInfo.UserId.ToString();
+                            string msg = "测试忽略";
+                            int dialogType = 1;
+                            //插入对话表
+                            bool dialogFlag = PYTService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
+                            //发送私信
+                            if (dialogFlag)
+                                APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+                            resultObj.Add("MSG", "Y");
+                        }
+                        else
+                            resultObj.Add("MSG", "N");
+                    }else
+                        resultObj.Add("MSG", "S");
                 }
                 else
                     resultObj.Add("MSG", "N");
@@ -380,6 +386,8 @@ namespace PinEverything.Web.ajaxpage
 
                     publicObj.Add("PublishId", joinItem.PublishId);
                     publicObj.Add("PubTitle", publicInfo.PubTitle);
+                    string creatTime = publicInfo.CreateTime.ToString("yyyyMMdd");
+                    publicObj.Add("CreateTime", creatTime);
                     //publicObj.Add("CreateTime", publicInfo.CreateTime);
 
                     hisJoinArr.Add(publicObj);

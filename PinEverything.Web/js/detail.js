@@ -24,6 +24,9 @@ Detail.JoinPublic = function () {
             } else if (data.MSG == "Y") {
                 alert("加入成功");
             }
+            else if (data.MSG == "S") {
+                alert("你已加入");
+            }
         }
     });
 };

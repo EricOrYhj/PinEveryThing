@@ -278,5 +278,9 @@ namespace PinEverything.Services
             return result;
         }
 
+        public JoinInfo GetJoinInfo(Guid publishId, Guid userId)
+        {
+            return this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
+        }
     }
 }

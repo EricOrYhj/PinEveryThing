@@ -33,8 +33,8 @@
         </div>
         <div class="clear"></div>
     </div>
-    <div class="list" id="list">
-        <ul id="listUl">
+    <div class="list" id="publist">
+        <ul id="pubUl">
 <%--            <li>
                 <a href="" class="listTitle">测试标题11111</a>
                 <div class="listTime">2014-8-30 10:00</div>
@@ -78,7 +78,9 @@
         </ul>
         <div class="loadMore">加载更多...</div>
     </div>
-    <div class="passengerMap">
+    <div class="list" id="joinList">
+        <ul id="joinUl">
+        </ul>
     </div>
 </body>
 </html>
@@ -87,6 +89,14 @@
         $(".passengerTabClick").click(function () {
             $(this).addClass("active").siblings().removeClass("active");
             var rel = $(this).attr("rel");
+            if (rel == '0') {
+                $("#publist").fadeIn();
+                $("#joinList").fadeOut();
+            } else {
+                $("#publist").fadeOut();
+                $("#joinList").fadeIn();
+            }
+            List.hisJoinList();
         });
     });
 </script>
