@@ -31,9 +31,9 @@ namespace PinEverything.Web
                         this.userName.InnerText = userInfo.UserName;
                     }
                     this.hidPublishId.Value = publishId;
-                    this.startPlace.InnerText = publicInfo.Lat;
-                    this.destination.InnerText = publicInfo.Lng;
-                    this.carType.InnerText = publicInfo.PubContent;
+                    this.startPlace.InnerText = publicInfo.StartPosition;
+                    this.destination.InnerText = publicInfo.EndPosition;
+                    this.carType.InnerText = publicInfo.CarType;
                 }
                 else
                     Response.Redirect("/callback.aspx");

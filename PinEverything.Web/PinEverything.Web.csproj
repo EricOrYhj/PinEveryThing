@@ -123,9 +123,11 @@
     <Content Include="js\index.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.mobile-1.4.3.min.js" />
+    <Content Include="js\list.js" />
     <Content Include="js\mapbase.js" />
     <Content Include="js\owner.js" />
     <Content Include="js\passenger.js" />
+    <Content Include="List.aspx" />
     <Content Include="list.html" />
     <Content Include="owner.aspx" />
     <Content Include="owner.html" />
@@ -169,6 +171,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>

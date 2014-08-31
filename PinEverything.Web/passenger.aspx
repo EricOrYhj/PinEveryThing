@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="js/jquery.min.js"></script>
     <script src="js/passenger.js"></script>
-     <script type="text/javascript"
-            src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
+    <script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
     </script>
     <script src="/js/mapbase.js"></script>
     <link href="css/css.css" rel="stylesheet">
@@ -17,7 +17,8 @@
 <body>
     <div class="sidebarBg">
         <div class="sidebarLeft sidebarPlayWidth">
-            <a href="javascript:history.go(-1)"><img src="images/arrow.png" alt=""/></a>
+            <a href="javascript:history.go(-1)">
+                <img src="images/arrow.png" alt="" /></a>
         </div>
         <div class="sidebarPlay">
             <a href="play.html">打车</a>
@@ -39,7 +40,7 @@
         <div class="clear"></div>
     </div>
     <div class="passengerList">
-<%--        <ul>
+        <%--        <ul>
             <li>
                 <div class="passengerListLeft">
                     <div class="passengerListLeftHead">

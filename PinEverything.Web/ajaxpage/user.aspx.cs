@@ -38,6 +38,12 @@ namespace PinEverything.Web.ajaxpage
                     case "ContactOwner":
                         ContactOwner();
                         break;
+                    case "HisPubList":
+                        HisPubList();
+                        break;
+                    case "HisJoinList":
+                        HisJoinList();
+                        break;
                 }
             }
         }
@@ -74,29 +80,34 @@ namespace PinEverything.Web.ajaxpage
             JavaScriptObject resultObj = new JavaScriptObject();
             if (Session["user"] != null)
             {
-                string startPlace = Request["startPlace"];
-                string destination = Request["destination"];
+                string startPosition = Request["startPosition"];
+                string endPosition = Request["endPosition"];
                 string carType = Request["carType"];
                 string carColor = Request["carColor"];
                 string ownerPhone = Request["ownerPhone"];
                 string note = Request["note"];
                 int pubType = int.Parse(Request["pubType"].ToString());
 
+                string pubTitle = startPosition + '-' + endPosition;
+                string lat = string.Empty;
+                string lng = string.Empty;
+                int userLimCount = 4;
+
                 UserInfo userInfo = new UserInfo();
                 userInfo = Session["user"] as UserInfo;
 
                 PYTService PYTService = new PYTService();
 
-                bool flag = PYTService.AddPublishInfo(Guid.NewGuid(), userInfo.ProjectId, userInfo.UserId, pubType, 0, "", note, carType, carColor, 4);
-
+                bool flag = PYTService.AddPublishInfo(Guid.NewGuid(), userInfo.ProjectId, userInfo.UserId, pubType, 1,
+                    pubTitle, note, lat, lng, userLimCount, startPosition, endPosition, carType, carColor);
                 if (flag)
                 {
                     resultObj.Add("MSG", "Y");
                     //发布动态
                     APIService APIService = new Services.APIService();
                     string access_token = userInfo.MDToken;
-                    string pMsg = startPlace;
-                    string title = startPlace;
+                    string pMsg = startPosition;
+                    string title = startPosition;
                     bool postFlag = APIService.postUpdate(access_token, pMsg, title);
                 }
                 else
@@ -138,6 +149,10 @@ namespace PinEverything.Web.ajaxpage
                         publicObj.Add("UserId", publicItem.UserId);
                         publicObj.Add("Avatar", userInfo.Avatar);
                         publicObj.Add("UserName", userInfo.UserName);
+                        publicObj.Add("StartPosition", publicItem.StartPosition);
+                        publicObj.Add("EndPosition", publicItem.EndPosition);
+                        publicObj.Add("CarType", publicItem.CarType);
+                        publicObj.Add("CarColor", publicItem.CarColor);
                         publicObj.Add("Lat", publicItem.Lat);
                         publicObj.Add("Lng", publicItem.Lng);
                         publicArr.Add(publicObj);
@@ -254,7 +269,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// 加入
+        /// 联系
         /// </summary>
         private void ContactOwner()
         {
@@ -287,6 +302,90 @@ namespace PinEverything.Web.ajaxpage
                 }
                 else
                     resultObj.Add("MSG", "N");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// 获取历史发布列表
+        /// </summary>
+        private void HisPubList()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                int pageIndex = int.Parse(Request["pageIndex"].ToString());
+                int pageSize = int.Parse(Request["pageSize"].ToString());
+
+                PYTService PYTService = new PYTService();
+                UserInfo curUserInfo = new UserInfo();
+                curUserInfo = Session["user"] as UserInfo;
+
+                Entites.EntityList<PublishInfo> hisPubList = new EntityList<PublishInfo>();
+                hisPubList = PYTService.QueryHisPub(curUserInfo.UserId, pageIndex, pageSize);
+                List<PublishInfo> hisPubInfo = new List<PublishInfo>();
+                hisPubInfo = hisPubList.Table;
+
+                JavaScriptArray hisPubArr = new JavaScriptArray();
+                foreach (PublishInfo hisPubItem in hisPubInfo)
+                {
+                    JavaScriptObject publicObj = new JavaScriptObject();
+
+                    publicObj.Add("PublishId", hisPubItem.PublishId);
+                    publicObj.Add("PubTitle", hisPubItem.PubTitle);
+                    string creatTime = hisPubItem.CreateTime.ToString("yyyyMMdd");
+                    publicObj.Add("CreateTime", creatTime);
+
+                    hisPubArr.Add(publicObj);
+                }
+                resultObj.Add("hisPubList", hisPubArr);
+                resultObj.Add("MSG", "Y");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// 获取历史加入列表
+        /// </summary>
+        private void HisJoinList()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                int pageIndex = int.Parse(Request["pageIndex"].ToString());
+                int pageSize = int.Parse(Request["pageSize"].ToString());
+
+                PYTService PYTService = new PYTService();
+                UserInfo curUserInfo = new UserInfo();
+                curUserInfo = Session["user"] as UserInfo;
+
+                Entites.EntityList<JoinInfo> hisJoinList = new EntityList<JoinInfo>();
+                hisJoinList = PYTService.QueryHisJoin(curUserInfo.UserId, pageIndex, pageSize);
+                List<JoinInfo> hisJoinInfo = new List<JoinInfo>();
+                hisJoinInfo = hisJoinList.Table;
+
+                JavaScriptArray hisJoinArr = new JavaScriptArray();
+                foreach (JoinInfo joinItem in hisJoinInfo)
+                {
+                    JavaScriptObject publicObj = new JavaScriptObject();
+
+                    Guid publisID = joinItem.PublishId;
+                    PublishInfo publicInfo = PYTService.GetPublicInfo(publisID);
+
+                    publicObj.Add("PublishId", joinItem.PublishId);
+                    publicObj.Add("PubTitle", publicInfo.PubTitle);
+                    //publicObj.Add("CreateTime", publicInfo.CreateTime);
+
+                    hisJoinArr.Add(publicObj);
+                }
+                resultObj.Add("hisJoinList", hisJoinArr);
+                resultObj.Add("MSG", "Y");
             }
             else
                 resultObj.Add("MSG", "N");

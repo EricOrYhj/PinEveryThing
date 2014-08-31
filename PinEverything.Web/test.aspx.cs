@@ -34,7 +34,12 @@ namespace PinEverything.Web
                     "测试内容" + MySpider.Rand.Str_char(20),
                     "106.123133",
                     "23.3123123",
-                    3
+                    3,
+                    "",
+                    "",
+                    "",
+                    ""
+
                 );
             this.LoadData();
         }

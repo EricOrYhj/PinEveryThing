@@ -27,6 +27,10 @@ Passenger.publicList = function () {
                     var pubItem = pubList[i];
                     var publishId= pubItem.PublishId;
                     var pubTitle = pubItem.PubTitle;
+                    var startPosition = pubItem.StartPosition;
+                    var endPosition = pubItem.EndPosition;
+                    var carType = pubItem.CarType;
+                    var carColor = pubItem.CarColor;
                     var userId = pubItem.UserId;
                     var avatar = pubItem.Avatar;
                     var userName = pubItem.UserName;
@@ -45,10 +49,10 @@ Passenger.publicList = function () {
                         html += '<a href="/detail.aspx?publishId=' + publishId + '">';
                         html += '<span class="passengerListArrow"></span>';
                         html += ' <span class="passengerListArrowInner"></span>';
-                        html += ' <div class="passengerListFromAddress">' + lat + '</div>';
-                        html += ' <div class="passengerListToAddress">' + lng + '</div>';
+                        html += ' <div class="passengerListFromAddress">' + startPosition + '</div>';
+                        html += ' <div class="passengerListToAddress">' + endPosition + '</div>';
                         html += ' <div class="passengerListTime">9:10 至 18:00</div>';
-                        html += ' <div class="passengerListCar">特斯拉</div>';
+                        html += ' <div class="passengerListCar">' + carType + '</div>';
                         html += '  <div class="passengerListDate">8月28日 16:00</div>';
                         html += '</a>';
                         html += '</div>';

@@ -2,8 +2,8 @@
 
 Owner.options = {
     dataType: "AddPublic",
-    startPlace:"",
-    destination:"",
+    startPosition: "",
+    endPosition: "",
     carType:"",
     carColor:"",
     ownerPhone:"",
@@ -13,8 +13,8 @@ Owner.options = {
 
 //发布信息
 Owner.AddPublic = function () {
-    this.options.startPlace = $("#startPlace").text();
-    this.options.destination = $("#destination").text();
+    this.options.startPosition = $("#startPosition").text();
+    this.options.endPosition = $("#endPosition").text();
     this.options.carType = $("#carType").text();
     this.options.carColor = $("#carColor").text();
     this.options.ownerPhone = $("#ownerPhone").text();
@@ -25,8 +25,8 @@ Owner.AddPublic = function () {
         url: "/ajaxpage/user.aspx",
         data: {
             op: Owner.options.dataType,
-            startPlace: Owner.options.startPlace,
-            destination: Owner.options.destination,
+            startPosition: Owner.options.startPosition,
+            endPosition: Owner.options.endPosition,
             carType: Owner.options.carType,
             carColor: Owner.options.carColor,
             ownerPhone: Owner.options.ownerPhone,

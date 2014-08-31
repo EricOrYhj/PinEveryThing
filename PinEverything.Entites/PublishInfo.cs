@@ -127,6 +127,15 @@ namespace PinEverything.Entites
         /// 结束位置地点
         /// </summary>
         public string EndPosition { get; set; }
+        /// <summary>
+        /// 车型
+        /// </summary>
+        public string CarType { get; set; }
+        /// <summary>
+        /// 车颜色
+        /// </summary>
+        public string CarColor { get; set; }
+
         #endregion Model
     }
 }

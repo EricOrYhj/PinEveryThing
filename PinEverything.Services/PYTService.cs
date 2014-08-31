@@ -71,8 +71,10 @@ namespace PinEverything.Services
             string lat,
             string lng,
             int userLimCount,
-            string startPosition = "",
-            string endPosition = ""
+            string startPosition,
+            string endPosition,
+            string carType,
+            string carColor
             )
         {
             PublishInfo model = new PublishInfo()
@@ -89,7 +91,9 @@ namespace PinEverything.Services
                 UserLimCount = userLimCount,
                 CreateTime = DateTime.Now,
                 StartPosition = startPosition,
-                EndPosition = endPosition
+                EndPosition = endPosition,
+                CarType = carType,
+                CarColor = carColor
             };
 
             this.db.Set<PublishInfo>().Add(model);
@@ -230,6 +234,44 @@ namespace PinEverything.Services
                 ).ToList();
 
             result.TotalCount = this.db.Set<PublishInfo>().Count();
+            result.PageIndex = pageIndex;
+            result.PageSize = pageSize;
+
+            return result;
+        }
+
+        public EntityList<PublishInfo> QueryHisPub(Guid userId,int pageIndex = 1, int pageSize = int.MaxValue)
+        {
+            EntityList<PublishInfo> result = new EntityList<PublishInfo>();
+
+            result.Table = this.db.Set<PublishInfo>().Where(p => p.UserId.Equals(userId)).OrderByDescending(
+                    p => p.AutoId
+                ).Skip(
+                    (pageIndex - 1) * pageSize
+                ).Take(
+                    pageSize
+                ).ToList();
+
+            result.TotalCount = this.db.Set<PublishInfo>().Count();
+            result.PageIndex = pageIndex;
+            result.PageSize = pageSize;
+
+            return result;
+        }
+
+        public EntityList<JoinInfo> QueryHisJoin(Guid userId, int pageIndex = 1, int pageSize = int.MaxValue)
+        {
+            EntityList<JoinInfo> result = new EntityList<JoinInfo>();
+
+            result.Table = this.db.Set<JoinInfo>().Where(p => p.UserId.Equals(userId)).OrderByDescending(
+                    p => p.AutoId
+                ).Skip(
+                    (pageIndex - 1) * pageSize
+                ).Take(
+                    pageSize
+                ).ToList();
+
+            result.TotalCount = this.db.Set<JoinInfo>().Count();
             result.PageIndex = pageIndex;
             result.PageSize = pageSize;
 
