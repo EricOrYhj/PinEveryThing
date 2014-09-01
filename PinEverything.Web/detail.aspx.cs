@@ -66,10 +66,10 @@ namespace PinEverything.Web
                             html = "<a href=\"javascript:Detail.JoinPublic();\" id=\"join\" style=\"display: block;\">加入</a>";
                             break;
                         case 2:
-                            html = "<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">退出</a>";
+                            html = "<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">取消</a>";
                             break;
                         case 3:
-                            html = "<a href=\"javascript:Detail.JoinPublic();\" id=\"cancle\" style=\"display: block;\">取消</a>";
+                            html = "<a href=\"javascript:Detail.ExitJoin();\" id=\"cancle\" style=\"display: block;\">退出</a>";
                             break;
                     }
                     this.sidebarPlay.InnerHtml = html;

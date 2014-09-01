@@ -74,7 +74,8 @@ namespace PinEverything.Services
             string startPosition,
             string endPosition,
             string carType,
-            string carColor
+            string carColor,
+            DateTime startTime
             )
         {
             PublishInfo model = new PublishInfo()
@@ -93,7 +94,8 @@ namespace PinEverything.Services
                 StartPosition = startPosition,
                 EndPosition = endPosition,
                 CarType = carType,
-                CarColor = carColor
+                CarColor = carColor,
+                StarTime = startTime
             };
 
             if (!string.IsNullOrWhiteSpace(lat) && !string.IsNullOrWhiteSpace(lng))
@@ -214,7 +216,8 @@ namespace PinEverything.Services
                 Guid userId,
                 int joinRole,
                 string lat,
-                string lng
+                string lng,
+                int status
             )
         {
             JoinInfo model = new JoinInfo()
@@ -224,7 +227,8 @@ namespace PinEverything.Services
                 JoinRole = joinRole,
                 OrginLat = lng,
                 OrginLng = lng,
-                JoinTime = DateTime.Now
+                JoinTime = DateTime.Now,
+                Status=status
             };
 
             if (!string.IsNullOrWhiteSpace(lat) && !string.IsNullOrWhiteSpace(lng))
@@ -348,7 +352,7 @@ namespace PinEverything.Services
 
         public JoinInfo GetJoinInfo(Guid publishId, Guid userId)
         {
-            return this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
+            return this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).Where(p => p.Status.Equals(1)).FirstOrDefault(p => p.UserId.Equals(userId));
         }
 
         public EntityList<JoinInfo> QueryJoinMembers(Guid publishId)

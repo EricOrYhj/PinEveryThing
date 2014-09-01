@@ -30,7 +30,7 @@
         <div class="detailMeaasgeHead" id="userAvatar" runat="server"></div>
         <div class="detailMeaasgeName" id="userName" runat="server"></div>
         <div class="detailMeaasgeContact">
-            <div id="contactOwner">联系TA</div>
+            <a telphone="">联系TA</a>
         </div>
         <div class="clear"></div>
     </div>
@@ -102,68 +102,8 @@
 
 
     <div class="messageList" id="messageList">
-        <%-- <ul>
-       <li>
-           <div class="messageListLeft detail">
-               <span><img src="images/1.jpg" alt=""/></span>
-           </div>
-           <div class="messageListRight">
-               <div class="messageListTitle">11111</div>
-               <div class="messageListContent">测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</div>
-               <div class="messageListTime">2014-8-30 1:45</div>
-           </div>
-       </li>
-        <li>
-            <div class="messageListLeft detail">
-                <span><img src="images/1.jpg" alt=""/></span>
-            </div>
-            <div class="messageListRight">
-                <div class="messageListTitle">11111</div>
-                <div class="messageListContent">测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</div>
-                <div class="messageListTime">2014-8-30 1:45</div>
-            </div>
-        </li>
-        <li>
-            <div class="messageListLeft detail">
-                <span><img src="images/1.jpg" alt=""/></span>
-            </div>
-            <div class="messageListRight">
-                <div class="messageListTitle">11111</div>
-                <div class="messageListContent">测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</div>
-                <div class="messageListTime">2014-8-30 1:45</div>
-            </div>
-        </li>
-        <li>
-            <div class="messageListLeft detail">
-                <span><img src="images/1.jpg" alt=""/></span>
-            </div>
-            <div class="messageListRight">
-                <div class="messageListTitle">11111</div>
-                <div class="messageListContent">测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</div>
-                <div class="messageListTime">2014-8-30 1:45</div>
-            </div>
-        </li>
-        <li>
-            <div class="messageListLeft detail">
-                <span><img src="images/1.jpg" alt=""/></span>
-            </div>
-            <div class="messageListRight">
-                <div class="messageListTitle">11111</div>
-                <div class="messageListContent">测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</div>
-                <div class="messageListTime">2014-8-30 1:45</div>
-            </div>
-        </li>
-        <li>
-            <div class="messageListLeft detail">
-                <span><img src="images/1.jpg" alt=""/></span>
-            </div>
-            <div class="messageListRight">
-                <div class="messageListTitle">11111</div>
-                <div class="messageListContent">测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</div>
-                <div class="messageListTime">2014-8-30 1:45</div>
-            </div>
-        </li>
-    </ul>--%>
+        <ul id="messageUl">
+            </ul>
     </div>
 </body>
 </html>

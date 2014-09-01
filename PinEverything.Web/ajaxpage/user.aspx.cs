@@ -158,24 +158,25 @@ namespace PinEverything.Web.ajaxpage
             {
                 string startPosition = Request["startPosition"];
                 string endPosition = Request["endPosition"];
+                int userLimCount = int.Parse(Request["userLimCount"].ToString());
+                string startTimeStr = Request["startTime"];
                 string carType = Request["carType"];
                 string carColor = Request["carColor"];
                 string ownerPhone = Request["ownerPhone"];
                 string note = Request["note"];
                 int pubType = int.Parse(Request["pubType"].ToString());
 
+                DateTime startTime = DateTime.Parse(startTimeStr);
+
                 string pubTitle = startPosition + '-' + endPosition;
                 string lat = string.Empty;
                 string lng = string.Empty;
-                int userLimCount = 4;
 
                 UserInfo userInfo = new UserInfo();
                 userInfo = Session["user"] as UserInfo;
 
-                
-
                 bool flag = pytService.AddPublishInfo(Guid.NewGuid(), userInfo.ProjectId, userInfo.UserId, pubType, 1,
-                    pubTitle, note, lat, lng, userLimCount, startPosition, endPosition, carType, carColor);
+                    pubTitle, note, lat, lng, userLimCount, startPosition, endPosition, carType, carColor, startTime);
                 if (flag)
                 {
                     resultObj.Add("MSG", "Y");
@@ -265,7 +266,7 @@ namespace PinEverything.Web.ajaxpage
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
                     if (joinInfo == null)
                     {
-                        bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng);
+                        bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng,1);
 
                         if (flag)
                         {
@@ -414,6 +415,7 @@ namespace PinEverything.Web.ajaxpage
                     JavaScriptObject msgObj = new JavaScriptObject();
                     msgObj.Add("userName",userInfo.UserName);
                     msgObj.Add("userAvatar", userInfo.Avatar);
+                    msgObj.Add("msg", msg);
 
                     resultObj.Add("MSG", "Y");
                     resultObj.Add("msgObj", msgObj);

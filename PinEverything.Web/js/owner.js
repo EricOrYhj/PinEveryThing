@@ -17,10 +17,11 @@ Owner.options = {
 Owner.AddPublic = function () {
     this.options.startPosition = $("#startPosition").text();
     this.options.endPosition = $("#endPosition").text();
-    this.options.userLimCount = $("#number_dummy").val();
+    var number_dummy = $("#number_dummy").val();
+    this.options.userLimCount = number_dummy.replace(/[^0-9]/ig, "");
     this.options.startTime = $(".ownerTime").val();
     this.options.carType = $("#car_dummy").val();
-    this.options.carColor = $("#color_dummy").text();
+    this.options.carColor = $("#color_dummy").val();
     this.options.ownerPhone = $("#ownerPhone").text();
     this.options.note = $(".txtMessage").val();
 
@@ -52,12 +53,12 @@ Owner.AddPublic = function () {
 
 //事件绑定
 Owner.BindEvent = function () {
-    $("#messageBtn").click(function () {
-        Owner.AddPublic();
-    });
+    //$("#messageBtn").click(function () {
+    //    Owner.AddPublic();
+    //});
 }
 
 //脚本加载事件
 $(function () {
-    Owner.BindEvent();
+    //Owner.BindEvent();
 });

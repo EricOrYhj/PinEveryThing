@@ -13,7 +13,7 @@
 <script src="js/mobiscroll.datetime.js"></script>
 <script src="js/mobiscroll.select.js"></script>
 <script src="js/mobiscroll.i18n.zh.js"></script>
-
+<script src="js/owner.js"></script>
 <link href="css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
 <link href="css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
 <link href="css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
@@ -141,7 +141,7 @@
             <textarea class="txtMessage" placeholder="填写留言信息"></textarea>
         </div>
     </div>
-    <a href="passenger.html" id="messageBtn">发布线路</a>
+    <a href="javascript:Owner.AddPublic();" id="messageBtn">发布线路</a>
 </div>
 </body>
 </html>

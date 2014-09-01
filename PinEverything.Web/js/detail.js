@@ -27,7 +27,7 @@ Detail.JoinPublic = function () {
                 var userAvatar = msgObj.userAvatar;
                 var msg = msgObj.msg;
 
-                var userHtml = '<span title="' + userName + '"><img src="' + avatar + '" alt="" /></span>';
+                var userHtml = '<span title="' + userName + '"><img src="' + userAvatar + '" alt="" /></span>';
                 $("#members").append(userHtml);
 
                 var dialogHtml = '';
@@ -41,11 +41,11 @@ Detail.JoinPublic = function () {
                 dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
                 dialogHtml = dialogHtml + '</div>';
                 dialogHtml = dialogHtml + ' </li>';
-                $("#messageList").append(dialogHtml);
+                $("#messageList #messageUl").append(dialogHtml);
 
                 $("#sidebarPlay").html("<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">退出</a>");
 
-                alert("加入成功");
+                //alert("加入成功");
             }
             else if (data.MSG == "S") {
                 alert("你已加入");
@@ -88,7 +88,7 @@ Detail.LoadDialogMsg = function () {
             } else if (data.MSG == "Y") {
                 var dialogList = data.dialogList;
                 var len = dialogList.length;
-                var html = '<ul>';
+                var html = '';
                 for (var i = 0; i < len; i++) {
                     var dialogItem = dialogList[i];
                     var fromUserName = dialogItem.FromUserName;
@@ -105,8 +105,7 @@ Detail.LoadDialogMsg = function () {
                     html = html + '</div>';
                     html = html + ' </li>';
                 }
-                html = html + '</ul>';
-                $("#messageList").append(html);
+                $("#messageList #messageUl").append(html);
 
                 var joinMemberList = data.joinMemberList;
                 var joinlen = joinMemberList.length;
@@ -139,6 +138,24 @@ Detail.ContactOwner = function () {
             if (data.MSG == "N") {
                 alert("发送失败");
             } else if (data.MSG == "Y") {
+                var msgObj = data.msgObj;
+                var userName = msgObj.userName;
+                var userAvatar = msgObj.userAvatar;
+                var msg = msgObj.msg;
+
+                var dialogHtml = '';
+                dialogHtml = dialogHtml + '<li>';
+                dialogHtml = dialogHtml + '<div class="messageListLeft detail">';
+                dialogHtml = dialogHtml + '<span><img src="' + userAvatar + '" width="20px" height="20px" alt=""/></span>';
+                dialogHtml = dialogHtml + '</div>';
+                dialogHtml = dialogHtml + '<div class="messageListRight">';
+                dialogHtml = dialogHtml + '<div class="messageListTitle">' + userName + '</div>';
+                dialogHtml = dialogHtml + '<div class="messageListContent">' + msg + '</div>';
+                dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
+                dialogHtml = dialogHtml + '</div>';
+                dialogHtml = dialogHtml + ' </li>';
+                $("#messageList #messageUl").appendTo(dialogHtml);
+
                 alert("消息已发");
             }
         }
