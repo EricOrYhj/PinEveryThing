@@ -13,6 +13,8 @@ namespace PinEverything.Web.ajaxpage
 {
     public partial class Index : System.Web.UI.Page
     {
+        PYTService pytService = new PYTService();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request["op"] != null)
@@ -44,8 +46,30 @@ namespace PinEverything.Web.ajaxpage
                     case "HisJoinList":
                         HisJoinList();
                         break;
+                    case "UpdateLbs":
+                        UpdateLbs();
+                        break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 更新坐标
+        /// </summary>
+        private void UpdateLbs()
+        {
+            //接受原始坐标
+            double 
+                lat = Convert.ToDouble(Request["lat"]),
+                lng = Convert.ToDouble(Request["lng"]),
+                tLat,tLng;
+
+            //坐标转换
+            Common.LBS.Wgs84ToMgs.transform(lat, lng, out tLat, out tLng);
+
+            //更新并返回
+            //pytService.UpdateUserLBS(this.User)
+            
         }
 
         /// <summary>
@@ -96,9 +120,9 @@ namespace PinEverything.Web.ajaxpage
                 UserInfo userInfo = new UserInfo();
                 userInfo = Session["user"] as UserInfo;
 
-                PYTService PYTService = new PYTService();
+                
 
-                bool flag = PYTService.AddPublishInfo(Guid.NewGuid(), userInfo.ProjectId, userInfo.UserId, pubType, 1,
+                bool flag = pytService.AddPublishInfo(Guid.NewGuid(), userInfo.ProjectId, userInfo.UserId, pubType, 1,
                     pubTitle, note, lat, lng, userLimCount, startPosition, endPosition, carType, carColor);
                 if (flag)
                 {
@@ -130,10 +154,10 @@ namespace PinEverything.Web.ajaxpage
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
 
-                PYTService PYTService = new PYTService();
+                
 
                 Entites.EntityList<PublishInfo> publishInfoList = new EntityList<PublishInfo>();
-                publishInfoList = PYTService.QueryPublishInfo(pageIndex, pageSize);
+                publishInfoList = pytService.QueryPublishInfo(pageIndex, pageSize);
                 List<PublishInfo> publicInfo = new List<PublishInfo>();
                 publicInfo = publishInfoList.Table;
 
@@ -141,7 +165,7 @@ namespace PinEverything.Web.ajaxpage
                 foreach (PublishInfo publicItem in publicInfo)
                 {
                     JavaScriptObject publicObj = new JavaScriptObject();
-                    UserInfo userInfo = PYTService.GetUser(Guid.Parse(publicItem.UserId.ToString()));
+                    UserInfo userInfo = pytService.GetUser(Guid.Parse(publicItem.UserId.ToString()));
                     if (userInfo != null)
                     {
                         publicObj.Add("PublishId", publicItem.PublishId);
@@ -185,22 +209,22 @@ namespace PinEverything.Web.ajaxpage
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
 
-                    PYTService PYTService = new PYTService();
+                    
                     //是否已经加入
-                    JoinInfo joinInfo = PYTService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
+                    JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
                     if (joinInfo == null)
                     {
-                        bool flag = PYTService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng);
+                        bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng);
 
                         if (flag)
                         {
                             APIService APIService = new Services.APIService();
-                            PublishInfo publicInfo = PYTService.GetPublicInfo(Guid.Parse(publishId));
+                            PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                             string toUser = publicInfo.UserId.ToString();
                             string msg = "测试忽略";
                             int dialogType = 1;
                             //插入对话表
-                            bool dialogFlag = PYTService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
+                            bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                             //发送私信
                             if (dialogFlag)
                                 APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
@@ -233,9 +257,9 @@ namespace PinEverything.Web.ajaxpage
                 int pageSize = int.Parse(Request["pageSize"].ToString());
                 if (!string.IsNullOrEmpty(publishId))
                 {
-                    PYTService PYTService = new PYTService();
+                    
                     Entites.EntityList<DialogueInfo> dialogList = new EntityList<DialogueInfo>();
-                    dialogList = PYTService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
+                    dialogList = pytService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
 
                     List<DialogueInfo> dialogInfo = new List<DialogueInfo>();
                     dialogInfo = dialogList.Table;
@@ -244,8 +268,8 @@ namespace PinEverything.Web.ajaxpage
                     foreach (DialogueInfo dialogItem in dialogInfo)
                     {
                         JavaScriptObject publicObj = new JavaScriptObject();
-                        UserInfo fromuserInfo = PYTService.GetUser(Guid.Parse(dialogItem.FromUserId.ToString()));
-                        UserInfo touserInfo = PYTService.GetUser(Guid.Parse(dialogItem.ToUserId.ToString()));
+                        UserInfo fromuserInfo = pytService.GetUser(Guid.Parse(dialogItem.FromUserId.ToString()));
+                        UserInfo touserInfo = pytService.GetUser(Guid.Parse(dialogItem.ToUserId.ToString()));
                         publicObj.Add("PublishId", dialogItem.PublishId);
                         publicObj.Add("Msg", dialogItem.Msg);
                         publicObj.Add("FromUserId", dialogItem.FromUserId);
@@ -292,15 +316,15 @@ namespace PinEverything.Web.ajaxpage
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
 
-                    PYTService PYTService = new PYTService();
+                    
 
                     APIService APIService = new Services.APIService();
-                    PublishInfo publicInfo = PYTService.GetPublicInfo(Guid.Parse(publishId));
+                    PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                     string toUser = publicInfo.UserId.ToString();
                     string msg = "测试忽略";
                     int dialogType = 1;
                     //插入对话表
-                    bool dialogFlag = PYTService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
+                    bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                     //发送私信
                     if (dialogFlag && !userInfo.UserId.Equals(Guid.Parse(toUser)))
                         APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
@@ -326,12 +350,12 @@ namespace PinEverything.Web.ajaxpage
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
 
-                PYTService PYTService = new PYTService();
+                
                 UserInfo curUserInfo = new UserInfo();
                 curUserInfo = Session["user"] as UserInfo;
 
                 Entites.EntityList<PublishInfo> hisPubList = new EntityList<PublishInfo>();
-                hisPubList = PYTService.QueryHisPub(curUserInfo.UserId, pageIndex, pageSize);
+                hisPubList = pytService.QueryHisPub(curUserInfo.UserId, pageIndex, pageSize);
                 List<PublishInfo> hisPubInfo = new List<PublishInfo>();
                 hisPubInfo = hisPubList.Table;
 
@@ -367,12 +391,12 @@ namespace PinEverything.Web.ajaxpage
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
 
-                PYTService PYTService = new PYTService();
+                
                 UserInfo curUserInfo = new UserInfo();
                 curUserInfo = Session["user"] as UserInfo;
 
                 Entites.EntityList<JoinInfo> hisJoinList = new EntityList<JoinInfo>();
-                hisJoinList = PYTService.QueryHisJoin(curUserInfo.UserId, pageIndex, pageSize);
+                hisJoinList = pytService.QueryHisJoin(curUserInfo.UserId, pageIndex, pageSize);
                 List<JoinInfo> hisJoinInfo = new List<JoinInfo>();
                 hisJoinInfo = hisJoinList.Table;
 
@@ -382,7 +406,7 @@ namespace PinEverything.Web.ajaxpage
                     JavaScriptObject publicObj = new JavaScriptObject();
 
                     Guid publisID = joinItem.PublishId;
-                    PublishInfo publicInfo = PYTService.GetPublicInfo(publisID);
+                    PublishInfo publicInfo = pytService.GetPublicInfo(publisID);
 
                     publicObj.Add("PublishId", joinItem.PublishId);
                     publicObj.Add("PubTitle", publicInfo.PubTitle);

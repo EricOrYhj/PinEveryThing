@@ -24,7 +24,7 @@ function initialize() {
         tool = new AMap.ToolBar({
             direction: false,//隐藏方向导航
             ruler: true,//隐藏视野级别控制尺
-            autoPosition: true//禁止自动定位
+            autoPosition: false//禁止自动定位
         });
         mapObj.addControl(tool);
 

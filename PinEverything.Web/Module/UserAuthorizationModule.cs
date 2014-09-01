@@ -49,7 +49,7 @@ namespace PinEverything.Web.Module
                 //2.1 判断是否登陆
                 //2.2 未登录构造登陆链接跳转
 
-                if (currAbsolutePath.ToLower().Contains("callback.aspx"))
+                if (currAbsolutePath.ToLower().Contains(MySpider.ConfigHelper.GetConfigString("CallbackKey")))
                 {
                     //获取code
                     string code = application.Request["code"];
