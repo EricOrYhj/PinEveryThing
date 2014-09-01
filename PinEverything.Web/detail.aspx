@@ -95,9 +95,12 @@
             留言：
         </div>
     </div>
+     <textarea id="txtMessage"  style="width:100%;height:50px;display:none"></textarea>
     <div class="thinkMessage">
         <span></span>我想留言
     </div>
+
+
     <div class="messageList" id="messageList">
         <%-- <ul>
        <li>

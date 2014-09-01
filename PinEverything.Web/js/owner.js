@@ -4,6 +4,8 @@ Owner.options = {
     dataType: "AddPublic",
     startPosition: "",
     endPosition: "",
+    userLimCount:"",
+    startTime:"",
     carType:"",
     carColor:"",
     ownerPhone:"",
@@ -15,23 +17,27 @@ Owner.options = {
 Owner.AddPublic = function () {
     this.options.startPosition = $("#startPosition").text();
     this.options.endPosition = $("#endPosition").text();
-    this.options.carType = $("#carType").text();
-    this.options.carColor = $("#carColor").text();
+    this.options.userLimCount = $("#number_dummy").val();
+    this.options.startTime = $(".ownerTime").val();
+    this.options.carType = $("#car_dummy").val();
+    this.options.carColor = $("#color_dummy").text();
     this.options.ownerPhone = $("#ownerPhone").text();
-    this.options.note = $("#note").text();
+    this.options.note = $(".txtMessage").val();
 
     $.ajax({
         type: "POST",
         url: "/ajaxpage/user.aspx",
         data: {
-            op: Owner.options.dataType,
-            startPosition: Owner.options.startPosition,
-            endPosition: Owner.options.endPosition,
-            carType: Owner.options.carType,
-            carColor: Owner.options.carColor,
-            ownerPhone: Owner.options.ownerPhone,
-            note: Owner.options.note,
-            pubType:Owner.options.pubType
+            op: this.options.dataType,
+            startPosition: this.options.startPosition,
+            endPosition: this.options.endPosition,
+            userLimCount: this.options.userLimCount,
+            startTime: this.options.startTime,
+            carType: this.options.carType,
+            carColor: this.options.carColor,
+            ownerPhone: this.options.ownerPhone,
+            note: this.options.note,
+            pubType: this.options.pubType
         },
         success: function (data) {
             if (data.MSG == "N") {

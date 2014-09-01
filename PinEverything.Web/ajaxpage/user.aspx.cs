@@ -70,6 +70,9 @@ namespace PinEverything.Web.ajaxpage
                     case "GetJoinMembers":
                         GetJoinMembers();
                         break;
+                    case "ExitJoin":
+                        ExitJoin();
+                        break;
                 }
             }
         }
@@ -257,7 +260,6 @@ namespace PinEverything.Web.ajaxpage
 
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
-
                     
                     //是否已经加入
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
@@ -270,14 +272,21 @@ namespace PinEverything.Web.ajaxpage
                             APIService APIService = new Services.APIService();
                             PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                             string toUser = publicInfo.UserId.ToString();
-                            string msg = "测试忽略";
+                            string msg = userInfo.UserName + "加入了您创建的" + publicInfo.PubTitle;
                             int dialogType = 1;
                             //插入对话表
                             bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                             //发送私信
                             if (dialogFlag)
                                 APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+
+                            JavaScriptObject msgObj = new JavaScriptObject();
+                            msgObj.Add("userName", userInfo.UserName);
+                            msgObj.Add("userAvatar", userInfo.Avatar);
+                            msgObj.Add("msg", msg);
+
                             resultObj.Add("MSG", "Y");
+                            resultObj.Add("msgObj", msgObj);
                         }
                         else
                             resultObj.Add("MSG", "N");
@@ -391,19 +400,23 @@ namespace PinEverything.Web.ajaxpage
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
 
-                    
-
                     APIService APIService = new Services.APIService();
                     PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                     string toUser = publicInfo.UserId.ToString();
-                    string msg = "测试忽略";
+                    string msg = contacText;
                     int dialogType = 1;
                     //插入对话表
                     bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                     //发送私信
                     if (dialogFlag && !userInfo.UserId.Equals(Guid.Parse(toUser)))
                         APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+
+                    JavaScriptObject msgObj = new JavaScriptObject();
+                    msgObj.Add("userName",userInfo.UserName);
+                    msgObj.Add("userAvatar", userInfo.Avatar);
+
                     resultObj.Add("MSG", "Y");
+                    resultObj.Add("msgObj", msgObj);
                 }
                 else
                     resultObj.Add("MSG", "N");
@@ -535,6 +548,30 @@ namespace PinEverything.Web.ajaxpage
                 }
                 resultObj.Add("joinMemberList", joinMemberArr);
                 resultObj.Add("MSG", "Y");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        private void ExitJoin()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                string publishId = Request["publishId"];
+                if (!string.IsNullOrEmpty(publishId))
+                {
+                    UserInfo userInfo = new UserInfo();
+                    userInfo = Session["user"] as UserInfo;
+                    bool flag=pytService.UpdateJoinStatus(Guid.Parse(publishId),userInfo.UserId,0);
+                }
+                else
+                    resultObj.Add("MSG", "N");
             }
             else
                 resultObj.Add("MSG", "N");

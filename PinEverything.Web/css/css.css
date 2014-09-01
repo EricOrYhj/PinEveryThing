@@ -72,12 +72,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 36px;
     height: 36px;
     background: url("../images/weizhi.png") no-repeat;
-    display: block; 
-  }
-  .headerLeft .headerLeftIconHover {
-    background-color: #708A07;
-    border-radius: 50px;
-  }
+
+
+
+
+
+
+    display: block; }
 
 .headerRight {
   float: right;
@@ -408,20 +409,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     background: url("../images/icon6.png") no-repeat; }
 
 .passengerMap {
-  display: none; 
-  height:100%;
-}
+
+
+
+  display: none; }
 
 .owner {
   background: #f0f0f0;
   padding-bottom: 20px; }
   .owner li {
-    height: 40px;
+
+    position: relative;
+    background: #fff;
+    font-weight: normal;
+    text-decoration: none;
     display: -moz-box;
     display: -webkit-box;
-    display: box;
-    position: relative;
-    background: #fff; }
+
+
+
+    display: box; }
   .owner .ownerICon1, .owner .ownerICon2, .owner .ownerICon3, .owner .ownerICon4, .owner .ownerICon5, .owner .ownerICon6, .owner .ownerICon7, .owner .ownerICon8, .owner .ownerICon9 {
     width: 18px;
     height: 18px;
@@ -445,12 +452,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .owner .ownerICon8 {
     width: 24px;
     height: 24px;
-    margin-top: 8px;
+    margin-top: 19px;
     background: url("../images/icon11.png") no-repeat top right; }
   .owner .ownerICon9 {
     background: url("../images/icon12.png") no-repeat top right; }
   .owner .ownerTitle {
-    height: 39px;
+
     line-height: 39px;
     font-size: 14px;
     font-family: "Microsoft YaHei";
@@ -469,18 +476,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     background: url("../images/icon7.png") no-repeat;
     width: 24px;
     height: 24px; }
+  .owner .active .ownerArrow {
+    background: url("../images/icon15.png") no-repeat; }
   .owner .message {
     margin-top: 25px;
-    height: 40px;
+    height: 72px;
     display: -moz-box;
     display: -webkit-box;
     display: box;
     position: relative;
     background: #fff;
-    line-height: 40px; }
+
+    line-height: 40px;
+    padding: 1px 0; }
     .owner .message .ownerTitle {
       color: #d0d0d0; }
-  .owner .messageBtn {
+  .owner #messageBtn {
     border-style: none;
     background: #7fd490;
     -webkit-border-radius: 4px;
@@ -497,7 +508,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     color: #fff;
     font-family: "Microsoft YaHei";
     display: block;
-    text-decoration: none; }
+
+    text-decoration: none;
+    text-shadow: 0 0 0; }
 
 .list {
   background: #f0f0f0; }
@@ -583,7 +596,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 70px;
     float: right;
     margin-top: 20px; }
-    .detailMeaasge .detailMeaasgeContact div {
+    .detailMeaasge .detailMeaasgeContact a {
       width: 70px;
       height: 30px;
       line-height: 30px;
@@ -656,49 +669,92 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     color: #999;
     margin-top: 6px; }
 
+
+
+.address {
+  width: 95%;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px; }
+
+
+
+
+
+.ui-btn {
+  background: #22aadd;
+  color: #fff;
+  margin: 8px 10px 8px 0;
+  height: 32px;
+  line-height: 32px;
+  width: 80px;
+  text-align: center;
+  display: inline-block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px; }
+
+
+
+
+
+.ownerOperation {
+  display: none; }
+
+
+
+.ownerTime, #car_dummy, #color_dummy, #number_dummy {
+  border: 0;
+  background: transparent;
+  height: 39px;
+  width: 100%;
+  color: #595959;
+  font-size: 14px;
+  font-family: "Microsoft YaHei"; }
+
+.txtMessageBox {
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  border-bottom: 1px solid #dfdfdf;
+  color: #595959;
+  margin-left: 10px;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  height: 72px;
+  border: 1px solid #ccc; }
+
+.txtMessage {
+  border: 0;
+  width: 98%;
+  resize: none;
+  padding: 0;
+  line-height: 18px;
+  padding: 0 1%;
+  height: 72px; }
+
+.modelTitle {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-family: "Microsoft YaHei";
+  margin-top: 10px; }
+
+#messageBox .modelTitle {
+  margin-bottom: 15px; }
+
   owner .content {
     outline:none;
 }
 
-  /*联系提示框CSS*/
-.contactDiv
-{
-    height: 100px;
-    width: 200px;
-    float: right;
-    border: 1px solid #000000;
-    background-color: #ffffff;
-    display: none;
-}
-.contactDiv .contactWord
-{
-    text-align: center;
-    font-size: 20px;
-    padding-top: 5px;
-}
- .RefuseReasonText
-{
-    width:300px;
-    padding-left:50px;
-}
-.contactDiv .contacTextSubmit
-{
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    font-size: 14px;
-    cursor: pointer;
-}
-.contactDiv .contacTextCancel
-{
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    font-size: 14px;
-    cursor: pointer;
-}
  #container {
     height: 100%;
 }
@@ -710,4 +766,8 @@ body {
     height: 100%;
     margin: 0px;
     padding: 0px;
+}
+
+.textmessage {
+  display: none; 
 }

@@ -95,7 +95,7 @@ namespace PinEverything.Services
             if (!string.IsNullOrEmpty(access_token))
             {
                 string Url = "https://api.mingdao.com/post/update";//接口地址
-                string fxUrl = "http://114.215.150.137:81/home.aspx";//URL地址
+                string fxUrl = MySpider.ConfigHelper.GetConfigString("PostUrl");//URL地址
                 //参数
                 Dictionary<string, string> paramsDic = new Dictionary<string, string>();
                 paramsDic.Add("access_token", access_token);

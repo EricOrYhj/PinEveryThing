@@ -160,7 +160,7 @@ namespace PinEverything.Services
                 model.CurrLng = tLng.ToString();
                 model.CurrLat = tLat.ToString();
             }
-            
+
 
             this.db.Set<UserInfo>().Add(model);
             return this.db.SaveChanges().Equals(1);
@@ -289,7 +289,7 @@ namespace PinEverything.Services
         }
 
 
-        public EntityList<DialogueInfo> QueryDialogInfo(Guid publishId,int pageIndex = 1, int pageSize = int.MaxValue)
+        public EntityList<DialogueInfo> QueryDialogInfo(Guid publishId, int pageIndex = 1, int pageSize = int.MaxValue)
         {
             EntityList<DialogueInfo> result = new EntityList<DialogueInfo>();
 
@@ -308,7 +308,7 @@ namespace PinEverything.Services
             return result;
         }
 
-        public EntityList<PublishInfo> QueryHisPub(Guid userId,int pageIndex = 1, int pageSize = int.MaxValue)
+        public EntityList<PublishInfo> QueryHisPub(Guid userId, int pageIndex = 1, int pageSize = int.MaxValue)
         {
             EntityList<PublishInfo> result = new EntityList<PublishInfo>();
 
@@ -355,12 +355,24 @@ namespace PinEverything.Services
         {
             EntityList<JoinInfo> result = new EntityList<JoinInfo>();
 
-            result.Table = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).OrderByDescending(
+            result.Table = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).Where(p => p.Status.Equals(1)).OrderByDescending(
                     p => p.AutoId
                 ).ToList();
 
             result.TotalCount = this.db.Set<JoinInfo>().Count();
             return result;
+        }
+
+        public bool UpdateJoinStatus(
+                Guid publishId,
+                Guid userId,
+                int status
+            )
+        {
+            JoinInfo model = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
+            model.Status = status;
+
+            return this.db.SaveChanges().Equals(1);
         }
     }
 }

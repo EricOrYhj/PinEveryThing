@@ -22,10 +22,52 @@ Detail.JoinPublic = function () {
             if (data.MSG == "N") {
                 alert("加入失败");
             } else if (data.MSG == "Y") {
+                var msgObj = data.msgObj;
+                var userName = msgObj.userName;
+                var userAvatar = msgObj.userAvatar;
+                var msg = msgObj.msg;
+
+                var userHtml = '<span title="' + userName + '"><img src="' + avatar + '" alt="" /></span>';
+                $("#members").append(userHtml);
+
+                var dialogHtml = '';
+                dialogHtml = dialogHtml + '<li>';
+                dialogHtml = dialogHtml + '<div class="messageListLeft detail">';
+                dialogHtml = dialogHtml + '<span><img src="' + userAvatar + '" width="20px" height="20px" alt=""/></span>';
+                dialogHtml = dialogHtml + '</div>';
+                dialogHtml = dialogHtml + '<div class="messageListRight">';
+                dialogHtml = dialogHtml + '<div class="messageListTitle">' + userName + '</div>';
+                dialogHtml = dialogHtml + '<div class="messageListContent">' + msg + '</div>';
+                dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
+                dialogHtml = dialogHtml + '</div>';
+                dialogHtml = dialogHtml + ' </li>';
+                $("#messageList").append(dialogHtml);
+
+                $("#sidebarPlay").html("<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">退出</a>");
+
                 alert("加入成功");
             }
             else if (data.MSG == "S") {
                 alert("你已加入");
+            }
+        }
+    });
+};
+
+Detail.ExitJoin = function () {
+    Detail.options.publishId = $("#hidPublishId").val();
+
+    $.ajax({
+        url: "/ajaxpage/user.aspx",
+        dataType: "JSON",
+        data: { op: "ExitJoin", publishId: Detail.options.publishId },
+        beforeSend: function () {
+        },
+        success: function (data) {
+            if (data.MSG == "N") {
+                alert("退出失败");
+            } else if (data.MSG == "Y") {
+                window.location.href = "/passenge.aspx";
             }
         }
     });
@@ -86,7 +128,7 @@ Detail.LoadDialogMsg = function () {
 //联系Owner
 Detail.ContactOwner = function () {
     Detail.options.publishId = $("#hidPublishId").val();
-    var contacText = $(".contacText").val();
+    var contacText = $("#txtMessage").val();
     $.ajax({
         url: "/ajaxpage/user.aspx",
         dataType: "JSON",
@@ -97,7 +139,6 @@ Detail.ContactOwner = function () {
             if (data.MSG == "N") {
                 alert("发送失败");
             } else if (data.MSG == "Y") {
-                $(".contactDiv").css("display", "none");
                 alert("消息已发");
             }
         }
@@ -110,8 +151,20 @@ Detail.Cancel = function () {
 
 //事件绑定
 Detail.BindEvent = function () {
-    $("#contactOwner").click(function () {
-        $(".contactDiv").css("display", "block")
+    $(document).on('click', '.thinkMessage', function () {
+        if ($(this).hasClass('textmessage')) {
+            $(this).removeClass('textmessage');
+            $('#txtMessage').slideUp();
+            $(this).html("<span></span>我想留言");
+            if ($("#txtMessage").val())
+            {
+                Detail.ContactOwner();
+            }
+        } else {
+            $(this).addClass('textmessage');
+            $('#txtMessage').slideDown();
+            $(this).html("<span></span>确认");
+        }
     });
 }
 
