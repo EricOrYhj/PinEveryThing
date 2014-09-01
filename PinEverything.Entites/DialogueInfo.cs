@@ -110,6 +110,8 @@ namespace PinEverything.Entites
             set { _createtime = value; }
             get { return _createtime; }
         }
+        public string OrginLat { get; set; }
+        public string OrginLng { get; set; }
         #endregion Model
     }
 }

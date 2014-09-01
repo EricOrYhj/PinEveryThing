@@ -86,8 +86,8 @@ namespace PinEverything.Services
                 Status = status,
                 PubTitle = pubTitle,
                 PubContent = pubContent,
-                Lat = lat,
-                Lng = lng,
+                OrginLat = lat,
+                OrginLng = lng,
                 UserLimCount = userLimCount,
                 CreateTime = DateTime.Now,
                 StartPosition = startPosition,
@@ -95,6 +95,19 @@ namespace PinEverything.Services
                 CarType = carType,
                 CarColor = carColor
             };
+
+            if (!string.IsNullOrWhiteSpace(lat) && !string.IsNullOrWhiteSpace(lng))
+            {
+                double tLat, tLng;
+                Common.LBS.Wgs84ToMgs.transform(
+                        double.Parse(lat),
+                        double.Parse(lng),
+                        out tLat,
+                        out tLng
+                    );
+                model.Lat = tLng.ToString();
+                model.Lng = tLat.ToString();
+            }
 
             this.db.Set<PublishInfo>().Add(model);
 
@@ -127,12 +140,27 @@ namespace PinEverything.Services
                 Email = email,
                 Phone = phone,
                 CurrLat = currLat,
-                CurrLng = currLat,
+                CurrLng = currLng,
+                OrginLat = currLat,
+                OrginLng = currLng,
                 Avatar = avatar,
                 LastLoginIp = MySpider.MySpider.GetClientIP(),
                 LastLoginTime = DateTime.Now,
                 LoginCount = 1
             };
+            if (!string.IsNullOrWhiteSpace(currLat) && !string.IsNullOrWhiteSpace(currLng))
+            {
+                double tLat, tLng;
+                Common.LBS.Wgs84ToMgs.transform(
+                        double.Parse(currLat),
+                        double.Parse(currLng),
+                        out tLat,
+                        out tLng
+                    );
+                model.CurrLng = tLng.ToString();
+                model.CurrLat = tLat.ToString();
+            }
+            
 
             this.db.Set<UserInfo>().Add(model);
             return this.db.SaveChanges().Equals(1);
@@ -146,8 +174,21 @@ namespace PinEverything.Services
         {
             UserInfo model = this.db.Set<UserInfo>().FirstOrDefault(p => p.UserId.Equals(userId));
 
-            model.CurrLat = currLat;
-            model.CurrLng = currLng;
+            model.OrginLat = currLat;
+            model.OrginLng = currLng;
+
+            if (!string.IsNullOrWhiteSpace(currLat) && !string.IsNullOrWhiteSpace(currLng))
+            {
+                double tLat, tLng;
+                Common.LBS.Wgs84ToMgs.transform(
+                        double.Parse(currLat),
+                        double.Parse(currLng),
+                        out tLat,
+                        out tLng
+                    );
+                model.CurrLng = tLng.ToString();
+                model.CurrLat = tLat.ToString();
+            }
 
             return this.db.SaveChanges().Equals(1);
         }
@@ -172,8 +213,8 @@ namespace PinEverything.Services
                 Guid publishId,
                 Guid userId,
                 int joinRole,
-                string Lat,
-                string Lng
+                string lat,
+                string lng
             )
         {
             JoinInfo model = new JoinInfo()
@@ -181,10 +222,23 @@ namespace PinEverything.Services
                 PublishId = publishId,
                 UserId = userId,
                 JoinRole = joinRole,
-                Lat = Lat,
-                Lng = Lng,
+                OrginLat = lng,
+                OrginLng = lng,
                 JoinTime = DateTime.Now
             };
+
+            if (!string.IsNullOrWhiteSpace(lat) && !string.IsNullOrWhiteSpace(lng))
+            {
+                double tLat, tLng;
+                Common.LBS.Wgs84ToMgs.transform(
+                        double.Parse(lat),
+                        double.Parse(lng),
+                        out tLat,
+                        out tLng
+                    );
+                model.Lat = tLng.ToString();
+                model.Lng = tLat.ToString();
+            }
 
             this.db.Set<JoinInfo>().Add(model);
             return this.db.SaveChanges().Equals(1);
@@ -198,8 +252,8 @@ namespace PinEverything.Services
                Guid toUserId,
                string msg,
                int dialogueType,
-               string Lat,
-               string Lng
+               string lat,
+               string lng
 
            )
         {
@@ -210,16 +264,30 @@ namespace PinEverything.Services
                 PreId = preId,
                 FromUserId = fromUserId,
                 ToUserId = toUserId,
-                Msg=msg,
+                Msg = msg,
                 DialogueType = dialogueType,
-                Lat=Lat,
-                Lng = Lng,
+                OrginLat = lat,
+                OrginLng = lng,
                 CreateTime = DateTime.Now
             };
+
+            if (!string.IsNullOrWhiteSpace(lat) && !string.IsNullOrWhiteSpace(lng))
+            {
+                double tLat, tLng;
+                Common.LBS.Wgs84ToMgs.transform(
+                        double.Parse(lat),
+                        double.Parse(lng),
+                        out tLat,
+                        out tLng
+                    );
+                model.Lat = tLng.ToString();
+                model.Lng = tLat.ToString();
+            }
 
             this.db.Set<DialogueInfo>().Add(model);
             return this.db.SaveChanges().Equals(1);
         }
+
 
         public EntityList<DialogueInfo> QueryDialogInfo(Guid publishId,int pageIndex = 1, int pageSize = int.MaxValue)
         {

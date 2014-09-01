@@ -74,6 +74,10 @@ namespace PinEverything.Entites
             set { _jointime = value; }
             get { return _jointime; }
         }
+        public string OrginLat { get; set; }
+        public string OrginLng { get; set; }
+
+        public int Status { get; set; }
         #endregion Model
     }
 }
