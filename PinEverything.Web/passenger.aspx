@@ -158,7 +158,7 @@
             </li>--%>
         </ul>
     </div>
-    <div class="loadMore">加载更多...</div>
+    <div class="loadMorePub">加载更多...</div>
     <div class="passengerMap">
         <div id="container"></div>
     </div>

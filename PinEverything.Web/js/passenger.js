@@ -9,8 +9,6 @@ Passenger.options = {
 
 //加载发布列表
 Passenger.publicList = function () {
-    var curpageIndex = $("#pageIndex").val();
-    this.options.pageIndex = Number(curpageIndex) + 1;
     $.ajax({
         url: "/ajaxpage/user.aspx",
         dataType: "JSON",
@@ -32,6 +30,7 @@ Passenger.publicList = function () {
                     var pubTitle = pubItem.PubTitle;
                     var startPosition = pubItem.StartPosition;
                     var endPosition = pubItem.EndPosition;
+                    var startTime = pubItem.StartTime;
                     var carType = pubItem.CarType;
                     var carColor = pubItem.CarColor;
                     var userId = pubItem.UserId;
@@ -39,6 +38,21 @@ Passenger.publicList = function () {
                     var userName = pubItem.UserName;
                     var lat = pubItem.Lat;
                     var lng = pubItem.Lng;
+                    var joinType = pubItem.JoinType;
+                    var createTime = pubItem.CreateTime;
+
+                    joinColor = "Yellow";
+                    if (joinType == 1)
+                        joinType = "发布人";
+                    else if (joinType == 2) {
+                        joinType = "已加入";
+                        joinColor = "Blue";
+                    }
+                    else if (joinType == 3) {
+                        joinType = "未加入";
+                        joinColor = "Red";
+                    }
+
                     if ((i + (pageIndex-1)*5) % 2 == 0)
                         html += '<li>';
                     else 
@@ -54,9 +68,9 @@ Passenger.publicList = function () {
                         html += ' <span class="passengerListArrowInner"></span>';
                         html += ' <div class="passengerListFromAddress">' + startPosition + '</div>';
                         html += ' <div class="passengerListToAddress">' + endPosition + '</div>';
-                        html += ' <div class="passengerListTime">9:10 至 18:00</div>';
+                        html += ' <div class="passengerListTime">' + startTime + '  <span style="color:'+joinColor+';float:Right;">' + joinType + '</span></div>';
                         html += ' <div class="passengerListCar">' + carType + '</div>';
-                        html += '  <div class="passengerListDate">8月28日 16:00</div>';
+                        html += '  <div class="passengerListDate">' + createTime + '</div>';
                         html += '</a>';
                         html += '</div>';
                         html += '<div class="clear"></div>';
@@ -72,7 +86,9 @@ Passenger.publicList = function () {
 
 //事件绑定
 Passenger.BindEvent = function () {
-    $(".loadMore").click(function () {
+    $(".loadMorePub").click(function () {
+        var curpageIndex = $("#pageIndex").val();
+        Passenger.options.pageIndex = Number(curpageIndex) + 1;
         Passenger.publicList();
     });
 }

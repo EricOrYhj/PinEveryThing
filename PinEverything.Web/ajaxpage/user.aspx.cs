@@ -207,7 +207,8 @@ namespace PinEverything.Web.ajaxpage
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
 
-                
+                UserInfo curUserInfo = new UserInfo();
+                curUserInfo = Session["user"] as UserInfo;
 
                 Entites.EntityList<PublishInfo> publishInfoList = new EntityList<PublishInfo>();
                 publishInfoList = pytService.QueryPublishInfo(pageIndex, pageSize);
@@ -215,15 +216,25 @@ namespace PinEverything.Web.ajaxpage
                 publicInfo = publishInfoList.Table;
 
                 JavaScriptArray publicArr = new JavaScriptArray();
+                string joinType = string.Empty;
                 foreach (PublishInfo publicItem in publicInfo)
                 {
                     JavaScriptObject publicObj = new JavaScriptObject();
                     UserInfo userInfo = pytService.GetUser(Guid.Parse(publicItem.UserId.ToString()));
                     if (userInfo != null)
                     {
+                        JoinInfo joinInfo = pytService.GetJoinInfo(publicItem.PublishId, curUserInfo.UserId);
+                        if (joinInfo != null)
+                            joinType = "2";//已加入
+                        else if (curUserInfo.UserId.Equals(publicItem.UserId))
+                            joinType = "1";//发布人
+                        else
+                            joinType = "3";//未加入
+
                         publicObj.Add("PublishId", publicItem.PublishId);
                         publicObj.Add("PubTitle", publicItem.PubTitle);
                         publicObj.Add("UserId", publicItem.UserId);
+                        publicObj.Add("StartTime", publicItem.StarTime.ToString("yyyy-MM-dd"));
                         publicObj.Add("Avatar", userInfo.Avatar);
                         publicObj.Add("UserName", userInfo.UserName);
                         publicObj.Add("StartPosition", publicItem.StartPosition);
@@ -232,6 +243,8 @@ namespace PinEverything.Web.ajaxpage
                         publicObj.Add("CarColor", publicItem.CarColor);
                         publicObj.Add("Lat", publicItem.Lat);
                         publicObj.Add("Lng", publicItem.Lng);
+                        publicObj.Add("JoinType", joinType);
+                        publicObj.Add("CreateTime", publicItem.CreateTime.ToString("yyyy-MM-dd"));
                         publicArr.Add(publicObj);
                     }
                 }
