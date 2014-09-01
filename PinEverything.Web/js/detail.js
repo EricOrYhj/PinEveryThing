@@ -31,7 +31,7 @@ Detail.JoinPublic = function () {
     });
 };
 
-//获取对话表
+//获取对话表  和加入成员的信息
 Detail.LoadDialogMsg = function () {
     Detail.options.publishId = $("#hidPublishId").val();
     $.ajax({
@@ -65,6 +65,19 @@ Detail.LoadDialogMsg = function () {
                 }
                 html = html + '</ul>';
                 $("#messageList").append(html);
+
+                var joinMemberList = data.joinMemberList;
+                var joinlen = joinMemberList.length;
+                var joinHtml = '';
+                for (var j = 0; j < joinlen; j++) {
+                    var joinMemberItem = joinMemberList[j];
+                    var userName = joinMemberItem.UserName;
+                    var avatar = joinMemberItem.Avatar;
+                    var userId = joinMemberItem.UserId;
+                    joinHtml = joinHtml + '<span title="' + userName + '">';
+                    joinHtml = joinHtml + '<img src="' + avatar + '" alt="" /></span>';
+                }
+                $("#members").append(joinHtml);
             }
         }
     });

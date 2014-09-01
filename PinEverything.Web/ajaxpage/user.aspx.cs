@@ -44,6 +44,9 @@ namespace PinEverything.Web.ajaxpage
                     case "HisJoinList":
                         HisJoinList();
                         break;
+                    case "GetJoinMembers":
+                        GetJoinMembers();
+                        break;
                 }
             }
         }
@@ -234,6 +237,7 @@ namespace PinEverything.Web.ajaxpage
                 if (!string.IsNullOrEmpty(publishId))
                 {
                     PYTService PYTService = new PYTService();
+                    //对话信息
                     Entites.EntityList<DialogueInfo> dialogList = new EntityList<DialogueInfo>();
                     dialogList = PYTService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
 
@@ -263,6 +267,31 @@ namespace PinEverything.Web.ajaxpage
                         dialogArr.Add(publicObj);
                     }
                     resultObj.Add("dialogList", dialogArr);
+
+                    //加入的成员信息
+                    Entites.EntityList<JoinInfo> joinMemberList = new EntityList<JoinInfo>();
+                    joinMemberList = PYTService.QueryJoinMembers(Guid.Parse(publishId));
+                    List<JoinInfo> joinMemberInfo = new List<JoinInfo>();
+                    joinMemberInfo = joinMemberList.Table;
+
+                    JavaScriptArray joinMemberArr = new JavaScriptArray();
+                    foreach (JoinInfo joinItem in joinMemberInfo)
+                    {
+                        JavaScriptObject joinObj = new JavaScriptObject();
+
+                        Guid userID = joinItem.UserId;
+                        UserInfo userInfo = PYTService.GetUser(userID);
+                        if (userInfo != null)
+                        {
+                            joinObj.Add("PublishId", joinItem.PublishId);
+                            joinObj.Add("UserId", userInfo.UserId);
+                            joinObj.Add("UserName", userInfo.UserName);
+                            joinObj.Add("Avatar", userInfo.Avatar);
+                            joinMemberArr.Add(joinObj);
+                        }
+                    }
+                    resultObj.Add("joinMemberList", joinMemberArr);
+
                     resultObj.Add("MSG", "Y");
                 }
                 else
@@ -393,6 +422,48 @@ namespace PinEverything.Web.ajaxpage
                     hisJoinArr.Add(publicObj);
                 }
                 resultObj.Add("hisJoinList", hisJoinArr);
+                resultObj.Add("MSG", "Y");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// 获取详情加入成员
+        /// </summary>
+        private void GetJoinMembers()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                string publishId = Request["publishId"];
+
+                PYTService PYTService = new PYTService();
+                UserInfo curUserInfo = new UserInfo();
+                curUserInfo = Session["user"] as UserInfo;
+
+                Entites.EntityList<JoinInfo> joinMemberList = new EntityList<JoinInfo>();
+                joinMemberList = PYTService.QueryJoinMembers(Guid.Parse(publishId));
+                List<JoinInfo> joinMemberInfo = new List<JoinInfo>();
+                joinMemberInfo = joinMemberList.Table;
+
+                JavaScriptArray joinMemberArr = new JavaScriptArray();
+                foreach (JoinInfo joinItem in joinMemberInfo)
+                {
+                    JavaScriptObject joinObj = new JavaScriptObject();
+
+                    Guid userID = joinItem.UserId;
+                    UserInfo userInfo = PYTService.GetUser(userID);
+
+                    joinObj.Add("PublishId", joinItem.PublishId);
+                    joinObj.Add("UserId", userInfo.UserId);
+                    joinObj.Add("UserName", userInfo.UserName);
+                    joinObj.Add("Avatar", userInfo.Avatar);
+                    joinMemberArr.Add(joinObj);
+                }
+                resultObj.Add("joinMemberList", joinMemberArr);
                 resultObj.Add("MSG", "Y");
             }
             else

@@ -52,6 +52,7 @@ List.hisJoinList = function () {
             } else if (data.MSG == "Y") {
                 var hisJoinList = data.hisJoinList;
                 var len = hisJoinList.length;
+                $("#joinList").find(" #joinUl").html('');
                 var html = '';
                 for (var i = 0; i < len; i++) {
                     var pubItem = hisJoinList[i];
