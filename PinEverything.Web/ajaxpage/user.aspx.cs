@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -48,32 +48,34 @@ namespace PinEverything.Web.ajaxpage
                         break;
                     case "UpdateLbs":
                         UpdateLbs();
+                    case "GetJoinMembers":
+                        GetJoinMembers();
                         break;
                 }
             }
         }
 
         /// <summary>
-        /// æ›´æ–°åæ ‡
+        /// ¸üĞÂ×ø±ê
         /// </summary>
         private void UpdateLbs()
         {
-            //æ¥å—åŸå§‹åæ ‡
+            //½ÓÊÜÔ­Ê¼×ø±ê
             double 
                 lat = Convert.ToDouble(Request["lat"]),
                 lng = Convert.ToDouble(Request["lng"]),
                 tLat,tLng;
 
-            //åæ ‡è½¬æ¢
+            //×ø±ê×ª»»
             Common.LBS.Wgs84ToMgs.transform(lat, lng, out tLat, out tLng);
 
-            //æ›´æ–°å¹¶è¿”å›
+            //¸üĞÂ²¢·µ»Ø
             //pytService.UpdateUserLBS(this.User)
             
         }
 
         /// <summary>
-        /// è·å–ç”¨æˆ·åŸºæœ¬ä¿¡æ¯
+        /// »ñÈ¡ÓÃ»§»ù±¾ĞÅÏ¢
         /// </summary>
         private void LoadUserDetail()
         {
@@ -97,7 +99,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// å‘å¸ƒä¿¡æ¯
+        /// ·¢²¼ĞÅÏ¢
         /// </summary>
         private void AddPublic()
         {
@@ -127,7 +129,7 @@ namespace PinEverything.Web.ajaxpage
                 if (flag)
                 {
                     resultObj.Add("MSG", "Y");
-                    //å‘å¸ƒåŠ¨æ€
+                    //·¢²¼¶¯Ì¬
                     APIService APIService = new Services.APIService();
                     string access_token = userInfo.MDToken;
                     string pMsg = startPosition;
@@ -144,7 +146,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// è·å–å‘å¸ƒåˆ—è¡¨
+        /// »ñÈ¡·¢²¼ÁĞ±í
         /// </summary>
         private void LoadPublicList()
         {
@@ -192,7 +194,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// åŠ å…¥
+        /// ¼ÓÈë
         /// </summary>
         private void JoinPublic()
         {
@@ -210,7 +212,7 @@ namespace PinEverything.Web.ajaxpage
                     userInfo = Session["user"] as UserInfo;
 
                     
-                    //æ˜¯å¦å·²ç»åŠ å…¥
+                    //ÊÇ·ñÒÑ¾­¼ÓÈë
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
                     if (joinInfo == null)
                     {
@@ -221,11 +223,11 @@ namespace PinEverything.Web.ajaxpage
                             APIService APIService = new Services.APIService();
                             PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                             string toUser = publicInfo.UserId.ToString();
-                            string msg = "æµ‹è¯•å¿½ç•¥";
+                            string msg = "²âÊÔºöÂÔ";
                             int dialogType = 1;
-                            //æ’å…¥å¯¹è¯è¡¨
+                            //²åÈë¶Ô»°±í
                             bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
-                            //å‘é€ç§ä¿¡
+                            //·¢ËÍË½ĞÅ
                             if (dialogFlag)
                                 APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
                             resultObj.Add("MSG", "Y");
@@ -245,7 +247,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// åŠ è½½å¯¹è¯ä¿¡æ¯
+        /// ¼ÓÔØ¶Ô»°ĞÅÏ¢
         /// </summary>
         private void LoadDialogMsg()
         {
@@ -258,6 +260,7 @@ namespace PinEverything.Web.ajaxpage
                 if (!string.IsNullOrEmpty(publishId))
                 {
                     
+                    //¶Ô»°ĞÅÏ¢
                     Entites.EntityList<DialogueInfo> dialogList = new EntityList<DialogueInfo>();
                     dialogList = pytService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
 
@@ -287,6 +290,31 @@ namespace PinEverything.Web.ajaxpage
                         dialogArr.Add(publicObj);
                     }
                     resultObj.Add("dialogList", dialogArr);
+
+                    //¼ÓÈëµÄ³ÉÔ±ĞÅÏ¢
+                    Entites.EntityList<JoinInfo> joinMemberList = new EntityList<JoinInfo>();
+                    joinMemberList = PYTService.QueryJoinMembers(Guid.Parse(publishId));
+                    List<JoinInfo> joinMemberInfo = new List<JoinInfo>();
+                    joinMemberInfo = joinMemberList.Table;
+
+                    JavaScriptArray joinMemberArr = new JavaScriptArray();
+                    foreach (JoinInfo joinItem in joinMemberInfo)
+                    {
+                        JavaScriptObject joinObj = new JavaScriptObject();
+
+                        Guid userID = joinItem.UserId;
+                        UserInfo userInfo = PYTService.GetUser(userID);
+                        if (userInfo != null)
+                        {
+                            joinObj.Add("PublishId", joinItem.PublishId);
+                            joinObj.Add("UserId", userInfo.UserId);
+                            joinObj.Add("UserName", userInfo.UserName);
+                            joinObj.Add("Avatar", userInfo.Avatar);
+                            joinMemberArr.Add(joinObj);
+                        }
+                    }
+                    resultObj.Add("joinMemberList", joinMemberArr);
+
                     resultObj.Add("MSG", "Y");
                 }
                 else
@@ -299,7 +327,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// è”ç³»
+        /// ÁªÏµ
         /// </summary>
         private void ContactOwner()
         {
@@ -321,11 +349,11 @@ namespace PinEverything.Web.ajaxpage
                     APIService APIService = new Services.APIService();
                     PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                     string toUser = publicInfo.UserId.ToString();
-                    string msg = "æµ‹è¯•å¿½ç•¥";
+                    string msg = "²âÊÔºöÂÔ";
                     int dialogType = 1;
-                    //æ’å…¥å¯¹è¯è¡¨
+                    //²åÈë¶Ô»°±í
                     bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
-                    //å‘é€ç§ä¿¡
+                    //·¢ËÍË½ĞÅ
                     if (dialogFlag && !userInfo.UserId.Equals(Guid.Parse(toUser)))
                         APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
                     resultObj.Add("MSG", "Y");
@@ -340,7 +368,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// è·å–å†å²å‘å¸ƒåˆ—è¡¨
+        /// »ñÈ¡ÀúÊ··¢²¼ÁĞ±í
         /// </summary>
         private void HisPubList()
         {
@@ -381,7 +409,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// è·å–å†å²åŠ å…¥åˆ—è¡¨
+        /// »ñÈ¡ÀúÊ·¼ÓÈëÁĞ±í
         /// </summary>
         private void HisJoinList()
         {
@@ -417,6 +445,48 @@ namespace PinEverything.Web.ajaxpage
                     hisJoinArr.Add(publicObj);
                 }
                 resultObj.Add("hisJoinList", hisJoinArr);
+                resultObj.Add("MSG", "Y");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// »ñÈ¡ÏêÇé¼ÓÈë³ÉÔ±
+        /// </summary>
+        private void GetJoinMembers()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                string publishId = Request["publishId"];
+
+                PYTService PYTService = new PYTService();
+                UserInfo curUserInfo = new UserInfo();
+                curUserInfo = Session["user"] as UserInfo;
+
+                Entites.EntityList<JoinInfo> joinMemberList = new EntityList<JoinInfo>();
+                joinMemberList = PYTService.QueryJoinMembers(Guid.Parse(publishId));
+                List<JoinInfo> joinMemberInfo = new List<JoinInfo>();
+                joinMemberInfo = joinMemberList.Table;
+
+                JavaScriptArray joinMemberArr = new JavaScriptArray();
+                foreach (JoinInfo joinItem in joinMemberInfo)
+                {
+                    JavaScriptObject joinObj = new JavaScriptObject();
+
+                    Guid userID = joinItem.UserId;
+                    UserInfo userInfo = PYTService.GetUser(userID);
+
+                    joinObj.Add("PublishId", joinItem.PublishId);
+                    joinObj.Add("UserId", userInfo.UserId);
+                    joinObj.Add("UserName", userInfo.UserName);
+                    joinObj.Add("Avatar", userInfo.Avatar);
+                    joinMemberArr.Add(joinObj);
+                }
+                resultObj.Add("joinMemberList", joinMemberArr);
                 resultObj.Add("MSG", "Y");
             }
             else

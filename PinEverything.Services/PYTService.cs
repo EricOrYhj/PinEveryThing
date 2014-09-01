@@ -282,5 +282,17 @@ namespace PinEverything.Services
         {
             return this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
         }
+
+        public EntityList<JoinInfo> QueryJoinMembers(Guid publishId)
+        {
+            EntityList<JoinInfo> result = new EntityList<JoinInfo>();
+
+            result.Table = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).OrderByDescending(
+                    p => p.AutoId
+                ).ToList();
+
+            result.TotalCount = this.db.Set<JoinInfo>().Count();
+            return result;
+        }
     }
 }

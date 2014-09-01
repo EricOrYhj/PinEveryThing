@@ -34,7 +34,7 @@
         </div>
         <div class="clear"></div>
     </div>
-    <div class="contactDiv">
+<%--    <div class="contactDiv">
         <div class="contactWord">输入</div>
         <div style="padding-left: 20px;">
             <textarea class="contacText"></textarea></div>
@@ -43,7 +43,7 @@
         <div style="float: left">
             <input type="button" class="contacTextCancel" value="取消" onclick="javascript: Detail.Cancel()" /></div>
         <div class="clear"></div>
-    </div>
+    </div>--%>
 
     <div class="owner" style="padding: 0;">
         <ul>
@@ -80,14 +80,14 @@
             <li>
                 <div class="ownerICon9"></div>
                 <div class="ownerTitle ownerTitleClear detail" id="members" runat="server">
-                    <span>
+                    <%--<span>
                         <img src="images/1.jpg" alt="" /></span>
                     <span>
                         <img src="images/1.jpg" alt="" /></span>
                     <span>
                         <img src="images/1.jpg" alt="" /></span>
                     <span>
-                        <img src="images/1.jpg" alt="" /></span>
+                        <img src="images/1.jpg" alt="" /></span>--%>
                 </div>
             </li>
         </ul>
