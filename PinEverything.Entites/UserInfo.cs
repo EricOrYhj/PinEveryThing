@@ -120,6 +120,8 @@ namespace PinEverything.Entites
             get { return _logincount; }
         }
         public string MDToken { get; set; }
+        public string OrginLat { get; set; }
+        public string OrginLng { get; set; }
         #endregion Model
     }
 }

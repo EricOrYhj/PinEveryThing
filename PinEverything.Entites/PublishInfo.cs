@@ -135,7 +135,10 @@ namespace PinEverything.Entites
         /// 车颜色
         /// </summary>
         public string CarColor { get; set; }
-
+        public string OrginLat { get; set; }
+        public string OrginLng { get; set; }
+        public DateTime StarTime { get; set; }
+        public DateTime EndTime { get; set; }
         #endregion Model
     }
 }

@@ -56,6 +56,10 @@
     <Compile Include="PYTService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PinEveryThing.Common\PinEveryThing.Common.csproj">
+      <Project>{98f2d5b3-3a79-4ea5-bbb1-84ee2f11b677}</Project>
+      <Name>PinEveryThing.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PinEverything.Data\PinEverything.Data.csproj">
       <Project>{d27deb8d-7e0f-4ce0-9bb6-96f3ec2c22fc}</Project>
       <Name>PinEverything.Data</Name>

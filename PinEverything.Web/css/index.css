@@ -1,0 +1,11 @@
+﻿.winfoTitle{
+    font-weight: bolder;
+}
+#geocoderResult{}
+.roadInfoTitle{
+    color: #4C1D77;
+    font-weight: bolder;
+}
+.roadInfo{
+    border-bottom:1px dashed #999;
+}

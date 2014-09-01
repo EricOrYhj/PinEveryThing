@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,33 +11,15 @@ using PinEverything.Services;
 
 namespace PinEverything.Web.ajaxpage
 {
-    public class WebComm 
-    {
-        /// <summary>
-        /// »ñÈ¡µ±Ç°ÓÃ»§
-        /// </summary>
-        /// <returns></returns>
-        public static UserInfo currUser() 
-        {
-            UserInfo userInfo = null;
-            if (HttpContext.Current.Session["user"] != null)
-            {
-                userInfo = HttpContext.Current.Session["user"] as UserInfo;
-            }
-            return userInfo;
-        }
-    }
-
     public partial class Index : System.Web.UI.Page
     {
         PYTService pytService = new PYTService();
-        UserInfo currUser;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request["op"] != null)
             {
                 string op = Request["op"].ToString();
-                currUser = WebComm.currUser();
                 switch (op)
                 {
                     case "LoadUserDetail":
@@ -75,54 +57,26 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// ¸üĞÂ×ø±ê
+        /// æ›´æ–°åæ ‡
         /// </summary>
         private void UpdateLbs()
         {
-            JavaScriptObject resultObj = new JavaScriptObject();
-
-            //½ÓÊÜÔ­Ê¼×ø±ê
+            //æ¥å—åŸå§‹åæ ‡
             double 
                 lat = Convert.ToDouble(Request["lat"]),
                 lng = Convert.ToDouble(Request["lng"]),
                 tLat,tLng;
 
-            //×ø±ê×ª»»
+            //åæ ‡è½¬æ¢
             Common.LBS.Wgs84ToMgs.transform(lat, lng, out tLat, out tLng);
 
-            //¸üĞÂ²¢·µ»Ø
-            pytService.UpdateUserLBS(this.currUser.UserId, tLat.ToString(), tLng.ToString());
-
-            //TODO:»ñÈ¡È«²¿·¢²¼ÊıÁ¿
-            if (!string.IsNullOrWhiteSpace(Request["showAllPubCount"])) { 
+            //æ›´æ–°å¹¶è¿”å›
+            //pytService.UpdateUserLBS(this.User)
             
-            }
-
-            //TODO:»ñÈ¡È«²¿·¢²¼ĞÅÏ¢ÊµÌå£¨ÈçÓĞ·ÖÒ³»ñÈ¡µÚÒ»Ò³Êı¾İ£©
-            if (!string.IsNullOrWhiteSpace(Request["showAllPub"]))
-            {
-
-            }
-
-            //TODO:»ñÈ¡¸½½ü·¢²¼ÊıÁ¿
-            if (!string.IsNullOrWhiteSpace(Request["showNearbyPubCount"]))
-            {
-
-            }
-
-            //TODO:»ñÈ¡¸½½ü·¢²¼Êı¾İÊµÌå£¨ÈçÓĞ·ÖÒ³»ñÈ¡µÚÒ»Ò³Êı¾İ£©
-            if (!string.IsNullOrWhiteSpace(Request["showNearbyPub"]))
-            {
-
-            }
-
-            resultObj.Add("lat",tLat);
-            resultObj.Add("lng", tLng);
-            PageResponse(resultObj);
         }
 
         /// <summary>
-        /// »ñÈ¡ÓÃ»§»ù±¾ĞÅÏ¢
+        /// è·å–ç”¨æˆ·åŸºæœ¬ä¿¡æ¯
         /// </summary>
         private void LoadUserDetail()
         {
@@ -146,7 +100,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// ·¢²¼ĞÅÏ¢
+        /// å‘å¸ƒä¿¡æ¯
         /// </summary>
         private void AddPublic()
         {
@@ -176,7 +130,7 @@ namespace PinEverything.Web.ajaxpage
                 if (flag)
                 {
                     resultObj.Add("MSG", "Y");
-                    //·¢²¼¶¯Ì¬
+                    //å‘å¸ƒåŠ¨æ€
                     APIService APIService = new Services.APIService();
                     string access_token = userInfo.MDToken;
                     string pMsg = startPosition;
@@ -193,7 +147,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// »ñÈ¡·¢²¼ÁĞ±í
+        /// è·å–å‘å¸ƒåˆ—è¡¨
         /// </summary>
         private void LoadPublicList()
         {
@@ -241,7 +195,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// ¼ÓÈë
+        /// åŠ å…¥
         /// </summary>
         private void JoinPublic()
         {
@@ -259,7 +213,7 @@ namespace PinEverything.Web.ajaxpage
                     userInfo = Session["user"] as UserInfo;
 
                     
-                    //ÊÇ·ñÒÑ¾­¼ÓÈë
+                    //æ˜¯å¦å·²ç»åŠ å…¥
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
                     if (joinInfo == null)
                     {
@@ -270,11 +224,11 @@ namespace PinEverything.Web.ajaxpage
                             APIService APIService = new Services.APIService();
                             PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                             string toUser = publicInfo.UserId.ToString();
-                            string msg = "²âÊÔºöÂÔ";
+                            string msg = "æµ‹è¯•å¿½ç•¥";
                             int dialogType = 1;
-                            //²åÈë¶Ô»°±í
+                            //æ’å…¥å¯¹è¯è¡¨
                             bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
-                            //·¢ËÍË½ĞÅ
+                            //å‘é€ç§ä¿¡
                             if (dialogFlag)
                                 APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
                             resultObj.Add("MSG", "Y");
@@ -294,7 +248,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// ¼ÓÔØ¶Ô»°ĞÅÏ¢
+        /// åŠ è½½å¯¹è¯ä¿¡æ¯
         /// </summary>
         private void LoadDialogMsg()
         {
@@ -306,8 +260,12 @@ namespace PinEverything.Web.ajaxpage
                 int pageSize = int.Parse(Request["pageSize"].ToString());
                 if (!string.IsNullOrEmpty(publishId))
                 {
+<<<<<<< HEAD
                     
-                    //¶Ô»°ĞÅÏ¢
+=======
+                    PYTService PYTService = new PYTService();
+                    //å¯¹è¯ä¿¡æ¯
+>>>>>>> cae55bb8758fac7dd92d165dff1bf5df038a3c01
                     Entites.EntityList<DialogueInfo> dialogList = new EntityList<DialogueInfo>();
                     dialogList = pytService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
 
@@ -338,9 +296,9 @@ namespace PinEverything.Web.ajaxpage
                     }
                     resultObj.Add("dialogList", dialogArr);
 
-                    //¼ÓÈëµÄ³ÉÔ±ĞÅÏ¢
+                    //åŠ å…¥çš„æˆå‘˜ä¿¡æ¯
                     Entites.EntityList<JoinInfo> joinMemberList = new EntityList<JoinInfo>();
-                    joinMemberList = pytService.QueryJoinMembers(Guid.Parse(publishId));
+                    joinMemberList = PYTService.QueryJoinMembers(Guid.Parse(publishId));
                     List<JoinInfo> joinMemberInfo = new List<JoinInfo>();
                     joinMemberInfo = joinMemberList.Table;
 
@@ -350,7 +308,7 @@ namespace PinEverything.Web.ajaxpage
                         JavaScriptObject joinObj = new JavaScriptObject();
 
                         Guid userID = joinItem.UserId;
-                        UserInfo userInfo = pytService.GetUser(userID);
+                        UserInfo userInfo = PYTService.GetUser(userID);
                         if (userInfo != null)
                         {
                             joinObj.Add("PublishId", joinItem.PublishId);
@@ -374,7 +332,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// ÁªÏµ
+        /// è”ç³»
         /// </summary>
         private void ContactOwner()
         {
@@ -396,11 +354,11 @@ namespace PinEverything.Web.ajaxpage
                     APIService APIService = new Services.APIService();
                     PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                     string toUser = publicInfo.UserId.ToString();
-                    string msg = "²âÊÔºöÂÔ";
+                    string msg = "æµ‹è¯•å¿½ç•¥";
                     int dialogType = 1;
-                    //²åÈë¶Ô»°±í
+                    //æ’å…¥å¯¹è¯è¡¨
                     bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
-                    //·¢ËÍË½ĞÅ
+                    //å‘é€ç§ä¿¡
                     if (dialogFlag && !userInfo.UserId.Equals(Guid.Parse(toUser)))
                         APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
                     resultObj.Add("MSG", "Y");
@@ -415,7 +373,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// »ñÈ¡ÀúÊ··¢²¼ÁĞ±í
+        /// è·å–å†å²å‘å¸ƒåˆ—è¡¨
         /// </summary>
         private void HisPubList()
         {
@@ -456,7 +414,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// »ñÈ¡ÀúÊ·¼ÓÈëÁĞ±í
+        /// è·å–å†å²åŠ å…¥åˆ—è¡¨
         /// </summary>
         private void HisJoinList()
         {
@@ -501,7 +459,7 @@ namespace PinEverything.Web.ajaxpage
         }
 
         /// <summary>
-        /// »ñÈ¡ÏêÇé¼ÓÈë³ÉÔ±
+        /// è·å–è¯¦æƒ…åŠ å…¥æˆå‘˜
         /// </summary>
         private void GetJoinMembers()
         {
