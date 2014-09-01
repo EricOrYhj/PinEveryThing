@@ -17,9 +17,9 @@
             <a href="javascript:history.go(-1)">
                 <img src="images/arrow.png" alt="" /></a>
         </div>
-        <div class="sidebarPlay">
-            <a href="javascript:Detail.JoinPublic();" id="join" style="display: block;">加入</a>
-            <a href="" id="exit">退出</a>
+        <div class="sidebarPlay" id="sidebarPlay" runat="server">
+            <%--<a href="javascript:Detail.JoinPublic();" id="join" style="display: block;">加入</a>
+            <a href="" id="exit">退出</a>--%>
         </div>
         <div class="sidebarTitle">
             详情

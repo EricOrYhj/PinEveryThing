@@ -56,14 +56,23 @@ namespace PinEverything.Web
                     foreach (JoinInfo joinItem in joinMemberInfo)
                     {
                         Guid userID = joinItem.UserId;
-
                         if (userID.Equals(curUserID))
-                            type = 3;
+                            type = 3;//已加入
                     }
 
-
-
-
+                    string html = string.Empty;
+                    switch (type){
+                        case 1 :
+                            html = "<a href=\"javascript:Detail.JoinPublic();\" id=\"join\" style=\"display: block;\">加入</a>";
+                            break;
+                        case 2:
+                            html = "<a href=\"javascript:Detail.JoinPublic();\" id=\"exit\" style=\"display: block;\">退出</a>";
+                            break;
+                        case 3:
+                            html = "<a href=\"javascript:Detail.JoinPublic();\" id=\"cancle\" style=\"display: block;\">取消</a>";
+                            break;
+                    }
+                    this.sidebarPlay.InnerHtml = html;
                 }
                 else
                     Response.Redirect("/callback.aspx");
