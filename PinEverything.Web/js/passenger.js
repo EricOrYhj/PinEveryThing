@@ -3,12 +3,14 @@
 Passenger.options = {
     dataType: "LoadPublicList",
     pageIndex: "1",
-    pageSize:"20",
+    pageSize:"5",
     pubType: "1"//发布类型
 };
 
 //加载发布列表
 Passenger.publicList = function () {
+    var curpageIndex = $("#pageIndex").val();
+    this.options.pageIndex = Number(curpageIndex) + 1;
     $.ajax({
         url: "/ajaxpage/user.aspx",
         dataType: "JSON",
@@ -20,8 +22,9 @@ Passenger.publicList = function () {
                 parent.location.replace("../callback.aspx");
             } else if (data.MSG == "Y") {
                 var pubList = data.pubList;
+                var pageIndex = data.pageIndex;
                 var len = pubList.length;
-                var html = '<ul>';
+                var html = '';
                 for (var i = 0; i < len;i++)
                 {
                     var pubItem = pubList[i];
@@ -36,7 +39,7 @@ Passenger.publicList = function () {
                     var userName = pubItem.UserName;
                     var lat = pubItem.Lat;
                     var lng = pubItem.Lng;
-                    if (i % 2 == 0)
+                    if ((i + (pageIndex-1)*5) % 2 == 0)
                         html += '<li>';
                     else 
                         html += '<li class="passengerListPosition">';
@@ -59,8 +62,8 @@ Passenger.publicList = function () {
                         html += '<div class="clear"></div>';
                         html += '</li>';
                 }
-                html = html + '</ul>';
-                $(".passengerList").append(html);
+                $(".passengerList #listUl").append(html);
+                $("#pageIndex").val(pageIndex)
             }
         }
     });
@@ -69,6 +72,9 @@ Passenger.publicList = function () {
 
 //事件绑定
 Passenger.BindEvent = function () {
+    $(".loadMore").click(function () {
+        Passenger.publicList();
+    });
 }
 
 //脚本加载事件

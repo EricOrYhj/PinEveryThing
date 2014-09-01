@@ -236,6 +236,7 @@ namespace PinEverything.Web.ajaxpage
                     }
                 }
                 resultObj.Add("pubList", publicArr);
+                resultObj.Add("pageIndex", publishInfoList.PageIndex);
                 resultObj.Add("MSG", "Y");
             }
             else

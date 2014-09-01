@@ -15,6 +15,7 @@
     <title>我是乘客</title>
 </head>
 <body>
+    <input type="hidden" id="pageIndex" runat="server" value="0" />
     <div class="sidebarBg">
         <div class="sidebarLeft sidebarPlayWidth">
             <a href="javascript:history.go(-1)">
@@ -40,8 +41,8 @@
         <div class="clear"></div>
     </div>
     <div class="passengerList">
-        <%--        <ul>
-            <li>
+        <ul id="listUl">
+<%--            <li>
                 <div class="passengerListLeft">
                     <div class="passengerListLeftHead">
                         <img src="images/1.jpg" alt="" /></div>
@@ -154,9 +155,10 @@
                     </a>
                 </div>
                 <div class="clear"></div>
-            </li>
-        </ul>--%>
+            </li>--%>
+        </ul>
     </div>
+    <div class="loadMore">加载更多...</div>
     <div class="passengerMap">
         <div id="container"></div>
     </div>
