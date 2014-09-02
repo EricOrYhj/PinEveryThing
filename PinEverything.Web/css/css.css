@@ -39,6 +39,11 @@ q, blockquote {
     content: "";
     content: none; }
 
+body
+{
+      font-family: "Microsoft YaHei";
+}
+
 a img {
   border: none; }
 
