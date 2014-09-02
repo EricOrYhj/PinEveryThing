@@ -31,7 +31,7 @@
         <div class="detailMeaasgeHead" id="userAvatar" runat="server"></div>
         <div class="detailMeaasgeName" id="userName" runat="server"></div>
         <div class="detailMeaasgeContact">
-            <a telphone="">联系TA</a>
+            <a href="tel://">联系TA</a>
         </div>
         <div class="clear"></div>
     </div>
@@ -96,10 +96,16 @@
             留言：
         </div>
     </div>
-     <textarea id="txtMessage"  class="txtMessage" placeholder="填写留言信息"  style="display:none; border: 1px solid #ccc"></textarea>
+     
     <div class="thinkMessage">
-        <span></span>我想留言
+        我想留言
     </div>
+    <div >
+        <textarea id="txtMessage"  class="txtMessage" placeholder="填写留言信息"  style="border: 1px solid #ccc"></textarea>
+        <div style=" width:180px; margin:0px auto;">
+        <span class="ui-btn fromAddressBtn">确定</span><span class="ui-btn fromAddressBtn">取消</span>
+        </div>
+     </div>
     <div class="messageList" id="messageList">
         <ul id="messageUl">
             </ul>

@@ -192,19 +192,22 @@ Detail.Cancel = function () {
 //事件绑定
 Detail.BindEvent = function () {
     $(document).on('click', '.thinkMessage', function () {
-        if ($(this).hasClass('textmessage')) {
-            $(this).removeClass('textmessage');
-            $('#txtMessage').slideUp();
-            $(this).html("<span></span>我想留言");
-            if ($("#txtMessage").val())
-            {
-                Detail.ContactOwner();
-            }
-        } else {
-            $(this).addClass('textmessage');
-            $('#txtMessage').slideDown();
-            $(this).html("<span></span>确认");
-        }
+
+        //if ($(this).hasClass('textmessage')) {
+        //    $(this).removeClass('textmessage');
+        //    $('#txtMessage').slideUp();
+        //    $(this).html("<span></span>我想留言");
+        //    if ($("#txtMessage").val())
+        //    {
+        //        Detail.ContactOwner();
+        //    }
+        //} else {
+        //    $(this).addClass('textmessage');
+        //    $('#txtMessage').slideDown();
+        //    $(this).html("<span></span>确认");
+        //}
+
+
     });
 }
 

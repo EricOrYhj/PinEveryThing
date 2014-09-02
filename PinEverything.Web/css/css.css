@@ -598,10 +598,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -o-border-radius: 50%;
     border-radius: 50%;
     float: left; }
-    .detailMeaasge .detailMeaasgeHead img
-    {
-        width: 70px;
-    }
   .detailMeaasge .detailMeaasgeName {
     float: left;
     font-size: 14px;
@@ -804,17 +800,6 @@ body {
     font-size:12px;
 }
 
-.btn
-{
-    display: block;
-    padding: 4px 8px;
-    color: #fff;
-    text-decoration: none;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    border: 1px solid #80d1d4;
-    text-align: center;
+passengerListLeftHead img {
+    width: 70px;
 }

@@ -272,7 +272,7 @@ function showCurrPosition(position) {
                     html += '<li class="passengerListPosition">';
                 html += '<div class="passengerListLeft">';
                 html += '<div class="passengerListLeftHead">';
-                html += '<img src="' + avatar + '" alt="" /></div>';
+                html += '<img src="' + avatar + '" alt="" style="width:70px;"/></div>';
                 html += '<div class="passengerListLeftName">' + userName + '</div>';
                 html += '</div>';
                 html += '<div class="passengerListRight">';
