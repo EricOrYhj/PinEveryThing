@@ -24,6 +24,9 @@ namespace PinEverything.Web.ajaxpage
             {
                 userInfo = HttpContext.Current.Session["user"] as UserInfo;
             }
+
+            userInfo = new PYTService().GetUser(userInfo.UserId);
+
             return userInfo;
         }
     }
@@ -90,11 +93,10 @@ namespace PinEverything.Web.ajaxpage
                 lng = Convert.ToDouble(Request["lng"]),
                 tLat,tLng;
 
-            //坐标转换
             Common.LBS.Wgs84ToMgs.transform(lat, lng, out tLat, out tLng);
 
             //更新并返回
-            pytService.UpdateUserLBS(this.currUser.UserId, tLat.ToString(), tLng.ToString());
+            pytService.UpdateUserLBS(this.currUser.UserId, lat.ToString(), lng.ToString());
 
             //获取全部发布信息实体（如有分页获取第一页数据）
             if (!string.IsNullOrWhiteSpace(Request["showAllPub"]))
@@ -137,14 +139,33 @@ namespace PinEverything.Web.ajaxpage
                 foreach (var item in resultList)
                 {
                     JavaScriptObject jObj = new JavaScriptObject();
+                    UserInfo pubUser = pytService.GetUser(item.UserId);
+                    JoinInfo joinInfo = pytService.GetJoinInfo(item.PublishId, currUser.UserId);
+                    var joinType = "";
+                        if (joinInfo != null)
+                            joinType = "2";//已加入
+                        else if (currUser.UserId.Equals(item.UserId))
+                            joinType = "1";//发布人
+                        else
+                            joinType = "3";//未加入
 
                     jObj.Add("Lat", item.Lat);
                     jObj.Add("Lng", item.Lng);
                     jObj.Add("PubTitle", item.PubTitle);
                     jObj.Add("PubContent", item.PubContent);
                     jObj.Add("PublishId", item.PublishId);
-                    UserInfo pubUser = pytService.GetUser(item.UserId);
                     jObj.Add("UserName", pubUser.UserName);
+
+                    jObj.Add("StartPosition", item.StartPosition);
+                    jObj.Add("EndPosition", item.EndPosition);
+                    jObj.Add("StartTime", item.StarTime.ToString("yyyy-MM-dd"));
+                    jObj.Add("CarType", item.CarType);
+                    jObj.Add("CarColor", item.CarColor);
+
+                    jObj.Add("UserId", item.UserId);
+                    jObj.Add("Avatar", pubUser.Avatar);
+                    jObj.Add("JoinType", joinType);
+                    jObj.Add("CreateTime", item.CreateTime.ToString("yyyy-MM-dd"));
 
                     arr.Add(jObj);
                 }
@@ -202,8 +223,11 @@ namespace PinEverything.Web.ajaxpage
                 DateTime startTime = DateTime.Parse(startTimeStr);
 
                 string pubTitle = startPosition + '-' + endPosition;
-                string lat = currUser.OrginLat;
-                string lng = currUser.OrginLng;
+
+                UserInfo userModel = pytService.GetUser(currUser.UserId);
+
+                string lat = userModel.OrginLat;
+                string lng = userModel.OrginLng;
 
                 Guid publicID = Guid.NewGuid();
                 bool flag = pytService.AddPublishInfo(publicID, currUser.ProjectId, currUser.UserId, pubType, 1,

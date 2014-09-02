@@ -21,7 +21,7 @@ namespace PinEverything.Web.Module
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Init(HttpApplication context)
@@ -107,9 +107,8 @@ namespace PinEverything.Web.Module
                     }
                     if (userObj != null) 
                     {
-                        UserInfo currUser = new PYTService().GetUser(userDetail.UserId);
                         //获取用户数据库信息
-                        application.Session["user"] = currUser;
+                        application.Session["user"] = userDetail;
                     }
                     application.Session["login"] = 1;
 

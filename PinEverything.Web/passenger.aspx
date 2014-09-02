@@ -5,31 +5,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/passenger.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/Common.js?v=0.0.6"></script>
+    <script src="/js/passenger.js?v=0.0.6"></script>
     <script type="text/javascript"
         src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
     </script>
-    <script src="/js/mapbase.js?v=0.0.3"></script>
-    <link href="css/css.css?v=0.0.3" rel="stylesheet">
+    <script src="/js/passenderMap.js?v=0.0.6"></script>
+    <link href="css/css.css?v=0.0.6" rel="stylesheet">
+    <link href="css/passender.css?v=0.0.6" rel="stylesheet" />
+    
     <title>我是乘客</title>
-    <style>
-        #mapMsg{
-            display:none;
-            text-align: center;
-            color: #fff!important;
-            padding: 20px;
-            line-height: 20px;
-            background-color: #84ABB3;
-        }
-        #mapMsg a{
-            color: #fff!important;
-            font-weight:bolder;
-        }
-        .passengerMap{
-            margin-bottom: 90px;
-        }
-    </style>
 </head>
 <body>
     <input type="hidden" id="pageIndex" runat="server" value="0" />
@@ -177,8 +163,52 @@
         <div class="loadMorePub">加载更多...</div>
     </div>
     <div class="passengerMap">
-        <div id="mapMsg"></div>
+        <div id="mapMsg">
+            <div id="floatingCirclesG">
+<div class="f_circleG" id="frotateG_01">
+</div>
+<div class="f_circleG" id="frotateG_02">
+</div>
+<div class="f_circleG" id="frotateG_03">
+</div>
+<div class="f_circleG" id="frotateG_04">
+</div>
+<div class="f_circleG" id="frotateG_05">
+</div>
+<div class="f_circleG" id="frotateG_06">
+</div>
+<div class="f_circleG" id="frotateG_07">
+</div>
+<div class="f_circleG" id="frotateG_08">
+</div>
+</div>
+            <span class="loadMsg">正在扫描附近信息。。。</span>
+        </div>
         <div id="container"></div>
+        <div id="nearbyListMsg">
+            <div id="floatingCirclesG">
+<div class="f_circleG" id="frotateG_01">
+</div>
+<div class="f_circleG" id="frotateG_02">
+</div>
+<div class="f_circleG" id="frotateG_03">
+</div>
+<div class="f_circleG" id="frotateG_04">
+</div>
+<div class="f_circleG" id="frotateG_05">
+</div>
+<div class="f_circleG" id="frotateG_06">
+</div>
+<div class="f_circleG" id="frotateG_07">
+</div>
+<div class="f_circleG" id="frotateG_08">
+</div>
+</div>
+            <span class="loadMsg">正在扫描附近信息。。。</span>
+        </div>
+        <div id="nearbyList">
+            <ul></ul>
+        </div>
     </div>
 </body>
 </html>

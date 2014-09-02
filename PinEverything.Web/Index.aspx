@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="js/jquery.min.js"></script>
-    <script src="js/index.js?v=0.0.3"></script>
+    <script src="js/index.js?v=0.0.6"></script>
     <script type="text/javascript"
         src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
     </script>
-    <script src="/js/mapbase.js?v=0.0.3"></script>
-    <link href="/css/css.css?v=0.0.3" rel="stylesheet">
-    <link href="/css/index.css?v=0.0.3" rel="stylesheet" />
+    <script src="/js/mapbase.js?v=0.0.6"></script>
+    <link href="/css/css.css?v=0.0.6" rel="stylesheet">
+    <link href="/css/index.css?v=0.0.6" rel="stylesheet" />
     <title>拼你所想</title>
 </head>
 <body class="indexBg">

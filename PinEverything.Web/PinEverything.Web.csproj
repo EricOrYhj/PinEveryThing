@@ -77,9 +77,11 @@
     <Content Include="callback.aspx" />
     <Content Include="ceshi.html" />
     <Content Include="css\css.css" />
+    <Content Include="css\detail.css" />
     <Content Include="css\images\ajax-loader.gif" />
     <Content Include="css\index.css" />
     <Content Include="css\jquery.mobile-1.4.3.min.css" />
+    <Content Include="css\passender.css" />
     <Content Include="css\mobiscroll.animation.css" />
     <Content Include="css\mobiscroll.scroller.css" />
     <Content Include="css\mobiscroll.widget.css" />
@@ -119,6 +121,8 @@
     <Content Include="images\icon8.png" />
     <Content Include="images\icon9.jpg" />
     <Content Include="images\icon9.png" />
+    <Content Include="images\load.gif" />
+    <Content Include="images\newloading.gif" />
     <Content Include="images\pinchebg.jpg" />
     <Content Include="images\sz.jpg" />
     <Content Include="images\sz1.jpg" />
@@ -140,6 +144,7 @@
     <Content Include="js\mobiscroll.select.js" />
     <Content Include="js\mobiscroll.widget.js" />
     <Content Include="js\owner.js" />
+    <Content Include="js\passenderMap.js" />
     <Content Include="js\passenger.js" />
     <Content Include="List.aspx" />
     <Content Include="list.html" />
