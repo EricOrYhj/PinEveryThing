@@ -800,7 +800,8 @@ body {
     font-size:12px;
 }
 
-passengerListLeftHead img {
+.detailMeaasge #userAvatar img
+{
     width: 70px;
 }
 
