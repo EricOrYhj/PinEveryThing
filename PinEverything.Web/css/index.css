@@ -1,5 +1,6 @@
 ﻿.winfoTitle{
     font-weight: bolder;
+    color: #4C1D77;
 }
 #geocoderResult{}
 .roadInfoTitle{
@@ -8,4 +9,7 @@
 }
 .roadInfo{
     border-bottom:1px dashed #999;
+}
+.passengerMap { 
+   display: none; 
 }

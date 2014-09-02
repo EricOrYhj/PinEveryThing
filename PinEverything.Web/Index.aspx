@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="js/jquery.min.js"></script>
-    <script src="/js/Common.js"></script>
     <script src="js/index.js?v=0.0.1"></script>
     <script type="text/javascript"
         src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
