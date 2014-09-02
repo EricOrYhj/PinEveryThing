@@ -139,6 +139,7 @@ namespace PinEverything.Entites
         public string OrginLng { get; set; }
         public DateTime StarTime { get; set; }
         public DateTime EndTime { get; set; }
+        public string PostID { get; set; }
         #endregion Model
     }
 }

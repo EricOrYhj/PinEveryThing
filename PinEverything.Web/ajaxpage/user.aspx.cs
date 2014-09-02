@@ -243,7 +243,9 @@ namespace PinEverything.Web.ajaxpage
                     string access_token = currUser.MDToken;
                     string pMsg = pubTitle;
                     string title = pubTitle;
-                    bool postFlag = APIService.postUpdate(access_token, pMsg, title, publicID);
+                    string postID = APIService.postUpdate(access_token, pMsg, title, publicID);
+                    if (!string.IsNullOrEmpty(postID))
+                        pytService.UpdatePubPostID(publicID, currUser.UserId, postID);
                 }
                 else
                     resultObj.Add("MSG", "N");
@@ -351,7 +353,7 @@ namespace PinEverything.Web.ajaxpage
                             bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                             //发送私信
                             if (dialogFlag)
-                                APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+                                APIService.sendMsg(userInfo.MDToken, toUser, msg, "1", publicInfo.PostID);
 
                             JavaScriptObject msgObj = new JavaScriptObject();
                             msgObj.Add("userName", userInfo.UserName);
@@ -483,7 +485,7 @@ namespace PinEverything.Web.ajaxpage
                     bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                     //发送私信
                     if (dialogFlag && !userInfo.UserId.Equals(Guid.Parse(toUser)))
-                        APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+                        APIService.sendMsg(userInfo.MDToken, toUser, msg, "1", publicInfo.PostID);
 
                     JavaScriptObject msgObj = new JavaScriptObject();
                     msgObj.Add("userName", userInfo.UserName);
@@ -650,7 +652,7 @@ namespace PinEverything.Web.ajaxpage
                         string Lat = string.Empty;
                         string Lng = string.Empty;
                         resultObj.Add("MSG", "Y");
-                        //发布动态
+
                         APIService APIService = new Services.APIService();
                         PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                         string toUser = publicInfo.UserId.ToString();
@@ -660,7 +662,7 @@ namespace PinEverything.Web.ajaxpage
                         bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
                         //发送私信
                         if (dialogFlag)
-                            APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+                            APIService.sendMsg(userInfo.MDToken, toUser, msg, "1", publicInfo.PostID);
                     }
                     else
                         resultObj.Add("MSG", "N");

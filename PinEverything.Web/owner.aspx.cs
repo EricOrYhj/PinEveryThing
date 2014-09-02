@@ -15,12 +15,21 @@ namespace PinEverything.Web
         {
             if (Session["user"] != null)
             {
+                string localState = string.Empty;
                 string pubType = Request["pubType"];
                 if (!string.IsNullOrEmpty(pubType))
                     this.hidPubType.Value = pubType;
 
                 UserInfo userDetail = new UserInfo();
                 userDetail = Session["user"] as UserInfo;
+
+                string dateStr = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                this.ownerTime.Value = dateStr;              
+
+                if (Session["localState"] != null)
+                    localState = Session["localState"].ToString();
+                this.startPosition.Value = localState;
+                this.ownerPhone.Value = userDetail.Phone;
             }
             else
             {

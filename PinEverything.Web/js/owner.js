@@ -15,8 +15,8 @@ Owner.options = {
 
 //发布信息
 Owner.AddPublic = function () {
-    this.options.startPosition = $("#startPosition").text();
-    this.options.endPosition = $("#endPosition").text();
+    this.options.startPosition = $("#startPosition").val();
+    this.options.endPosition = $("#endPosition").val();
     var number_dummy = $("#number_dummy").val();
     this.options.userLimCount = number_dummy.replace(/[^0-9]/ig, "");
     this.options.startTime = $(".ownerTime").val();

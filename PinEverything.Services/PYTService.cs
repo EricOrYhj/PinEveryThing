@@ -438,5 +438,17 @@ namespace PinEverything.Services
 
             return this.db.SaveChanges().Equals(1);
         }
+
+        public bool UpdatePubPostID(
+                Guid publishId,
+                Guid userId,
+                string postID
+            )
+        {
+            PublishInfo model = this.db.Set<PublishInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
+            model.PostID = postID;
+
+            return this.db.SaveChanges().Equals(1);
+        }
     }
 }
