@@ -1,15 +1,19 @@
 ﻿.winfoTitle{
-    font-weight: bolder;
-    color: #4C1D77;
+    /*font-weight: bolder;
+    color: #4C1D77;*/
 }
 #geocoderResult{}
 .roadInfoTitle{
-    color: #4C1D77;
-    font-weight: bolder;
+    /*color: #4C1D77;
+    font-weight: bolder;*/
 }
 .roadInfo{
     border-bottom:1px dashed #999;
 }
 .passengerMap { 
    display: none; 
+}
+.headerLeftIconHover{
+    background-color: #84DB01!important;
+    border-radius: 50px;
 }

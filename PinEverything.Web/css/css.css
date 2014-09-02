@@ -400,7 +400,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     line-height: 18px;
     margin-top: 6px; }
   .passengerList .passengerListFromAddress {
-    background: url("../images/icon3.png") no-repeat; }
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: url("../images/icon3.png") no-repeat; 
+
+  }
   .passengerList .passengerListToAddress {
     background: url("../images/icon4.png") no-repeat; }
   .passengerList .passengerListTime {

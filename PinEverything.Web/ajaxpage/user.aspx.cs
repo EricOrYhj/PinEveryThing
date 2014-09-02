@@ -96,14 +96,38 @@ namespace PinEverything.Web.ajaxpage
             //更新并返回
             pytService.UpdateUserLBS(this.currUser.UserId, tLat.ToString(), tLng.ToString());
 
-            //TODO:获取全部发布信息实体（如有分页获取第一页数据）
+            //获取全部发布信息实体（如有分页获取第一页数据）
             if (!string.IsNullOrWhiteSpace(Request["showAllPub"]))
             {
 
             }
 
+            //获取不是附近的发布
+            if (!string.IsNullOrWhiteSpace(Request["showNotNearPub"]))
+            {
+                List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(2, currUser.UserId);
 
-            //TODO:获取附近发布数据实体（如有分页获取第一页数据）
+                JavaScriptArray arr = new JavaScriptArray();
+
+                foreach (var item in resultList)
+                {
+                    JavaScriptObject jObj = new JavaScriptObject();
+
+                    jObj.Add("Lat", item.Lat);
+                    jObj.Add("Lng", item.Lng);
+                    jObj.Add("PubTitle", item.PubTitle);
+                    jObj.Add("PubContent", item.PubContent);
+                    jObj.Add("PublishId", item.PublishId);
+                    UserInfo pubUser = pytService.GetUser(item.UserId);
+                    jObj.Add("UserName", pubUser.UserName);
+
+                    arr.Add(jObj);
+                }
+
+                resultObj.Add("notNearbyPubList", arr);
+            }
+
+            //获取附近发布数据实体（如有分页获取第一页数据）
             if (!string.IsNullOrWhiteSpace(Request["showNearbyPub"]))
             {
                 List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(1, currUser.UserId);
