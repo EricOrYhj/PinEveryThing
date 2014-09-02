@@ -57,7 +57,7 @@ Owner.BindEvent = function () {
     var pubType = $("#hidPubType").val();
     if (pubType=="2")
     {
-        $("#ifTaxi").css("display", "block");
+        $("#ifTaxi").show().css("display", "box");
         $("#ifCar").css("display", "none");
     }
 }

@@ -799,3 +799,8 @@ body {
 .amap-info-content{
     font-size:12px;
 }
+
+passengerListLeftHead img {
+    width: 70px;
+}
+
