@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="PinEverything.Web.detail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="PinEverything.Web.view.chi.detail" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="js/detail.js?v=0.0.8"></script>
     <link href="css/css.css?v=0.0.8" rel="stylesheet">
     <link href="css/detail.css?v=0.0.8" rel="stylesheet" />

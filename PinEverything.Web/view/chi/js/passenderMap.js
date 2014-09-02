@@ -223,7 +223,7 @@ function showCurrPosition(position) {
                 });
 
                 var showInfoStr = new StringBuilder();
-                showInfoStr.AppendFormat('<div class="winfoTitle">【{0}】发布了一条内容</div><div class="">{1}</div><div class=""><a href="/detail.aspx?publishId={2}">点击进入详情</a></div>',
+                showInfoStr.AppendFormat('<div class="winfoTitle">【{0}】发布了一条内容</div><div class="">{1}</div><div class=""><a href="detail.aspx?publishId={2}">点击进入详情</a></div>',
                         result.nearbyPubList[i].UserName,
                         result.nearbyPubList[i].PubTitle,
                         result.nearbyPubList[i].PublishId
@@ -256,17 +256,17 @@ function showCurrPosition(position) {
                 joinColor = "Yellow";
                 if (joinType == 1) {
                     joinType = "发布人";
-                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">详情</a>', publishId);
+                    operateStr.AppendFormat('<a class="btn" href="detail.aspx?publishId={0}">详情</a>', publishId);
                 }
                 else if (joinType == 2) {
                     joinType = "已加入";
                     joinColor = "Blue";
-                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">详情</a>', publishId);
+                    operateStr.AppendFormat('<a class="btn" href="detail.aspx?publishId={0}">详情</a>', publishId);
                 }
                 else if (joinType == 3) {
                     joinType = "未加入";
                     joinColor = "Red";
-                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">详情</a>', publishId);
+                    operateStr.AppendFormat('<a class="btn" href="detail.aspx?publishId={0}">详情</a>', publishId);
                 }
 
                 if (i % 2 == 0)

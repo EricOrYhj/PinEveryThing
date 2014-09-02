@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="owner.aspx.cs" Inherits="PinEverything.Web.owner" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pub.aspx.cs" Inherits="PinEverything.Web.view.chi.pub" %>
+
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -6,17 +7,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link href="css/css.css?v=0.0.1" rel="stylesheet">
-<script src="js/jquery.min.js"></script>
-<script src="js/mobiscroll.core.js"></script>
-<script src="js/mobiscroll.widget.js"></script>
-<script src="js/mobiscroll.scroller.js"></script>
-<script src="js/mobiscroll.datetime.js"></script>
-<script src="js/mobiscroll.select.js"></script>
-<script src="js/mobiscroll.i18n.zh.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/mobiscroll.core.js"></script>
+<script src="/js/mobiscroll.widget.js"></script>
+<script src="/js/mobiscroll.scroller.js"></script>
+<script src="/js/mobiscroll.datetime.js"></script>
+<script src="/js/mobiscroll.select.js"></script>
+<script src="/js/mobiscroll.i18n.zh.js"></script>
 <script src="js/owner.js"></script>
-<link href="css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
-<link href="css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
-<link href="css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+<link href="/css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
+<link href="/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+<link href="/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
 <title>我是车主</title>
 </head>
 <body>

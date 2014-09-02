@@ -14,7 +14,7 @@
     <div class="sidebarBg">
         <div class="sidebarLeft">
             <a href="javascript:history.go(-1)">
-                <img src="images/arrow.png" alt="" /></a>
+                <img src="/images/arrow.png" alt="" /></a>
         </div>
         <div class="sidebarRight"></div>
         <div class="sidebarTitle">

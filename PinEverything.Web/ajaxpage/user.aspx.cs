@@ -79,8 +79,17 @@ namespace PinEverything.Web.ajaxpage
                     case "CanclePublic":
                         CanclePublic();
                         break;
+                    case "UpdateLocalState":
+                        UpdateLocalState();
+                        break;
                 }
             }
+        }
+
+        private void UpdateLocalState()
+        {
+            string v = Request["value"];
+            Session["localState"] = v;
         }
 
         /// <summary>
