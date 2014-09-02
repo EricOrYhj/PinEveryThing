@@ -30,8 +30,8 @@
     <div class="detailMeaasge">
         <div class="detailMeaasgeHead" id="userAvatar" runat="server"></div>
         <div class="detailMeaasgeName" id="userName" runat="server"></div>
-        <div class="detailMeaasgeContact">
-            <a href="tel://">联系TA</a>
+        <div class="detailMeaasgeContact"  >
+            <a href="tel://" id="btnTel" runat="server">联系TA</a>
         </div>
         <div class="clear"></div>
     </div>
