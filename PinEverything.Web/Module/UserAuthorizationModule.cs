@@ -101,12 +101,16 @@ namespace PinEverything.Web.Module
                                     userDetail.CurrLat, userDetail.CurrLng, userDetail.Avatar);
                             }
 
+                            
                         }
 
                     }
-                    if (userObj != null)
-                        application.Session["user"] = userDetail;
-
+                    if (userObj != null) 
+                    {
+                        UserInfo currUser = new PYTService().GetUser(userDetail.UserId);
+                        //获取用户数据库信息
+                        application.Session["user"] = currUser;
+                    }
                     application.Session["login"] = 1;
 
                     //获取Token
