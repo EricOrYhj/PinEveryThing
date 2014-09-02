@@ -202,8 +202,8 @@ namespace PinEverything.Web.ajaxpage
                 DateTime startTime = DateTime.Parse(startTimeStr);
 
                 string pubTitle = startPosition + '-' + endPosition;
-                string lat = currUser.CurrLat;
-                string lng = currUser.CurrLng;
+                string lat = currUser.OrginLat;
+                string lng = currUser.OrginLng;
 
                 Guid publicID = Guid.NewGuid();
                 bool flag = pytService.AddPublishInfo(publicID, currUser.ProjectId, currUser.UserId, pubType, 1,

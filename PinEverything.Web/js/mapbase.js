@@ -179,19 +179,32 @@ function showCurrPosition(position) {
         data: {op:'UpdateLbs', lat: lat, lng: lng,showNearbyPub:true ,showNotNearPub:true},
         success: function (result) {
 
-            var m = CreateMark(result.lat, result.lng);
+            //var m = CreateMark(result.lat, result.lng);
+
+
+            //var m = new AMap.Marker({ //自定义构造AMap.Marker对象                 
+            //    map: mapObj,
+            //    position: new AMap.LngLat(result.lng, result.lat),
+            //    offset: new AMap.Pixel(-10, -34),
+            //    icon: "http://webapi.amap.com/images/0.png",
+            //    draggable:true
+            //});
+
+
             var c = CreateCircle(result.lat, result.lng, 1000);
             PanTo(lat, lng);
 
             var infoWStr = new StringBuilder();
 
-            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近1000米内有{0}条发布信息</div><a href="/passenger.aspx">点击进入列表查看</a></div>',
+            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近1000米内有{0}条发布信息</div><a href="/passenger.aspx">点击查看列表</a></div>',
                     result.nearbyPubList.length
                 );
 
+            $('#mapMsg').show().html(infoWStr.toString());
+
             //弹出标注是我的位置
-            var infoW = CreateInfoWindow(m, infoWStr.toString());
-            infoW.open(mapObj, m.getPosition());
+            //var infoW = CreateInfoWindow(m, infoWStr.toString());
+            //infoW.open(mapObj, m.getPosition());
 
             //添加附近的标注点
             for (var i = 0; i < result.nearbyPubList.length; i++) {
@@ -203,7 +216,7 @@ function showCurrPosition(position) {
                 });
 
                 var showInfoStr = new StringBuilder();
-                showInfoStr.AppendFormat('<div class="winfoTitle">{0}发布了一条内容</div><div class="">{1}</div><div class=""><a href="/detail.aspx?publishId={2}">点击进入详情</a></div>',
+                showInfoStr.AppendFormat('<div class="winfoTitle">【{0}】发布了一条内容</div><div class="">{1}</div><div class=""><a href="/detail.aspx?publishId={2}">点击进入详情</a></div>',
                         result.nearbyPubList[i].UserName,
                         result.nearbyPubList[i].PubTitle,
                         result.nearbyPubList[i].PublishId
