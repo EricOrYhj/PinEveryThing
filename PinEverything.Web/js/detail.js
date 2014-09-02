@@ -41,11 +41,11 @@ Detail.JoinPublic = function () {
                 dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
                 dialogHtml = dialogHtml + '</div>';
                 dialogHtml = dialogHtml + ' </li>';
-                $("#messageList #messageUl").append(dialogHtml);
+                $("#messageUl").prepend(dialogHtml);
 
                 $("#sidebarPlay").html("<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">退出</a>");
 
-                //alert("加入成功");
+                alert("加入成功");
             }
             else if (data.MSG == "S") {
                 alert("你已加入");
@@ -136,7 +136,7 @@ Detail.ContactOwner = function () {
         },
         success: function (data) {
             if (data.MSG == "N") {
-                alert("发送失败");
+                alert("留言失败");
             } else if (data.MSG == "Y") {
                 var msgObj = data.msgObj;
                 var userName = msgObj.userName;
@@ -154,9 +154,8 @@ Detail.ContactOwner = function () {
                 dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
                 dialogHtml = dialogHtml + '</div>';
                 dialogHtml = dialogHtml + ' </li>';
-                $("#messageList #messageUl").appendTo(dialogHtml);
-
-                alert("消息已发");
+                $("#messageUl").prepend(dialogHtml);
+                alert("留言成功");
             }
         }
     });
