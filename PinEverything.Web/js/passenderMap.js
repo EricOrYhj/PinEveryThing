@@ -215,7 +215,7 @@ function showCurrPosition(position) {
                 var pubMarker = new AMap.Marker({
                     map: mapObj,
                     position: new AMap.LngLat(result.nearbyPubList[i].Lng, result.nearbyPubList[i].Lat), //基点位置
-                    icon: "http://developer.amap.com/wp-content/uploads/2014/06/marker.png", //marker图标，直接传递地址url
+                    icon: "/images/car_red.png", //marker图标，直接传递地址url
                     offset: { x: -8, y: -34 } //相对于基点的位置
                 });
 
@@ -263,7 +263,7 @@ function showCurrPosition(position) {
                 else if (joinType == 3) {
                     joinType = "未加入";
                     joinColor = "Red";
-                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击加入</a>', publishId);
+                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击查看详情</a>', publishId);
                 }
 
                 if (i % 2 == 0)

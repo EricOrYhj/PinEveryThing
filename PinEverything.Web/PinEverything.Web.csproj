@@ -76,12 +76,14 @@
     <Content Include="ajaxpage\user.aspx" />
     <Content Include="callback.aspx" />
     <Content Include="css\css.css" />
+    <Content Include="css\detail.css" />
     <Content Include="css\images\ajax-loader.gif" />
     <Content Include="css\index.css" />
     <Content Include="css\jquery.mobile-1.4.3.min.css" />
     <Content Include="css\mobiscroll.animation.css" />
     <Content Include="css\mobiscroll.scroller.css" />
     <Content Include="css\mobiscroll.widget.css" />
+    <Content Include="css\passender.css" />
     <Content Include="detail.aspx" />
     <Content Include="detail.html" />
     <Content Include="DLL\EntityFramework.dll" />
@@ -92,6 +94,7 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\arrow.jpg" />
     <Content Include="images\arrow.png" />
+    <Content Include="images\car_red.png" />
     <Content Include="images\history.png" />
     <Content Include="images\icon1.jpg" />
     <Content Include="images\icon1.png" />
@@ -139,6 +142,7 @@
     <Content Include="js\mobiscroll.select.js" />
     <Content Include="js\mobiscroll.widget.js" />
     <Content Include="js\owner.js" />
+    <Content Include="js\passenderMap.js" />
     <Content Include="js\passenger.js" />
     <Content Include="List.aspx" />
     <Content Include="list.html" />
@@ -224,6 +228,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\css.scss" />
     <Content Include="images\Web.config" />
     <Content Include="Main.Master" />
     <None Include="Properties\PublishProfiles\charlie.pubxml" />

@@ -211,7 +211,7 @@ function showCurrPosition(position) {
                 var pubMarker = new AMap.Marker({
                     map:mapObj,
                     position: new AMap.LngLat(result.nearbyPubList[i].Lng, result.nearbyPubList[i].Lat), //基点位置
-                    icon: "http://developer.amap.com/wp-content/uploads/2014/06/marker.png", //marker图标，直接传递地址url
+                    icon: "/images/car_red.png", //marker图标，直接传递地址url
                     offset: { x: -8, y: -34 } //相对于基点的位置
                 });
 
