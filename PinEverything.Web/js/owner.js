@@ -24,6 +24,7 @@ Owner.AddPublic = function () {
     this.options.carColor = $("#color_dummy").val();
     this.options.ownerPhone = $("#ownerPhone").text();
     this.options.note = $(".txtMessage").val();
+    this.options.pubType = $("#hidPubType").val();
 
     $.ajax({
         type: "POST",
@@ -53,12 +54,15 @@ Owner.AddPublic = function () {
 
 //事件绑定
 Owner.BindEvent = function () {
-    //$("#messageBtn").click(function () {
-    //    Owner.AddPublic();
-    //});
+    var pubType = $("#hidPubType").val();
+    if (pubType=="2")
+    {
+        $("#ifTaxi").css("display", "block");
+        $("#ifCar").css("display", "none");
+    }
 }
 
 //脚本加载事件
 $(function () {
-    //Owner.BindEvent();
+    Owner.BindEvent();
 });

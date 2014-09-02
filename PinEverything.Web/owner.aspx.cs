@@ -15,6 +15,10 @@ namespace PinEverything.Web
         {
             if (Session["user"] != null)
             {
+                string pubType = Request["pubType"];
+                if (!string.IsNullOrEmpty(pubType))
+                    this.hidPubType.Value = pubType;
+
                 UserInfo userDetail = new UserInfo();
                 userDetail = Session["user"] as UserInfo;
             }

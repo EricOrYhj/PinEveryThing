@@ -45,7 +45,7 @@ namespace PinEverything.Services
         {
             EntityList<PublishInfo> result = new EntityList<PublishInfo>();
 
-            result.Table = this.db.Set<PublishInfo>().OrderByDescending(
+            result.Table = this.db.Set<PublishInfo>().Where(p => p.Status == 1).OrderByDescending(
                     p => p.AutoId
                 ).Skip(
                     (pageIndex - 1) * pageSize
@@ -364,7 +364,7 @@ namespace PinEverything.Services
         {
             EntityList<PublishInfo> result = new EntityList<PublishInfo>();
 
-            result.Table = this.db.Set<PublishInfo>().Where(p => p.UserId.Equals(userId)).OrderByDescending(
+            result.Table = this.db.Set<PublishInfo>().Where(p => p.Status == 1).Where(p => p.UserId.Equals(userId)).OrderByDescending(
                     p => p.AutoId
                 ).Skip(
                     (pageIndex - 1) * pageSize
@@ -383,7 +383,7 @@ namespace PinEverything.Services
         {
             EntityList<JoinInfo> result = new EntityList<JoinInfo>();
 
-            result.Table = this.db.Set<JoinInfo>().Where(p => p.UserId.Equals(userId)).OrderByDescending(
+            result.Table = this.db.Set<JoinInfo>().Where(p => p.Status == 1).Where(p => p.UserId.Equals(userId)).OrderByDescending(
                     p => p.AutoId
                 ).Skip(
                     (pageIndex - 1) * pageSize
@@ -407,7 +407,7 @@ namespace PinEverything.Services
         {
             EntityList<JoinInfo> result = new EntityList<JoinInfo>();
 
-            result.Table = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).Where(p => p.Status.Equals(1)).OrderByDescending(
+            result.Table = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).Where(p => p.Status == 1).OrderByDescending(
                     p => p.AutoId
                 ).ToList();
 
@@ -422,6 +422,18 @@ namespace PinEverything.Services
             )
         {
             JoinInfo model = this.db.Set<JoinInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
+            model.Status = status;
+
+            return this.db.SaveChanges().Equals(1);
+        }
+
+        public bool UpdatePubStatus(
+                Guid publishId,
+                Guid userId,
+                int status
+            )
+        {
+            PublishInfo model = this.db.Set<PublishInfo>().Where(p => p.PublishId.Equals(publishId)).FirstOrDefault(p => p.UserId.Equals(userId));
             model.Status = status;
 
             return this.db.SaveChanges().Equals(1);
