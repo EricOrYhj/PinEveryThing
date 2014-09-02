@@ -96,27 +96,36 @@ namespace PinEverything.Web.ajaxpage
             //更新并返回
             pytService.UpdateUserLBS(this.currUser.UserId, tLat.ToString(), tLng.ToString());
 
-            //TODO:获取全部发布数量
-            if (!string.IsNullOrWhiteSpace(Request["showAllPubCount"])) { 
-            
-            }
-
             //TODO:获取全部发布信息实体（如有分页获取第一页数据）
             if (!string.IsNullOrWhiteSpace(Request["showAllPub"]))
             {
 
             }
 
-            //TODO:获取附近发布数量
-            if (!string.IsNullOrWhiteSpace(Request["showNearbyPubCount"]))
-            {
-
-            }
 
             //TODO:获取附近发布数据实体（如有分页获取第一页数据）
             if (!string.IsNullOrWhiteSpace(Request["showNearbyPub"]))
             {
+                List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(1, currUser.UserId);
 
+                JavaScriptArray arr = new JavaScriptArray();
+
+                foreach (var item in resultList)
+                {
+                    JavaScriptObject jObj = new JavaScriptObject();
+
+                    jObj.Add("Lat", item.Lat);
+                    jObj.Add("Lng", item.Lng);
+                    jObj.Add("PubTitle", item.PubTitle);
+                    jObj.Add("PubContent", item.PubContent);
+                    jObj.Add("PublishId", item.PublishId);
+                    UserInfo pubUser = pytService.GetUser(item.UserId);
+                    jObj.Add("UserName", pubUser.UserName);
+
+                    arr.Add(jObj);
+                }
+
+                resultObj.Add("nearbyPubList", arr);
             }
 
             resultObj.Add("lat",tLat);
@@ -169,20 +178,17 @@ namespace PinEverything.Web.ajaxpage
                 DateTime startTime = DateTime.Parse(startTimeStr);
 
                 string pubTitle = startPosition + '-' + endPosition;
-                string lat = string.Empty;
-                string lng = string.Empty;
+                string lat = currUser.CurrLat;
+                string lng = currUser.CurrLng;
 
-                UserInfo userInfo = new UserInfo();
-                userInfo = Session["user"] as UserInfo;
-
-                bool flag = pytService.AddPublishInfo(Guid.NewGuid(), userInfo.ProjectId, userInfo.UserId, pubType, 1,
+                bool flag = pytService.AddPublishInfo(Guid.NewGuid(), currUser.ProjectId, currUser.UserId, pubType, 1,
                     pubTitle, note, lat, lng, userLimCount, startPosition, endPosition, carType, carColor, startTime);
                 if (flag)
                 {
                     resultObj.Add("MSG", "Y");
                     //发布动态
                     APIService APIService = new Services.APIService();
-                    string access_token = userInfo.MDToken;
+                    string access_token = currUser.MDToken;
                     string pMsg = startPosition;
                     string title = startPosition;
                     bool postFlag = APIService.postUpdate(access_token, pMsg, title);

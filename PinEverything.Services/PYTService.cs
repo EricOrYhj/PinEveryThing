@@ -60,6 +60,51 @@ namespace PinEverything.Services
             return result;
         }
 
+        public List<PublishInfo> QueryAllPubInfoForLBS(int isNearByType = 0,Guid? currUserId = null) 
+        {
+            List<PublishInfo> result = new List<PublishInfo>();
+
+            result = this.db.Set<PublishInfo>().Where(p => p.Status == 1).OrderByDescending(
+                    p => p.AutoId
+                ).ToList();
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                if (string.IsNullOrWhiteSpace(result[i].Lat))
+                {
+                    //根据用户表补足lbs信息
+                    UserInfo userModel = GetUser(result[i].UserId); 
+                    if (userModel != null)
+                    {
+                        result[i].Lat = userModel.CurrLat;
+                        result[i].Lng = userModel.CurrLng;
+                        result[i].OrginLat = userModel.OrginLat;
+                        result[i].OrginLng = userModel.OrginLng;
+                    }
+                }
+            }
+            this.db.SaveChanges();
+
+            result = result.Where(p => !string.IsNullOrWhiteSpace(p.Lat)).ToList();
+
+            if (isNearByType == 1)
+            {
+                UserInfo currUser = GetUser(currUserId.Value);
+                result = result.Where(p =>
+                        Common.LBS.Compute.DistanceOfTwoPoints(double.Parse(currUser.OrginLng), double.Parse(currUser.OrginLat), double.Parse(p.OrginLng), double.Parse(p.OrginLat), Common.LBS.Compute.GaussSphere.WGS84) <= 1000
+                    ).ToList();
+            }
+            if (isNearByType == 2)
+            {
+                UserInfo currUser = GetUser(currUserId.Value);
+                result = result.Where(p =>
+                        Common.LBS.Compute.DistanceOfTwoPoints(double.Parse(currUser.OrginLng), double.Parse(currUser.OrginLat), double.Parse(p.OrginLng), double.Parse(p.OrginLat), Common.LBS.Compute.GaussSphere.WGS84) > 1000
+                    ).ToList();
+            }
+
+            return result;
+        }
+
         public bool AddPublishInfo(
             Guid publishId,
             Guid projectId,

@@ -176,21 +176,69 @@ function showCurrPosition(position) {
     $.ajax({
         type: 'post',
         url: '/ajaxpage/user.aspx',
-        data: {op:'UpdateLbs', lat: lat, lng: lng },
+        data: {op:'UpdateLbs', lat: lat, lng: lng,showNearbyPub:true },
         success: function (result) {
 
             var m = CreateMark(result.lat, result.lng);
             var c = CreateCircle(result.lat, result.lng, 1000);
             PanTo(lat, lng);
 
+            var infoWStr = new StringBuilder();
+
+            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近有{0}条发布信息</div><a href="/passenger.aspx">点击进入列表查看</a></div>',
+                    result.nearbyPubList.length
+                );
+
             //弹出标注是我的位置
-            var infoW = CreateInfoWindow(m, '<div class="winfoTitle">当前您在这里</div><div id="geocoderResult"></div>');
+            var infoW = CreateInfoWindow(m, infoWStr.toString());
             infoW.open(mapObj, m.getPosition());
 
-            geocoder(m.getPosition());
+
+            //添加附近的标注点
+            for (var i = 0; i < result.nearbyPubList.length; i++) {
+                var pubMarker = new AMap.Marker({
+                    map:mapObj,
+                    position: new AMap.LngLat(result.nearbyPubList[i].Lng, result.nearbyPubList[i].Lat), //基点位置
+                    icon: "http://developer.amap.com/wp-content/uploads/2014/06/marker.png", //marker图标，直接传递地址url
+                    offset: { x: -8, y: -34 } //相对于基点的位置
+                });
+
+                var showInfoStr = new StringBuilder();
+                showInfoStr.AppendFormat('<div class="winfoTitle">{0}发布了一条内容</div><div class="">{1}</div><div class=""><a href="javascript:;">点击进入详情</a></div>',
+                        result.nearbyPubList[i].UserName,
+                        result.nearbyPubList[i].PubTitle
+                    );
+
+                var pubInfoW = CreateInfoWindow(pubMarker, showInfoStr.toString());
+
+                markers.push(pubMarker);
+            }
+            addCluster(0);
+
         }
     });
 }
+
+
+function addCluster(tag) {
+    if (cluster) {
+        cluster.setMap(null);
+    }
+    if (tag == 1) {
+        var sts = [{ url: "http://developer.amap.com/wp-content/uploads/2014/06/1.png", size: new AMap.Size(32, 32), offset: new AMap.Pixel(-16, -30) },
+            { url: "http://developer.amap.com/wp-content/uploads/2014/06/2.png", size: new AMap.Size(32, 32), offset: new AMap.Pixel(-16, -30) },
+            { url: "http://developer.amap.com/wp-content/uploads/2014/06/3.png", size: new AMap.Size(48, 48), offset: new AMap.Pixel(-24, -45), textColor: '#CC0066' }];
+        mapObj.plugin(["AMap.MarkerClusterer"], function () {
+            cluster = new AMap.MarkerClusterer(mapObj, markers, { styles: sts });
+        });
+    }
+    else {
+        mapObj.plugin(["AMap.MarkerClusterer"], function () {
+            cluster = new AMap.MarkerClusterer(mapObj, markers);
+        });
+    }
+}
+
 
 function geocoder(position) {
     var MGeocoder;
