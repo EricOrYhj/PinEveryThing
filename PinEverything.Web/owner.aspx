@@ -125,7 +125,6 @@
         <div class="txtMessageBox">
             <textarea class="txtMessage" placeholder="填写留言信息"></textarea>
         </div>
-        <div id="mydiv1" style="position:absolute;display:none;border:1px solid silver;background:silver;">
     </div>
     <a href="javascript:Owner.AddPublic();" id="messageBtn">发布线路</a>
 </div>
