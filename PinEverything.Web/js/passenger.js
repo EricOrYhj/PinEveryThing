@@ -77,6 +77,7 @@ Passenger.publicList = function () {
                         html += '</li>';
                 }
                 $(".passengerList #listUl").append(html);
+                $(".loadMorePub").css("display", "none");
                 $("#pageIndex").val(pageIndex)
             }
         }
@@ -87,11 +88,12 @@ Passenger.publicList = function () {
 Passenger.GetScroll = function () {
     $(window).bind("scroll", function () {
         var bottom = $(document).height() - document.documentElement.scrollTop - document.body.scrollTop - $(window).height();
-        if (bottom <= 50) {
+        if (bottom <= 100) {
+            $(".loadMorePub").css("display", "block");
             setTimeout(function () {
                 Passenger.options.pageIndex++;
                 Passenger.publicList(Passenger.options.pageIndex);
-            }, 1000);
+            }, 2000);
         }
     });
 }

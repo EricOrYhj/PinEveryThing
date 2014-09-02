@@ -100,8 +100,6 @@
     <div class="thinkMessage">
         <span></span>我想留言
     </div>
-    <div id="mydiv1" style="position:absolute;display:none;border:1px solid silver;background:silver;"></div>
-
     <div class="messageList" id="messageList">
         <ul id="messageUl">
             </ul>

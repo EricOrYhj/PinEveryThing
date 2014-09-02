@@ -160,7 +160,7 @@
                 <div class="clear"></div>
             </li>--%>
         </ul>
-        <div class="loadMorePub">加载更多...</div>
+        <div class="loadMorePub" style="display:none">加载更多...</div>
     </div>
     <div class="passengerMap">
         <div id="mapMsg">
@@ -212,20 +212,4 @@
     </div>
 </body>
 </html>
-<script>
-    $(function () {
-        $(".passengerTabClick").click(function () {
-            $(this).addClass("active").siblings().removeClass("active");
-            var className = $(this).attr("rel");
-            if (className == 'passengerList') {
-                $(".passengerList").fadeIn();
-                $(".passengerMap").fadeOut();
-                Passenger.publicList();
-            } else {
-                $(".passengerList").fadeOut();
-                $(".passengerMap").fadeIn();
-            }
-        });
-    });
-</script>
 
