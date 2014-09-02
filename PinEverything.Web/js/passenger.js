@@ -69,7 +69,6 @@ Passenger.publicList = function () {
                         html += '<div class="passengerListLeftName">' + userName + '</div>';
                         html += '</div>';
                         html += '<div class="passengerListRight">';
-                        html += '<a href="/detail.aspx?publishId=' + publishId + '">';
                         html += '<span class="passengerListArrow"></span>';
                         html += ' <span class="passengerListArrowInner"></span>';
                         html += ' <div class="passengerListFromAddress">' + startPosition + '</div>';
@@ -77,7 +76,6 @@ Passenger.publicList = function () {
                         html += ' <div class="passengerListTime">' + startTime + '</div>';
                         html += ' <div class="passengerListCar">' + carType + '</div>';
                         html += '  <div class="passengerListDate">' + operateStr + '</div>';
-                        html += '</a>';
                         html += '</div>';
                         html += '<div class="clear"></div>';
                         html += '</li>';
