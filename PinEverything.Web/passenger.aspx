@@ -18,14 +18,13 @@
     <title>我是乘客</title>
 </head>
 <body>
-    <input type="hidden" id="pageIndex" runat="server" value="0" />
     <div class="sidebarBg">
         <div class="sidebarLeft sidebarPlayWidth">
             <a href="javascript:history.go(-1)">
                 <img src="images/arrow.png" alt="" /></a>
         </div>
         <div class="sidebarPlay">
-            <a href="play.html">打车</a>
+            <a href="/owner.aspx?pubType=2">打车</a>
         </div>
         <div class="sidebarTitle">
             我是乘客

@@ -54,9 +54,9 @@ Detail.JoinPublic = function () {
     });
 };
 
+//退出
 Detail.ExitJoin = function () {
     Detail.options.publishId = $("#hidPublishId").val();
-
     $.ajax({
         url: "/ajaxpage/user.aspx",
         dataType: "JSON",
@@ -66,6 +66,25 @@ Detail.ExitJoin = function () {
         success: function (data) {
             if (data.MSG == "N") {
                 alert("退出失败");
+            } else if (data.MSG == "Y") {
+                window.location.href = "/passenger.aspx";
+            }
+        }
+    });
+};
+
+//取消发布
+Detail.CanclePublic = function () {
+    Detail.options.publishId = $("#hidPublishId").val();
+    $.ajax({
+        url: "/ajaxpage/user.aspx",
+        dataType: "JSON",
+        data: { op: "CanclePublic", publishId: Detail.options.publishId },
+        beforeSend: function () {
+        },
+        success: function (data) {
+            if (data.MSG == "N") {
+                alert("取消发布失败");
             } else if (data.MSG == "Y") {
                 window.location.href = "/passenger.aspx";
             }

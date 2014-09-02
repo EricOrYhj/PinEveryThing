@@ -11,13 +11,13 @@ using PinEverything.Services;
 
 namespace PinEverything.Web.ajaxpage
 {
-    public class WebComm 
+    public class WebComm
     {
         /// <summary>
         /// 获取当前用户
         /// </summary>
         /// <returns></returns>
-        public static UserInfo currUser() 
+        public static UserInfo currUser()
         {
             UserInfo userInfo = null;
             if (HttpContext.Current.Session["user"] != null)
@@ -76,6 +76,9 @@ namespace PinEverything.Web.ajaxpage
                     case "ExitJoin":
                         ExitJoin();
                         break;
+                    case "CanclePublic":
+                        CanclePublic();
+                        break;
                 }
             }
         }
@@ -88,10 +91,10 @@ namespace PinEverything.Web.ajaxpage
             JavaScriptObject resultObj = new JavaScriptObject();
 
             //接受原始坐标
-            double 
+            double
                 lat = Convert.ToDouble(Request["lat"]),
                 lng = Convert.ToDouble(Request["lng"]),
-                tLat,tLng;
+                tLat, tLng;
 
             Common.LBS.Wgs84ToMgs.transform(lat, lng, out tLat, out tLng);
 
@@ -142,12 +145,12 @@ namespace PinEverything.Web.ajaxpage
                     UserInfo pubUser = pytService.GetUser(item.UserId);
                     JoinInfo joinInfo = pytService.GetJoinInfo(item.PublishId, currUser.UserId);
                     var joinType = "";
-                        if (joinInfo != null)
-                            joinType = "2";//已加入
-                        else if (currUser.UserId.Equals(item.UserId))
-                            joinType = "1";//发布人
-                        else
-                            joinType = "3";//未加入
+                    if (joinInfo != null)
+                        joinType = "2";//已加入
+                    else if (currUser.UserId.Equals(item.UserId))
+                        joinType = "1";//发布人
+                    else
+                        joinType = "3";//未加入
 
                     jObj.Add("Lat", item.Lat);
                     jObj.Add("Lng", item.Lng);
@@ -173,7 +176,7 @@ namespace PinEverything.Web.ajaxpage
                 resultObj.Add("nearbyPubList", arr);
             }
 
-            resultObj.Add("lat",tLat);
+            resultObj.Add("lat", tLat);
             resultObj.Add("lng", tLng);
             PageResponse(resultObj);
         }
@@ -238,8 +241,8 @@ namespace PinEverything.Web.ajaxpage
                     //发布动态
                     APIService APIService = new Services.APIService();
                     string access_token = currUser.MDToken;
-                    string pMsg = startPosition;
-                    string title = startPosition;
+                    string pMsg = pubTitle;
+                    string title = pubTitle;
                     bool postFlag = APIService.postUpdate(access_token, pMsg, title, publicID);
                 }
                 else
@@ -330,12 +333,12 @@ namespace PinEverything.Web.ajaxpage
 
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
-                    
+
                     //是否已经加入
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
                     if (joinInfo == null)
                     {
-                        bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng,1);
+                        bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng, 1);
 
                         if (flag)
                         {
@@ -360,7 +363,8 @@ namespace PinEverything.Web.ajaxpage
                         }
                         else
                             resultObj.Add("MSG", "N");
-                    }else
+                    }
+                    else
                         resultObj.Add("MSG", "S");
                 }
                 else
@@ -385,7 +389,7 @@ namespace PinEverything.Web.ajaxpage
                 int pageSize = int.Parse(Request["pageSize"].ToString());
                 if (!string.IsNullOrEmpty(publishId))
                 {
-                    
+
                     //对话信息
                     Entites.EntityList<DialogueInfo> dialogList = new EntityList<DialogueInfo>();
                     dialogList = pytService.QueryDialogInfo(Guid.Parse(publishId), pageIndex, pageSize);
@@ -482,7 +486,7 @@ namespace PinEverything.Web.ajaxpage
                         APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
 
                     JavaScriptObject msgObj = new JavaScriptObject();
-                    msgObj.Add("userName",userInfo.UserName);
+                    msgObj.Add("userName", userInfo.UserName);
                     msgObj.Add("userAvatar", userInfo.Avatar);
                     msgObj.Add("msg", msg);
 
@@ -509,7 +513,7 @@ namespace PinEverything.Web.ajaxpage
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
 
-                
+
                 UserInfo curUserInfo = new UserInfo();
                 curUserInfo = Session["user"] as UserInfo;
 
@@ -550,7 +554,6 @@ namespace PinEverything.Web.ajaxpage
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
 
-                
                 UserInfo curUserInfo = new UserInfo();
                 curUserInfo = Session["user"] as UserInfo;
 
@@ -567,13 +570,15 @@ namespace PinEverything.Web.ajaxpage
                     Guid publisID = joinItem.PublishId;
                     PublishInfo publicInfo = pytService.GetPublicInfo(publisID);
 
-                    publicObj.Add("PublishId", joinItem.PublishId);
-                    publicObj.Add("PubTitle", publicInfo.PubTitle);
-                    string creatTime = publicInfo.CreateTime.ToString("yyyyMMdd");
-                    publicObj.Add("CreateTime", creatTime);
-                    //publicObj.Add("CreateTime", publicInfo.CreateTime);
-
-                    hisJoinArr.Add(publicObj);
+                    if (publicInfo != null)
+                    {
+                        publicObj.Add("PublishId", joinItem.PublishId);
+                        publicObj.Add("PubTitle", publicInfo.PubTitle);
+                        string creatTime = publicInfo.CreateTime.ToString("yyyyMMdd");
+                        publicObj.Add("CreateTime", creatTime);
+                        //publicObj.Add("CreateTime", publicInfo.CreateTime);
+                        hisJoinArr.Add(publicObj);
+                    }
                 }
                 resultObj.Add("hisJoinList", hisJoinArr);
                 resultObj.Add("MSG", "Y");
@@ -639,8 +644,55 @@ namespace PinEverything.Web.ajaxpage
                 {
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
-                    bool flag=pytService.UpdateJoinStatus(Guid.Parse(publishId),userInfo.UserId,0);
-                    resultObj.Add("MSG", "Y");
+                    bool flag = pytService.UpdateJoinStatus(Guid.Parse(publishId), userInfo.UserId, 0);
+                    if (flag)
+                    {
+                        string Lat = string.Empty;
+                        string Lng = string.Empty;
+                        resultObj.Add("MSG", "Y");
+                        //发布动态
+                        APIService APIService = new Services.APIService();
+                        PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
+                        string toUser = publicInfo.UserId.ToString();
+                        string msg = userInfo.UserName + "退出了您创建的" + publicInfo.PubTitle;
+                        int dialogType = 1;
+                        //插入对话表
+                        bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
+                        //发送私信
+                        if (dialogFlag)
+                            APIService.sendMsg(userInfo.MDToken, toUser, msg, "1");
+                    }
+                    else
+                        resultObj.Add("MSG", "N");
+
+                }
+                else
+                    resultObj.Add("MSG", "N");
+            }
+            else
+                resultObj.Add("MSG", "N");
+
+            PageResponse(resultObj);
+        }
+
+        /// <summary>
+        /// 取消发布
+        /// </summary>
+        private void CanclePublic()
+        {
+            JavaScriptObject resultObj = new JavaScriptObject();
+            if (Session["user"] != null)
+            {
+                string publishId = Request["publishId"];
+                if (!string.IsNullOrEmpty(publishId))
+                {
+                    UserInfo userInfo = new UserInfo();
+                    userInfo = Session["user"] as UserInfo;
+                    bool flag = pytService.UpdatePubStatus(Guid.Parse(publishId), userInfo.UserId, 0);
+                    if (flag)
+                        resultObj.Add("MSG", "Y");
+                    else
+                        resultObj.Add("MSG", "N");
                 }
                 else
                     resultObj.Add("MSG", "N");

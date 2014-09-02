@@ -20,6 +20,7 @@
 <title>我是车主</title>
 </head>
 <body>
+    <input type="hidden" id="hidPubType" runat="server" value="1" />
 <div class="sidebarBg">
     <div class="sidebarLeft">
         <a href="javascript:history.go(-1)"><img src="images/arrow.png" alt=""/></a>
@@ -80,7 +81,7 @@
             </div>
             <div class="ownerArrow"></div>
         </li>
-        <li>
+        <li id="ifCar">
             <div class="ownerICon5"></div>
             <div class="ownerTitle">
                 <select id="car" data-role="none">
@@ -100,7 +101,7 @@
             </div>
             <div class="ownerArrow"></div>
         </li>
-        <li style="display: none;" id="ifTaxi">
+        <li style="display:none;" id="ifTaxi">
             <div class="ownerICon5"></div>
             <div class="ownerTitle">
                 出租车
