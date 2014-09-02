@@ -94,6 +94,7 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\arrow.jpg" />
     <Content Include="images\arrow.png" />
+    <Content Include="images\car_red.png" />
     <Content Include="images\history.png" />
     <Content Include="images\icon1.jpg" />
     <Content Include="images\icon1.png" />
