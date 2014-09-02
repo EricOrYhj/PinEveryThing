@@ -10,8 +10,8 @@
     <script type="text/javascript"
         src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
     </script>
-    <script src="/js/mapbase.js?v=0.0.3"></script>
-    <link href="css/css.css?v=0.0.3" rel="stylesheet">
+    <script src="/js/passenderMap.js?v=0.0.4"></script>
+    <link href="css/css.css?v=0.0.4" rel="stylesheet">
     <title>我是乘客</title>
     <style>
         #mapMsg{
