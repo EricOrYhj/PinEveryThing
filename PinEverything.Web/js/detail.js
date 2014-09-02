@@ -11,85 +11,90 @@ Detail.options = {
 //加入
 Detail.JoinPublic = function () {
     Detail.options.publishId = $("#hidPublishId").val();
+    if (confirm("确定加入?")) {
+        $.ajax({
+            url: "/ajaxpage/user.aspx",
+            dataType: "JSON",
+            data: { op: "JoinPublic", publishId: Detail.options.publishId },
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if (data.MSG == "N") {
+                    alert("加入失败");
+                } else if (data.MSG == "Y") {
+                    var msgObj = data.msgObj;
+                    var userName = msgObj.userName;
+                    var userAvatar = msgObj.userAvatar;
+                    var msg = msgObj.msg;
 
-    $.ajax({
-        url: "/ajaxpage/user.aspx",
-        dataType: "JSON",
-        data: { op: "JoinPublic", publishId: Detail.options.publishId },
-        beforeSend: function () {
-        },
-        success: function (data) {
-            if (data.MSG == "N") {
-                alert("加入失败");
-            } else if (data.MSG == "Y") {
-                var msgObj = data.msgObj;
-                var userName = msgObj.userName;
-                var userAvatar = msgObj.userAvatar;
-                var msg = msgObj.msg;
+                    var userHtml = '<span title="' + userName + '"><img src="' + userAvatar + '" alt="" /></span>';
+                    $("#members").append(userHtml);
 
-                var userHtml = '<span title="' + userName + '"><img src="' + userAvatar + '" alt="" /></span>';
-                $("#members").append(userHtml);
+                    var dialogHtml = '';
+                    dialogHtml = dialogHtml + '<li>';
+                    dialogHtml = dialogHtml + '<div class="messageListLeft detail">';
+                    dialogHtml = dialogHtml + '<span><img src="' + userAvatar + '" width="20px" height="20px" alt=""/></span>';
+                    dialogHtml = dialogHtml + '</div>';
+                    dialogHtml = dialogHtml + '<div class="messageListRight">';
+                    dialogHtml = dialogHtml + '<div class="messageListTitle">' + userName + '</div>';
+                    dialogHtml = dialogHtml + '<div class="messageListContent">' + msg + '</div>';
+                    dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
+                    dialogHtml = dialogHtml + '</div>';
+                    dialogHtml = dialogHtml + ' </li>';
+                    $("#messageUl").prepend(dialogHtml);
 
-                var dialogHtml = '';
-                dialogHtml = dialogHtml + '<li>';
-                dialogHtml = dialogHtml + '<div class="messageListLeft detail">';
-                dialogHtml = dialogHtml + '<span><img src="' + userAvatar + '" width="20px" height="20px" alt=""/></span>';
-                dialogHtml = dialogHtml + '</div>';
-                dialogHtml = dialogHtml + '<div class="messageListRight">';
-                dialogHtml = dialogHtml + '<div class="messageListTitle">' + userName + '</div>';
-                dialogHtml = dialogHtml + '<div class="messageListContent">' + msg + '</div>';
-                dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
-                dialogHtml = dialogHtml + '</div>';
-                dialogHtml = dialogHtml + ' </li>';
-                $("#messageUl").prepend(dialogHtml);
+                    $("#sidebarPlay").html("<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">退出</a>");
 
-                $("#sidebarPlay").html("<a href=\"javascript:Detail.ExitJoin();\" id=\"exit\" style=\"display: block;\">退出</a>");
-
-                alert("加入成功");
+                    alert("加入成功");
+                }
+                else if (data.MSG == "S") {
+                    alert("你已加入");
+                }
             }
-            else if (data.MSG == "S") {
-                alert("你已加入");
-            }
-        }
-    });
+        });
+    }
 };
 
 //退出
 Detail.ExitJoin = function () {
     Detail.options.publishId = $("#hidPublishId").val();
-    $.ajax({
-        url: "/ajaxpage/user.aspx",
-        dataType: "JSON",
-        data: { op: "ExitJoin", publishId: Detail.options.publishId },
-        beforeSend: function () {
-        },
-        success: function (data) {
-            if (data.MSG == "N") {
-                alert("退出失败");
-            } else if (data.MSG == "Y") {
-                window.location.href = "/passenger.aspx";
+    if (confirm("确定退出?")) {
+        $.ajax({
+            url: "/ajaxpage/user.aspx",
+            dataType: "JSON",
+            data: { op: "ExitJoin", publishId: Detail.options.publishId },
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if (data.MSG == "N") {
+                    alert("退出失败");
+                } else if (data.MSG == "Y") {
+                    window.location.href = "/passenger.aspx";
+                }
             }
-        }
-    });
+        });
+    }
 };
 
 //取消发布
 Detail.CanclePublic = function () {
     Detail.options.publishId = $("#hidPublishId").val();
-    $.ajax({
-        url: "/ajaxpage/user.aspx",
-        dataType: "JSON",
-        data: { op: "CanclePublic", publishId: Detail.options.publishId },
-        beforeSend: function () {
-        },
-        success: function (data) {
-            if (data.MSG == "N") {
-                alert("取消发布失败");
-            } else if (data.MSG == "Y") {
-                window.location.href = "/passenger.aspx";
+    if (confirm("确定取消发布?")) {
+        $.ajax({
+            url: "/ajaxpage/user.aspx",
+            dataType: "JSON",
+            data: { op: "CanclePublic", publishId: Detail.options.publishId },
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if (data.MSG == "N") {
+                    alert("取消发布失败");
+                } else if (data.MSG == "Y") {
+                    window.location.href = "/passenger.aspx";
+                }
             }
-        }
-    });
+        });
+    }
 };
 
 //获取对话表  和加入成员的信息

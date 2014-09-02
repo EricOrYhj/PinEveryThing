@@ -76,7 +76,6 @@
                 <div class="listTime">2014-8-30 10:00</div>
             </li>--%>
         </ul>
-        <div class="loadMore">加载更多...</div>
     </div>
     <div class="list" id="joinList">
         <ul id="joinUl">
