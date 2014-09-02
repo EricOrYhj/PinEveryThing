@@ -100,10 +100,10 @@
     <div class="thinkMessage">
         我想留言
     </div>
-    <div >
+    <div class="warpWirteArea" style="display:none;">
         <textarea id="txtMessage"  class="txtMessage" placeholder="填写留言信息"  style="border: 1px solid #ccc"></textarea>
         <div style=" width:180px; margin:0px auto;">
-        <span class="ui-btn fromAddressBtn">确定</span><span class="ui-btn fromAddressBtn">取消</span>
+        <span class="ui-btn save">确定</span><span class="ui-btn">取消</span>
         </div>
      </div>
     <div class="messageList" id="messageList">

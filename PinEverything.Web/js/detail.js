@@ -162,6 +162,7 @@ Detail.ContactOwner = function () {
             if (data.MSG == "N") {
                 alert("留言失败");
             } else if (data.MSG == "Y") {
+                $("#txtMessage").val('');
                 var msgObj = data.msgObj;
                 var userName = msgObj.userName;
                 var userAvatar = msgObj.userAvatar;
@@ -192,7 +193,8 @@ Detail.Cancel = function () {
 //事件绑定
 Detail.BindEvent = function () {
     $(document).on('click', '.thinkMessage', function () {
-
+        $(this).hide();
+        $('.warpWirteArea').slideDown();
         //if ($(this).hasClass('textmessage')) {
         //    $(this).removeClass('textmessage');
         //    $('#txtMessage').slideUp();
@@ -206,7 +208,27 @@ Detail.BindEvent = function () {
         //    $('#txtMessage').slideDown();
         //    $(this).html("<span></span>确认");
         //}
+    });
 
+    $('.warpWirteArea .ui-btn').click(function () {
+        
+
+        if ($(this).hasClass('save')) {
+            var contacText = $("#txtMessage").val();
+            if (!contacText) {
+                alert('请输入留言内容');
+                $("#txtMessage").focus();
+                return;
+            }
+            Detail.ContactOwner();
+            $('.warpWirteArea').slideUp('fast', function () {
+                $('.thinkMessage').show();
+            });
+        } else {
+            $('.warpWirteArea').slideUp('fast', function () {
+                $('.thinkMessage').show();
+            });
+        }
 
     });
 }
