@@ -36,24 +36,14 @@
         <li class="ownerInput">
             <div class="ownerICon1"></div>
             <div class="ownerTitle">
-                <div class="ownerTitles" id="startPosition">中山西路虹桥路口</div>
-                <div class="ownerOperation">
-                    <input type="text" class="address ownerInputTxt"/>
-                    <span class="ui-btn fromAddressBtn">确定</span>
-                    <span class="ui-btn fromAddressCancel">取消</span>
-                </div>
+                <input type="text" class="address" placeholder="请输入始发地地" id="startPosition"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
         <li class="ownerInput">
             <div class="ownerICon2"></div>
             <div class="ownerTitle">
-                <div class="ownerTitles" id="endPosition">长宁龙之梦</div>
-                <div class="ownerOperation">
-                    <input type="text" class="address ownerInputTxt"/>
-                    <span class="ui-btn fromAddressBtn">确定</span>
-                    <span class="ui-btn fromAddressCancel">取消</span>
-                </div>
+                <input type="text" class="address" placeholder="请输入始发地地" id="endPosition"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
@@ -126,12 +116,7 @@
         <li class="ownerInput">
             <div class="ownerICon7"></div>
             <div class="ownerTitle ownerTitleClear">
-                <div class="ownerTitles" id="ownerPhone">1318534343</div>
-                <div class="ownerOperation">
-                    <input type="text" class="address ownerInputTxt"/>
-                    <span class="ui-btn fromAddressBtn">确定</span>
-                    <span class="ui-btn fromAddressCancel">取消</span>
-                </div>
+                 <input type="text" class="address" placeholder="请输入始发地地" id="ownerPhone"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
@@ -141,7 +126,6 @@
         <div class="txtMessageBox">
             <textarea class="txtMessage" placeholder="填写留言信息"></textarea>
         </div>
-        <div id="mydiv1" style="position:absolute;display:none;border:1px solid silver;background:silver;">
     </div>
     <a href="javascript:Owner.AddPublic();" id="messageBtn">发布线路</a>
 </div>

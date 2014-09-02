@@ -39,6 +39,11 @@ q, blockquote {
     content: "";
     content: none; }
 
+body
+{
+      font-family: "Microsoft YaHei";
+}
+
 a img {
   border: none; }
 
@@ -92,7 +97,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .headerContent {
   text-align: center;
-  padding-top: 15px; }
+  }
   .headerContent .headerContentIcon {
     border: 3px solid #626882;
     -webkit-border-radius: 50%;
@@ -100,19 +105,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    width: 126px;
-    height: 126px;
+    width: 66px;
+    height: 66px;
     margin: 0 auto;
     overflow: hidden; }
-    .headerContent .headerContentIcon img {
+    .headerContent .headerContentIcon span
+    {
       border: 3px solid #384160;
-      width: 120px;
-      height: 120px;
+      width: 60px;
+      height: 60px;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
-      border-radius: 50%; }
+      border-radius: 50%; 
+      display: block;
+    }
+    .headerContent .headerContentIcon span div
+    {
+        margin: -8px 0 0 -8px;
+    }
+    .headerContent .headerContentIcon img {
+      width: 80px;
+      height: 80px;
+    }
   .headerContent .headerContentTitle {
     font-size: 20px;
     font-family: "sans-serif";
@@ -126,7 +142,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     border-bottom-color: #444d6c;
     width: 0;
     height: 0;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     position: relative;
     -webkit-box-shadow: 0 -3px 3px #37405f;
     -moz-box-shadow: 0 -3px 3px #37405f;
@@ -458,7 +474,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .owner .ownerICon8 {
     width: 24px;
     height: 24px;
-    margin-top: 19px;
+    margin-top: 7px;
     background: url("../images/icon11.png") no-repeat top right; }
   .owner .ownerICon9 {
     background: url("../images/icon12.png") no-repeat top right; }
@@ -478,22 +494,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .owner .ownerArrow {
     position: absolute;
     top: 8px;
-    right: 10px;
-    background: url("../images/icon7.png") no-repeat;
+    right: 10px;    
     width: 24px;
     height: 24px; }
   .owner .active .ownerArrow {
     background: url("../images/icon15.png") no-repeat; }
   .owner .message {
     margin-top: 25px;
-    height: 72px;
     display: -moz-box;
     display: -webkit-box;
     display: box;
     position: relative;
     background: #fff;
-
-    line-height: 40px;
     padding: 1px 0; }
     .owner .message .ownerTitle {
       color: #d0d0d0; }
@@ -523,8 +535,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .list li {
     border-bottom: 1px solid #dfdfdf;
     color: #595959;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     position: relative; }
   .list .listTitle {
     font-size: 12px;
@@ -534,8 +546,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     text-indent: 15px;
     display: inline-block;
     width: 180px;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; }
@@ -679,14 +691,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .address {
   width: 95%;
-  border: 1px solid #ccc;
   margin: 0 auto;
   background: #fff;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
+  color: #595959;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  border: 0;
   padding: 5px; }
 
 
@@ -735,7 +745,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   box-flex: 1;
-  height: 72px;
+  height: 36px;
   border: 1px solid #ccc; }
 
 .txtMessage {
@@ -745,7 +755,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 0;
   line-height: 18px;
   padding: 0 1%;
-  height: 72px; }
+  font-family: "Microsoft YaHei";
+  height: 36px; }
 
 .modelTitle {
   font-size: 16px;
