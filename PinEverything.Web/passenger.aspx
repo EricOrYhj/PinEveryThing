@@ -190,6 +190,7 @@
             if (className == 'passengerList') {
                 $(".passengerList").fadeIn();
                 $(".passengerMap").fadeOut();
+                Passenger.publicList();
             } else {
                 $(".passengerList").fadeOut();
                 $(".passengerMap").fadeIn();

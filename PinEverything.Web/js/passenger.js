@@ -83,18 +83,31 @@ Passenger.publicList = function () {
     });
 };
 
+//滑动加载
+Passenger.GetScroll = function () {
+    $(window).bind("scroll", function () {
+        var bottom = $(document).height() - document.documentElement.scrollTop - document.body.scrollTop - $(window).height();
+        if (bottom <= 50) {
+            setTimeout(function () {
+                Passenger.options.pageIndex++;
+                Passenger.publicList(Passenger.options.pageIndex);
+            }, 1000);
+        }
+    });
+}
 
 //事件绑定
 Passenger.BindEvent = function () {
-    $(".loadMorePub").click(function () {
-        var curpageIndex = $("#pageIndex").val();
-        Passenger.options.pageIndex = Number(curpageIndex) + 1;
-        Passenger.publicList();
-    });
+    //$(".loadMorePub").click(function () {
+    //    var curpageIndex = $("#pageIndex").val();
+    //    Passenger.options.pageIndex = Number(curpageIndex) + 1;
+    //    Passenger.publicList();
+    //});
 }
 
 //脚本加载事件
 $(function () {
     Passenger.BindEvent();
     Passenger.publicList();
+    Passenger.GetScroll();
 });
