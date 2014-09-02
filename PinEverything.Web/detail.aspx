@@ -98,7 +98,7 @@
     </div>
      
     <div class="thinkMessage">
-        我想留言
+        <span></span>我想留言
     </div>
     <div class="warpWirteArea" style="display:none;">
         <textarea id="txtMessage"  class="txtMessage" placeholder="填写留言信息"  style="border: 1px solid #ccc"></textarea>
