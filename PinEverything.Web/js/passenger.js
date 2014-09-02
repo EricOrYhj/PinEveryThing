@@ -41,16 +41,22 @@ Passenger.publicList = function () {
                     var joinType = pubItem.JoinType;
                     var createTime = pubItem.CreateTime;
 
+                    var operateStr = new StringBuilder();
+
                     joinColor = "Yellow";
-                    if (joinType == 1)
+                    if (joinType == 1) {
                         joinType = "发布人";
+                        operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击查看详情</a>', publishId);
+                    }
                     else if (joinType == 2) {
                         joinType = "已加入";
                         joinColor = "Blue";
+                        operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击查看详情</a>', publishId);
                     }
                     else if (joinType == 3) {
                         joinType = "未加入";
                         joinColor = "Red";
+                        operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击查看详情</a>', publishId);
                     }
 
                     if ((i + (pageIndex-1)*5) % 2 == 0)
@@ -68,9 +74,9 @@ Passenger.publicList = function () {
                         html += ' <span class="passengerListArrowInner"></span>';
                         html += ' <div class="passengerListFromAddress">' + startPosition + '</div>';
                         html += ' <div class="passengerListToAddress">' + endPosition + '</div>';
-                        html += ' <div class="passengerListTime">' + startTime + '  <span style="color:'+joinColor+';">' + joinType + '</span></div>';
+                        html += ' <div class="passengerListTime">' + startTime + '</div>';
                         html += ' <div class="passengerListCar">' + carType + '</div>';
-                        html += '  <div class="passengerListDate">' + createTime + '</div>';
+                        html += '  <div class="passengerListDate">' + operateStr + '</div>';
                         html += '</a>';
                         html += '</div>';
                         html += '<div class="clear"></div>';
