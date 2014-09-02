@@ -36,14 +36,14 @@
         <li class="ownerInput">
             <div class="ownerICon1"></div>
             <div class="ownerTitle">
-                <input type="text" class="address" placeholder="请输入始发地地" id="startPosition"/>
+                <input type="text" class="address" placeholder="请输入始发地地" id="startPosition" runat="server"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
         <li class="ownerInput">
             <div class="ownerICon2"></div>
             <div class="ownerTitle">
-                <input type="text" class="address" placeholder="请输入始发地地" id="endPosition"/>
+                <input type="text" class="address" placeholder="请输入始发地地" id="endPosition" runat="server"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
@@ -67,7 +67,7 @@
         <li>
             <div class="ownerICon4"></div>
             <div class="ownerTitle">
-                <input type="text" class="ownerTime" value="2014/9/1"/>
+                <input type="text" class="ownerTime" value="2014/9/1" id="ownerTime" runat="server"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
@@ -87,6 +87,7 @@
                     <option value="别克">别克</option>
                     <option value="沃尔沃">沃尔沃</option>
                     <option value="雪铁龙">雪铁龙</option>
+                    <option value="其他">其他</option>
                 </select>
             </div>
             <div class="ownerArrow"></div>
@@ -116,7 +117,7 @@
         <li class="ownerInput">
             <div class="ownerICon7"></div>
             <div class="ownerTitle ownerTitleClear">
-                 <input type="text" class="address" placeholder="请输入始发地地" id="ownerPhone"/>
+                 <input type="text" class="address" placeholder="请输入手机号" id="ownerPhone" runat="server"/>
             </div>
             <div class="ownerArrow"></div>
         </li>

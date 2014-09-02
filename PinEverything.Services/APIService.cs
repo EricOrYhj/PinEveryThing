@@ -89,9 +89,9 @@ namespace PinEverything.Services
         /// <param name="pMsg">动态内容</param>
         /// <param name="title">链接标题</param>
         /// <returns>是否成功</returns>
-        public bool postUpdate(string access_token, string pMsg, string title,Guid publicId)
+        public string postUpdate(string access_token, string pMsg, string title,Guid publicId)
         {
-            bool flag = false;
+            string postID = string.Empty;
             if (!string.IsNullOrEmpty(access_token))
             {
                 string Url = "https://api.mingdao.com/post/update";//接口地址
@@ -113,9 +113,9 @@ namespace PinEverything.Services
                     resultObj = (JavaScriptObject)JavaScriptConvert.DeserializeObject(requestURL);
 
                 if (!string.IsNullOrEmpty(resultObj["post"].ToString()))
-                    flag = true;
+                    postID = resultObj["post"].ToString();
             }
-            return flag;
+            return postID;
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace PinEverything.Services
         /// <param name="msg">私信内容</param>
         /// <param name="is_send_mobilephone">是否发送短信</param>
         /// <returns></returns>
-        public bool sendMsg(string access_token, string u_id, string msg, string is_send_mobilephone)
+        public bool sendMsg(string access_token, string u_id, string msg, string is_send_mobilephone,string p_id)
         {
             bool flag = false;
             if (!string.IsNullOrEmpty(access_token))
@@ -149,6 +149,16 @@ namespace PinEverything.Services
 
                 if (!string.IsNullOrEmpty(resultObj["message"].ToString()))
                     flag = true;
+
+                string postUrl = "https://api.mingdao.com/post/add_reply";//接口地址
+
+                //参数
+                Dictionary<string, string> postDic = new Dictionary<string, string>();
+                postDic.Add("access_token", access_token);
+                postDic.Add("p_id", p_id);//动态ID
+                postDic.Add("r_msg", msg);//消息内容
+                postDic.Add("format", "json");
+                string postRequest = HttpPost(postUrl, paramsDic);
             }
             return flag;
         }
