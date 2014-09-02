@@ -20,7 +20,13 @@ Owner.AddPublic = function () {
     var number_dummy = $("#number_dummy").val();
     this.options.userLimCount = number_dummy.replace(/[^0-9]/ig, "");
     this.options.startTime = $(".ownerTime").val();
-    this.options.carType = $("#car_dummy").val();
+    var pubType = $("#hidPubType").val();
+    if (pubType == "2") {
+        this.options.carType = "出租车";
+    }
+    else {
+        this.options.carType = $("#car_dummy").val();
+    }
     this.options.carColor = $("#color_dummy").val();
     this.options.ownerPhone = $("#ownerPhone").text();
     this.options.note = $(".txtMessage").val();

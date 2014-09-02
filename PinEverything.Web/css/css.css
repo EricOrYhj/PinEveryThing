@@ -105,15 +105,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    width: 66px;
-    height: 66px;
+    width: 106px;
+    height: 106px;
     margin: 0 auto;
     overflow: hidden; }
     .headerContent .headerContentIcon span
     {
       border: 3px solid #384160;
-      width: 60px;
-      height: 60px;
+      width: 100px;
+      height: 100px;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
@@ -126,8 +126,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
         margin: -8px 0 0 -8px;
     }
     .headerContent .headerContentIcon img {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
     }
   .headerContent .headerContentTitle {
     font-size: 20px;
@@ -477,7 +477,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-top: 7px;
     background: url("../images/icon11.png") no-repeat top right; }
   .owner .ownerICon9 {
-    background: url("../images/icon12.png") no-repeat top right; }
+    background: url("../images/icon12.png") no-repeat top right; padding-bottom: 9px;}
   .owner .ownerTitle {
 
     line-height: 39px;
@@ -808,4 +808,9 @@ body {
 .positionFixed
 {
     position: fixed;top: 0;left: 0;width: 100%;z-index: 100;
+}
+
+#txtMessage
+{
+    height: 72px;
 }
