@@ -164,7 +164,7 @@
         <div class="loadMorePub" style="display:none">加载更多...</div>
     </div>
     <div class="passengerMap">
-        <div id="mapMsg">
+        <div id="mapMsg"  style="display: block;top:105px" class="positionFixed">
             <div id="floatingCirclesG">
 <div class="f_circleG" id="frotateG_01">
 </div>
@@ -186,7 +186,7 @@
             <span class="loadMsg">正在扫描附近信息。。。</span>
         </div>
         <div id="container"></div>
-        <div id="nearbyListMsg">
+        <div id="nearbyListMsg"  style="display: block;top:105px" class="positionFixed">
             <div id="floatingCirclesG">
 <div class="f_circleG" id="frotateG_01">
 </div>
