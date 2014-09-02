@@ -18,31 +18,33 @@
     <title>我是乘客</title>
 </head>
 <body>
-    <div class="sidebarBg">
-        <div class="sidebarLeft sidebarPlayWidth">
-            <a href="javascript:history.go(-1)">
-                <img src="images/arrow.png" alt="" /></a>
+    <div class="positionFixed">
+        <div class="sidebarBg">
+            <div class="sidebarLeft sidebarPlayWidth">
+                <a href="javascript:history.go(-1)">
+                    <img src="images/arrow.png" alt="" /></a>
+            </div>
+            <div class="sidebarPlay">
+                <a href="/owner.aspx?pubType=2">打车</a>
+            </div>
+            <div class="sidebarTitle">
+                我是乘客
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="sidebarPlay">
-            <a href="/owner.aspx?pubType=2">打车</a>
+        <div class="passengerTab">
+            <div class="passengerTabLeft active passengerTabClick" rel="passengerList">
+                <span class="passengerTabLeftIcon"></span>计划
+            <div class="passengerTabArrow"></div>
+            </div>
+            <div class="passengerTabRight passengerTabClick" rel="passengerMap">
+                <span class="passengerTabRightIcon"></span>附近
+            <div class="passengerTabArrow"></div>
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="sidebarTitle">
-            我是乘客
-        </div>
-        <div class="clear"></div>
     </div>
-    <div class="passengerTab">
-        <div class="passengerTabLeft active passengerTabClick" rel="passengerList">
-            <span class="passengerTabLeftIcon"></span>计划
-        <div class="passengerTabArrow"></div>
-        </div>
-        <div class="passengerTabRight passengerTabClick" rel="passengerMap">
-            <span class="passengerTabRightIcon"></span>附近
-        <div class="passengerTabArrow"></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="passengerList">
+    <div class="passengerList" style="margin-top: 110px;">
         <ul id="listUl">
 <%--            <li>
                 <div class="passengerListLeft">
