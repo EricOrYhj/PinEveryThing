@@ -160,7 +160,7 @@
                 <div class="clear"></div>
             </li>--%>
         </ul>
-        <div class="loadMorePub">加载更多...</div>
+        <div class="loadMorePub" style="display:none">加载更多...</div>
     </div>
     <div class="passengerMap">
         <div id="mapMsg">
