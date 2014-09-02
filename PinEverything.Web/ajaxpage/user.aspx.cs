@@ -205,7 +205,8 @@ namespace PinEverything.Web.ajaxpage
                 string lat = currUser.CurrLat;
                 string lng = currUser.CurrLng;
 
-                bool flag = pytService.AddPublishInfo(Guid.NewGuid(), currUser.ProjectId, currUser.UserId, pubType, 1,
+                Guid publicID = Guid.NewGuid();
+                bool flag = pytService.AddPublishInfo(publicID, currUser.ProjectId, currUser.UserId, pubType, 1,
                     pubTitle, note, lat, lng, userLimCount, startPosition, endPosition, carType, carColor, startTime);
                 if (flag)
                 {
@@ -215,7 +216,7 @@ namespace PinEverything.Web.ajaxpage
                     string access_token = currUser.MDToken;
                     string pMsg = startPosition;
                     string title = startPosition;
-                    bool postFlag = APIService.postUpdate(access_token, pMsg, title);
+                    bool postFlag = APIService.postUpdate(access_token, pMsg, title, publicID);
                 }
                 else
                     resultObj.Add("MSG", "N");
@@ -615,6 +616,7 @@ namespace PinEverything.Web.ajaxpage
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
                     bool flag=pytService.UpdateJoinStatus(Guid.Parse(publishId),userInfo.UserId,0);
+                    resultObj.Add("MSG", "Y");
                 }
                 else
                     resultObj.Add("MSG", "N");

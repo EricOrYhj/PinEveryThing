@@ -61,13 +61,13 @@
             </li>
             <li>
                 <div class="ownerICon3"></div>
-                <div class="ownerTitle">
+                <div class="ownerTitle" id="num" runat="server">
                     周一、周三
                 </div>
             </li>
             <li>
                 <div class="ownerICon4"></div>
-                <div class="ownerTitle">
+                <div class="ownerTitle" id="car" runat="server">
                     7:30 至 18:00
                 </div>
             </li>
@@ -95,7 +95,7 @@
             留言：
         </div>
     </div>
-     <textarea id="txtMessage"  style="width:100%;height:50px;display:none"></textarea>
+     <textarea id="txtMessage"  class="txtMessage" placeholder="填写留言信息"  style="display:none; border: 1px solid #ccc"></textarea>
     <div class="thinkMessage">
         <span></span>我想留言
     </div>

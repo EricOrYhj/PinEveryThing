@@ -67,7 +67,7 @@ Detail.ExitJoin = function () {
             if (data.MSG == "N") {
                 alert("退出失败");
             } else if (data.MSG == "Y") {
-                window.location.href = "/passenge.aspx";
+                window.location.href = "/passenger.aspx";
             }
         }
     });

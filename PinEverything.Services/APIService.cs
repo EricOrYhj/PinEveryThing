@@ -89,13 +89,13 @@ namespace PinEverything.Services
         /// <param name="pMsg">动态内容</param>
         /// <param name="title">链接标题</param>
         /// <returns>是否成功</returns>
-        public bool postUpdate(string access_token, string pMsg, string title)
+        public bool postUpdate(string access_token, string pMsg, string title,Guid publicId)
         {
             bool flag = false;
             if (!string.IsNullOrEmpty(access_token))
             {
                 string Url = "https://api.mingdao.com/post/update";//接口地址
-                string fxUrl = MySpider.ConfigHelper.GetConfigString("PostUrl");//URL地址
+                string fxUrl = MySpider.ConfigHelper.GetConfigString("PostUrl") + "?publishId=" + publicId+ "";//URL地址
                 //参数
                 Dictionary<string, string> paramsDic = new Dictionary<string, string>();
                 paramsDic.Add("access_token", access_token);
