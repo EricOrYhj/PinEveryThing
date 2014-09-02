@@ -25,7 +25,9 @@
                 <a href="/list.aspx" class=""></a>
             </div>
             <div class="headerContent">
-                <div class="headerContentIcon" id="avatar" runat="server" visible="true"></div>
+                <div class="headerContentIcon">
+                    <span><div id="avatar" runat="server" visible="true"></div></span>
+                </div>
                 <div class="headerContentTitle" id="userNanme" runat="server" visible="true"></div>
                 <div class="headerContentArrow"></div>
             </div>
