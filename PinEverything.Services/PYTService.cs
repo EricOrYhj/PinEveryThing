@@ -411,7 +411,7 @@ namespace PinEverything.Services
                     p => p.AutoId
                 ).ToList();
 
-            result.TotalCount = this.db.Set<JoinInfo>().Count();
+            result.TotalCount = result.Table.Count();
             return result;
         }
 
