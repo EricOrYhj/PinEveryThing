@@ -212,20 +212,4 @@
     </div>
 </body>
 </html>
-<script>
-    $(function () {
-        $(".passengerTabClick").click(function () {
-            $(this).addClass("active").siblings().removeClass("active");
-            var className = $(this).attr("rel");
-            if (className == 'passengerList') {
-                $(".passengerList").fadeIn();
-                $(".passengerMap").fadeOut();
-                Passenger.publicList();
-            } else {
-                $(".passengerList").fadeOut();
-                $(".passengerMap").fadeIn();
-            }
-        });
-    });
-</script>
 

@@ -75,7 +75,6 @@
   <ItemGroup>
     <Content Include="ajaxpage\user.aspx" />
     <Content Include="callback.aspx" />
-    <Content Include="ceshi.html" />
     <Content Include="css\css.css" />
     <Content Include="css\detail.css" />
     <Content Include="css\images\ajax-loader.gif" />
