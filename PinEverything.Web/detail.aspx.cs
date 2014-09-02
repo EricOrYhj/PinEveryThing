@@ -25,6 +25,9 @@ namespace PinEverything.Web
                 {
                     UserInfo curUserInfor = new UserInfo();
                     curUserInfor = Session["user"] as UserInfo;
+
+                    btnTel.HRef = "tel://" + curUserInfor.Phone;
+
                     Guid curUserID = curUserInfor.UserId;
 
                     int type = 1;//可以加入
