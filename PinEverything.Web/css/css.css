@@ -598,6 +598,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -o-border-radius: 50%;
     border-radius: 50%;
     float: left; }
+    .detailMeaasge .detailMeaasgeHead img
+    {
+        width: 70px;
+    }
   .detailMeaasge .detailMeaasgeName {
     float: left;
     font-size: 14px;
