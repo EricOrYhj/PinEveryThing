@@ -26,7 +26,7 @@ namespace PinEverything.Web
                     UserInfo curUserInfor = new UserInfo();
                     curUserInfor = Session["user"] as UserInfo;
 
-                    btnTel.HRef = "tel://" + curUserInfor.Phone;
+                    
 
                     Guid curUserID = curUserInfor.UserId;
 
@@ -34,7 +34,7 @@ namespace PinEverything.Web
                     publicInfo = PYTService.GetPublicInfo(Guid.Parse(publishId));
                     UserInfo userInfo = new UserInfo();
                     userInfo = PYTService.GetUser(publicInfo.UserId);
-
+                    btnTel.HRef = "tel://" + userInfo.Phone;
                     if (curUserID.Equals(publicInfo.UserId))
                         type = 2;//是创建人
 
