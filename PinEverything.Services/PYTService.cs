@@ -142,19 +142,22 @@ namespace PinEverything.Services
                 CarColor = carColor,
                 StarTime = startTime
             };
-
+            double tLat = 0, tLng = 0;
             if (!string.IsNullOrWhiteSpace(lat) && !string.IsNullOrWhiteSpace(lng))
             {
-                double tLat, tLng;
                 Common.LBS.Wgs84ToMgs.transform(
                         double.Parse(lat),
                         double.Parse(lng),
                         out tLat,
                         out tLng
                     );
-                model.Lat = tLng.ToString();
-                model.Lng = tLat.ToString();
             }
+
+            decimal tmp = (decimal)tLat;
+
+
+            model.Lat = tLat.ToString("G");
+            model.Lng = tLng.ToString("G");
 
             this.db.Set<PublishInfo>().Add(model);
 

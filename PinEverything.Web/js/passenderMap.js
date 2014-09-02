@@ -32,7 +32,7 @@ StringBuilder.prototype.AppendFormat = function () {
 };
 
 
-var mapObj, markers = [], cluster;
+var mapObj, markers = [], cluster, nearByDataList;
 
 $(function () {
     initialize();
@@ -190,22 +190,26 @@ function showCurrPosition(position) {
             //    draggable:true
             //});
 
+            PanTo(result.lat, result.lng);
 
             var c = CreateCircle(result.lat, result.lng, 1000);
-            PanTo(lat, lng);
+            
 
             var infoWStr = new StringBuilder();
 
-            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近1000米内有{0}条发布信息</div><a href="/passenger.aspx">点击查看列表</a></div>',
+            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近1000米内有{0}条发布信息</div><a href="javascript:showNearbyList();">点击切换到列表视图</a></div>',
                     result.nearbyPubList.length
                 );
 
-            $('#mapMsg').show().html(infoWStr.toString());
+            $('#mapMsg').html(infoWStr.toString());
+
+            $('#nearbyListMsg').html('<div class="winfoTitle">当前您附近1000米内有' + result.nearbyPubList.length + '条发布信息</div><a href="javascript:showMapView();">点击切换到地图</a></div>');
 
             //弹出标注是我的位置
             //var infoW = CreateInfoWindow(m, infoWStr.toString());
             //infoW.open(mapObj, m.getPosition());
 
+            var html = '';
             //添加附近的标注点
             for (var i = 0; i < result.nearbyPubList.length; i++) {
                 var pubMarker = new AMap.Marker({
@@ -225,7 +229,70 @@ function showCurrPosition(position) {
                 var pubInfoW = CreateInfoWindow(pubMarker, showInfoStr.toString());
 
                 markers.push(pubMarker);
+
+
+                //构造列表
+                var pubItem = result.nearbyPubList[i];
+                var publishId = pubItem.PublishId;
+                var pubTitle = pubItem.PubTitle;
+                var startPosition = pubItem.StartPosition;
+                var endPosition = pubItem.EndPosition;
+                var startTime = pubItem.StartTime;
+                var carType = pubItem.CarType;
+                var carColor = pubItem.CarColor;
+                var userId = pubItem.UserId;
+                var avatar = pubItem.Avatar;
+                var userName = pubItem.UserName;
+                var lat = pubItem.Lat;
+                var lng = pubItem.Lng;
+                var joinType = pubItem.JoinType;
+                var createTime = pubItem.CreateTime;
+
+                var operateStr = new StringBuilder();
+
+                joinColor = "Yellow";
+                if (joinType == 1) {
+                    joinType = "发布人";
+                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击查看详情</a>', publishId);
+                }
+                else if (joinType == 2) {
+                    joinType = "已加入";
+                    joinColor = "Blue";
+                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击查看详情</a>', publishId);
+                }
+                else if (joinType == 3) {
+                    joinType = "未加入";
+                    joinColor = "Red";
+                    operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">点击加入</a>', publishId);
+                }
+
+                if (i % 2 == 0)
+                    html += '<li>';
+                else
+                    html += '<li class="passengerListPosition">';
+                html += '<div class="passengerListLeft">';
+                html += '<div class="passengerListLeftHead">';
+                html += '<img src="' + avatar + '" alt="" /></div>';
+                html += '<div class="passengerListLeftName">' + userName + '</div>';
+                html += '</div>';
+                html += '<div class="passengerListRight">';
+                //html += '<a href="/detail.aspx?publishId=' + publishId + '">';
+                html += '<span class="passengerListArrow"></span>';
+                html += ' <span class="passengerListArrowInner"></span>';
+                html += ' <div class="passengerListFromAddress">' + startPosition + '</div>';
+                html += ' <div class="passengerListToAddress">' + endPosition + '</div>';
+                html += ' <div class="passengerListTime">' + startTime+ '</div>';
+                html += ' <div class="passengerListCar">' + carType + '</div>';
+                html += '  <div class="passengerOperate">' + operateStr + '</div>';
+                //html += '</a>';
+                html += '</div>';
+                html += '<div class="clear"></div>';
+                html += '</li>';
+
+
             }
+
+            $('#nearbyList ul').html(html);
 
             //添加不是附近的标注点
             for (var i = 0; i < result.notNearbyPubList.length; i++) {
@@ -255,6 +322,21 @@ function showCurrPosition(position) {
     });
 }
 
+function showNearbyList() {
+    $('#nearbyListMsg').show();
+    $('#nearbyList').show();
+    $('#mapMsg').hide();
+    $('#container').hide();
+    setCookie('passengerViewState', 3);
+}
+
+function showMapView() {
+    $('#nearbyListMsg').hide();
+    $('#nearbyList').hide();
+    $('#mapMsg').show();
+    $('#container').show();
+    setCookie('passengerViewState', 2);
+}
 
 function addCluster(tag) {
     if (cluster) {
@@ -323,15 +405,3 @@ function geocoder_CallBack(data) {
     roadinfo.Append("</div>");
     document.getElementById("geocoderResult").innerHTML = roadinfo.toString();
 }
-
-//function showCurrPosition(position) {
-//    var lat = position.coords.latitude, lng = position.coords.longitude;
-//    var m = CreateMark(lat, lng);
-//    var c = CreateCircle(lat, lng, 1000);
-//    PanTo(lat, lng);
-
-//    //弹出标注是我的位置
-//    var infoW = CreateInfoWindow(m, '当前位置<br />附近有<span style="color:red;">100</span>条发布信息');
-//    infoW.open(mapObj, m.getPosition());
-
-//}

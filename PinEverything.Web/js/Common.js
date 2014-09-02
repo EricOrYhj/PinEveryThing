@@ -29,3 +29,47 @@ StringBuilder.prototype.AppendFormat = function () {
         this.Append(arguments[0]);
     }
 };
+//Cookies 操作
+//写入
+function setCookie(name, value, expire) {
+    //过期时间处理
+    var expireDate;
+    if (!expire) {
+        var nextyear = new Date();
+        nextyear.setFullYear(nextyear.getFullYear() + 10);
+        expireDate = nextyear.toGMTString();
+    } else
+        expireDate = expire.toGMTString();
+
+    if (document.domain.indexOf('.mingdao.com') == -1) {
+        document.cookie = name + "=" + escape(value) + ";expires=" + expireDate + ";path=/";
+    } else {
+        document.cookie = name + "=" + escape(value) + ";expires=" + expireDate + ";path=/;domain=.mingdao.com";
+    }
+}
+//读取
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) {
+        return unescape(arr[2]);
+    }
+    return null;
+}
+//删除
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 10000);
+    if (getCookie(name) == null) {
+        return;
+    }
+    var cval = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"))[2];
+    if (cval != null) {
+        if (document.domain.indexOf('.mingdao.com') == -1) {
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/";
+        } else {
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/;domain=.mingdao.com";
+        }
+
+    }
+}
+

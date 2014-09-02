@@ -91,10 +91,70 @@ Passenger.BindEvent = function () {
         Passenger.options.pageIndex = Number(curpageIndex) + 1;
         Passenger.publicList();
     });
+    $(".passengerTabClick").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var className = $(this).attr("rel");
+        if (className == 'passengerList') {
+            $(".passengerList").fadeIn();
+            $(".passengerMap").fadeOut();
+
+            
+            setCookie('passengerViewState',1);
+            viewChange();
+        } else {
+            $(".passengerList").fadeOut();
+            $(".passengerMap").fadeIn();
+            
+            setCookie('passengerViewState', 2);
+            viewChange();
+        }
+    });
+}
+
+function viewChange() {
+    //页面视图保持
+    if (getCookie('passengerViewState')) {
+        $('.passengerTabClick').removeClass('active');
+        switch (getCookie('passengerViewState')) {
+            case '1':
+                $('#nearbyListMsg').hide();
+                $('#nearbyList').hide();
+                $('#mapMsg').hide();
+                $('#container').hide();
+                $('.passengerTabLeft').addClass("active");
+                break;
+            case '2':
+                $(".passengerList").hide();
+                $(".passengerMap").show();
+                $('#nearbyListMsg').hide();
+                $('#nearbyList').hide();
+                $('#mapMsg').show();
+                $('#container').show();
+                $('.passengerTabRight').addClass("active");
+                break;
+            case '3':
+                $(".passengerList").hide();
+                $(".passengerMap").show();
+                $('#nearbyListMsg').show();
+                $('#nearbyList').show();
+                $('#mapMsg').hide();
+                $('#container').hide();
+                $('.passengerTabRight').addClass("active");
+                break;
+        }
+    }
 }
 
 //脚本加载事件
 $(function () {
+
+    viewChange();
+
     Passenger.BindEvent();
     Passenger.publicList();
+
+    
+
+  
+
 });

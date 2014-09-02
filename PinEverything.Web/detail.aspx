@@ -8,6 +8,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/detail.js"></script>
     <link href="css/css.css" rel="stylesheet">
+    <link href="css/detail.css?v=0.0.6" rel="stylesheet" />
     <title>详情</title>
 </head>
 <body>
