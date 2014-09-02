@@ -477,7 +477,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-top: 7px;
     background: url("../images/icon11.png") no-repeat top right; }
   .owner .ownerICon9 {
-    background: url("../images/icon12.png") no-repeat top right; }
+    background: url("../images/icon12.png") no-repeat top right; padding-bottom: 9px;}
   .owner .ownerTitle {
 
     line-height: 39px;
@@ -808,4 +808,9 @@ body {
 .positionFixed
 {
     position: fixed;top: 0;left: 0;width: 100%;z-index: 100;
+}
+
+#txtMessage
+{
+    height: 72px;
 }

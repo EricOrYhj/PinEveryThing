@@ -30,8 +30,8 @@
     <div class="detailMeaasge">
         <div class="detailMeaasgeHead" id="userAvatar" runat="server"></div>
         <div class="detailMeaasgeName" id="userName" runat="server"></div>
-        <div class="detailMeaasgeContact">
-            <a href="tel://">联系TA</a>
+        <div class="detailMeaasgeContact"  >
+            <a href="tel://" id="btnTel" runat="server">联系TA</a>
         </div>
         <div class="clear"></div>
     </div>
@@ -98,7 +98,7 @@
     </div>
      
     <div class="thinkMessage">
-        我想留言
+        <span></span>我想留言
     </div>
     <div class="warpWirteArea" style="display:none;">
         <textarea id="txtMessage"  class="txtMessage" placeholder="填写留言信息"  style="border: 1px solid #ccc"></textarea>
