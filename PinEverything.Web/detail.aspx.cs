@@ -47,6 +47,8 @@ namespace PinEverything.Web
                     this.startPlace.InnerText = publicInfo.StartPosition;
                     this.destination.InnerText = publicInfo.EndPosition;
                     this.carType.InnerText = publicInfo.CarType;
+                    this.num.InnerText = "限" + publicInfo.UserLimCount+"人";
+                    this.ownerTime.InnerText = publicInfo.StarTime.ToString("yyyy/MM/dd HH:mm:ss");
 
                     //加入的成员信息
                     Entites.EntityList<JoinInfo> joinMemberList = new EntityList<JoinInfo>();

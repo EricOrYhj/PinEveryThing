@@ -49,6 +49,8 @@ Detail.JoinPublic = function () {
                 }
                 else if (data.MSG == "S") {
                     alert("你已加入");
+                } else if (data.MSG == "M") {
+                    alert("人数已满");
                 }
             }
         });

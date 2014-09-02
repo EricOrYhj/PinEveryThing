@@ -63,13 +63,13 @@
             <li>
                 <div class="ownerICon3"></div>
                 <div class="ownerTitle" id="num" runat="server">
-                    周一、周三
+                    限1人
                 </div>
             </li>
             <li>
                 <div class="ownerICon4"></div>
-                <div class="ownerTitle" id="car" runat="server">
-                    7:30 至 18:00
+                <div class="ownerTitle" id="ownerTime" runat="server">
+                    2014/09/03
                 </div>
             </li>
             <li>

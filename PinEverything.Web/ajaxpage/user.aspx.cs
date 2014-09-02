@@ -340,38 +340,42 @@ namespace PinEverything.Web.ajaxpage
                     //是否已经加入
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
                     Entites.EntityList<JoinInfo> joinMembers = pytService.QueryJoinMembers(Guid.Parse(publishId));
-                    int memberCount=0;
+                    int memberCount = 0;
                     if (joinMembers != null)
                     {
-                         memberCount= joinMembers.TotalCount;
+                        memberCount = joinMembers.TotalCount;
 
                     }
-                    if (joinInfo == null && memberCount < publicInfo.UserLimCount)
+                    if (joinInfo == null)
                     {
-                        bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng, 1);
-
-                        if (flag)
+                        if (memberCount < publicInfo.UserLimCount)
                         {
-                            APIService APIService = new Services.APIService();
-                            string toUser = publicInfo.UserId.ToString();
-                            string msg = userInfo.UserName + "加入了您创建的" + publicInfo.PubTitle;
-                            int dialogType = 1;
-                            //插入对话表
-                            bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
-                            //发送私信
-                            if (dialogFlag)
-                                APIService.sendMsg(userInfo.MDToken, toUser, msg, "1", publicInfo.PostID);
+                            bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng, 1);
+                            if (flag)
+                            {
+                                APIService APIService = new Services.APIService();
+                                string toUser = publicInfo.UserId.ToString();
+                                string msg = userInfo.UserName + "加入了您创建的" + publicInfo.PubTitle;
+                                int dialogType = 1;
+                                //插入对话表
+                                bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), Guid.Parse(publishId), Guid.NewGuid(), userInfo.UserId, Guid.Parse(toUser), msg, dialogType, Lat, Lng);
+                                //发送私信
+                                if (dialogFlag)
+                                    APIService.sendMsg(userInfo.MDToken, toUser, msg, "1", publicInfo.PostID);
 
-                            JavaScriptObject msgObj = new JavaScriptObject();
-                            msgObj.Add("userName", userInfo.UserName);
-                            msgObj.Add("userAvatar", userInfo.Avatar);
-                            msgObj.Add("msg", msg);
+                                JavaScriptObject msgObj = new JavaScriptObject();
+                                msgObj.Add("userName", userInfo.UserName);
+                                msgObj.Add("userAvatar", userInfo.Avatar);
+                                msgObj.Add("msg", msg);
 
-                            resultObj.Add("MSG", "Y");
-                            resultObj.Add("msgObj", msgObj);
+                                resultObj.Add("MSG", "Y");
+                                resultObj.Add("msgObj", msgObj);
+                            }
+                            else
+                                resultObj.Add("MSG", "N");
                         }
                         else
-                            resultObj.Add("MSG", "N");
+                            resultObj.Add("MSG", "M");
                     }
                     else
                         resultObj.Add("MSG", "S");
