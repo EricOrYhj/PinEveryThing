@@ -105,14 +105,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    width: 126px;
-    height: 126px;
+    width: 86px;
+    height: 86px;
     margin: 0 auto;
     overflow: hidden; }
     .headerContent .headerContentIcon img {
       border: 3px solid #384160;
-      width: 120px;
-      height: 120px;
+      width: 80px;
+      height: 80px;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
@@ -131,7 +131,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     border-bottom-color: #444d6c;
     width: 0;
     height: 0;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     position: relative;
     -webkit-box-shadow: 0 -3px 3px #37405f;
     -moz-box-shadow: 0 -3px 3px #37405f;
@@ -483,8 +483,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .owner .ownerArrow {
     position: absolute;
     top: 8px;
-    right: 10px;
-    background: url("../images/icon7.png") no-repeat;
+    right: 10px;    
     width: 24px;
     height: 24px; }
   .owner .active .ownerArrow {
