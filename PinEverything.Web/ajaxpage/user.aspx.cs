@@ -336,16 +336,23 @@ namespace PinEverything.Web.ajaxpage
                     UserInfo userInfo = new UserInfo();
                     userInfo = Session["user"] as UserInfo;
 
+                    PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                     //是否已经加入
                     JoinInfo joinInfo = pytService.GetJoinInfo(Guid.Parse(publishId), userInfo.UserId);
-                    if (joinInfo == null)
+                    Entites.EntityList<JoinInfo> joinMembers = pytService.QueryJoinMembers(Guid.Parse(publishId));
+                    int memberCount=0;
+                    if (joinMembers != null)
+                    {
+                         memberCount= joinMembers.TotalCount;
+
+                    }
+                    if (joinInfo == null && memberCount < publicInfo.UserLimCount)
                     {
                         bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng, 1);
 
                         if (flag)
                         {
                             APIService APIService = new Services.APIService();
-                            PublishInfo publicInfo = pytService.GetPublicInfo(Guid.Parse(publishId));
                             string toUser = publicInfo.UserId.ToString();
                             string msg = userInfo.UserName + "加入了您创建的" + publicInfo.PubTitle;
                             int dialogType = 1;
