@@ -224,7 +224,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\css.scss" />
     <Content Include="images\Web.config" />
     <Content Include="Main.Master" />
     <None Include="Properties\PublishProfiles\charlie.pubxml" />
