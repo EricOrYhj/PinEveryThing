@@ -16,7 +16,7 @@
     <link href="css/css.css?v=0.0.8" rel="stylesheet">
     <link href="css/list.css?v=0.0.8" rel="stylesheet" />
     
-    <title>拼吃列表</title>
+    <title>拼玩列表</title>
 </head>
 <body>
     <div class="positionFixed">
@@ -26,10 +26,10 @@
                     <img src="/images/arrow.png" alt="" /></a>
             </div>
             <div class="sidebarPlay">
-                <a href="/owner.aspx?pubType=2">发布</a>
+                <a href="pub.aspx?pubType=4">发布</a>
             </div>
             <div class="sidebarTitle">
-                拼吃列表
+                拼玩列表
             </div>
             <div class="clear"></div>
         </div>
