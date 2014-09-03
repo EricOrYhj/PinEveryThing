@@ -252,6 +252,33 @@ namespace PinEverything.Web.ajaxpage
                     string access_token = currUser.MDToken;
                     string pMsg = pubTitle;
                     string title = pubTitle;
+
+                    switch (pubType)
+                    {
+                        case 1:
+                            title = string.Format("【拼车】我发布了一条拼车信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            pMsg = string.Format("我发布了一条拼车信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            break;
+                        case 2:
+                            title = string.Format("【打的拼车】我发布了一条打的拼车信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            pMsg = string.Format("我发布了一条打的拼车信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            break;
+                        case 3:
+                            title = string.Format("【拼吃】我发布了一条拼吃信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            pMsg = string.Format("我发布了一条拼吃信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            break;
+                        case 4:
+                            title = string.Format("【拼玩】我发布了一条拼玩信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            pMsg = string.Format("我发布了一条拼玩信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            break;
+                        case 5:
+                            title = string.Format("【拼旅】我发布了一条拼旅信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            pMsg = string.Format("我发布了一条拼旅信息“{0}”，大家赶紧加入吧~", pubTitle);
+                            break;
+                        default:
+                            break;
+                    }
+
                     string postID = APIService.postUpdate(access_token, pMsg, title, publicID);
                     if (!string.IsNullOrEmpty(postID))
                         pytService.UpdatePubPostID(publicID, currUser.UserId, postID);

@@ -18,17 +18,17 @@
 <link href="/css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
 <link href="/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
 <link href="/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
-<title>我是车主</title>
+<title>发布拼吃</title>
 </head>
 <body>
-    <input type="hidden" id="hidPubType" runat="server" value="1" />
+    <input type="hidden" id="hidPubType" runat="server" value="3" />
 <div class="sidebarBg">
     <div class="sidebarLeft">
         <a href="javascript:history.go(-1)"><img src="/images/arrow.png" alt=""/></a>
     </div>
     <div class="sidebarRight"></div>
     <div class="sidebarTitle">
-        我是车主
+        发布拼吃
     </div>
     <div class="clear"></div>
 </div>
@@ -129,7 +129,7 @@
             <textarea class="txtMessage" placeholder="填写留言信息"></textarea>
         </div>
     </div>
-    <a href="javascript:Owner.AddPublic();" id="messageBtn">发布线路</a>
+    <a href="javascript:Owner.AddPublic();" id="messageBtn">发布拼吃</a>
 </div>
 </body>
 </html>

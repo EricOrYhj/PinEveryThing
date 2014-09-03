@@ -9,7 +9,7 @@
     <script src="js/detail.js?v=0.0.8"></script>
     <link href="css/css.css?v=0.0.8" rel="stylesheet">
     <link href="css/detail.css?v=0.0.8" rel="stylesheet" />
-    <title>详情</title>
+    <title>拼吃详情</title>
 </head>
 <body>
     <input type="hidden" id="hidPublishId" runat="server" />
@@ -23,7 +23,7 @@
             <a href="" id="exit">退出</a>--%>
         </div>
         <div class="sidebarTitle">
-            详情
+            拼吃详情
         </div>
         <div class="clear"></div>
     </div>

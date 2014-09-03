@@ -280,7 +280,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="view\wan\" />
+    <Folder Include="view\wan\css\" />
+    <Folder Include="view\wan\js\" />
     <Folder Include="view\you\" />
   </ItemGroup>
   <PropertyGroup>
