@@ -6,16 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="js/jquery.min.js"></script>
-    <script src="js/detail.js?v=1.0.0"></script>
-    <link href="css/css.css?v=1.0.0" rel="stylesheet">
-    <link href="css/detail.css?v=1.0.0" rel="stylesheet" />
+    <script src="js/detail.js?v=1.0.1"></script>
+    <link href="css/css.css?v=1.0.1" rel="stylesheet">
+    <link href="css/detail.css?v=1.0.1" rel="stylesheet" />
     <title>详情</title>
 </head>
 <body>
     <input type="hidden" id="hidPublishId" runat="server" />
     <div class="sidebarBg">
         <div class="sidebarLeft sidebarPlayWidth">
-            <a href="javascript:history.go(-1)">
+            <a href="passenger.aspx">
                 <img src="/images/arrow.png" alt="" /></a>
         </div>
         <div class="sidebarPlay" id="sidebarPlay" runat="server">
