@@ -73,13 +73,13 @@
                     2014/09/03
                 </div>
             </li>
-            <%--<li>
+            <li>
                 <div class="ownerICon5"></div>
                 <div class="ownerTitle" id="carType" runat="server">
                     出租车
                 </div>
             </li>
-            <li>
+            <%--<li>
                 <div class="ownerICon9"></div>
                 <div class="ownerTitle ownerTitleClear detail" id="members" runat="server">
 

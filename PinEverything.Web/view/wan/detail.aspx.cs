@@ -46,7 +46,7 @@ namespace PinEverything.Web.view.wan
                     this.hidPublishId.Value = publishId;
                     this.startPlace.InnerText = publicInfo.StartPosition;
                     this.destination.InnerText = publicInfo.EndPosition;
-                    //this.carType.InnerText = publicInfo.CarType;
+                    this.carType.InnerText = publicInfo.CarType;
                     if (publicInfo.UserLimCount == 0)
                         this.num.InnerText = "不限人数";
                     else
