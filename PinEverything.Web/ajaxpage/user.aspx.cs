@@ -396,7 +396,7 @@ namespace PinEverything.Web.ajaxpage
                     }
                     if (joinInfo == null)
                     {
-                        if (memberCount < publicInfo.UserLimCount)
+                        if (memberCount < publicInfo.UserLimCount || publicInfo.UserLimCount == 0)
                         {
                             bool flag = pytService.JoinPublishInfo(Guid.Parse(publishId), userInfo.UserId, joinRole, Lat, Lng, 1);
                             if (flag)
