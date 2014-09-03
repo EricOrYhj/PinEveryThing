@@ -190,7 +190,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .sidebarBg {
   width: 100%;
   height: 46px;
-  background: #80d1d4; }
+  background: #f1c681; }
   .sidebarBg .sidebarLeft {
     float: left;
     width: 32px;
@@ -284,8 +284,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .passengerTab {
   width: 100%;
-  border-top: 1px solid #6bc9cb;
-  background: #80d1d4; }
+  border-top: 1px solid #f3bc3a;
+  background: #f1c681; }
   .passengerTab .passengerTabLeft, .passengerTab .passengerTabRight {
     float: left;
     width: 50%;
@@ -295,7 +295,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     color: #fff;
     text-align: center; }
   .passengerTab .active {
-    background: #6bc9cb; }
+    background: #f3bc3a; }
     .passengerTab .active .passengerTabArrow {
       border-width: 0 12px 12px 12px;
       border-color: transparent;
@@ -330,7 +330,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
       width: 193px;
       margin-left: 5px;
       height: 103px;
-      border: 1px solid #6dc5d7;
+      border: 1px solid #f1c681;
       background: #fff;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
@@ -340,16 +340,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
       position: relative;
       font-family: "Microsoft YaHei";
       font-size: 14px;
-      color: #6a6a6a; }
+      color: #f1c681; }
       .passengerList li .passengerListRight a {
         text-decoration: none;
-        color: #6a6a6a; }
+        color: #f1c681; }
     .passengerList li .passengerListArrow {
       position: absolute;
       top: 22px;
       left: -20px;
       border-color: transparent;
-      border-right-color: #6dc5d7;
+      border-right-color: #f1c681;
       border-width: 10px;
       width: 0;
       height: 0;
@@ -382,7 +382,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .passengerList .passengerListPosition .passengerListArrow {
     left: 194px;
     border-color: transparent;
-    border-left-color: #6dc5d7; }
+    border-left-color: #f1c681; }
   .passengerList .passengerListPosition .passengerListArrowInner {
     left: 193px;
     border-color: transparent;
@@ -401,7 +401,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     font-size: 14px;
     font-family: "Microsoft YaHei";
     text-align: center;
-    color: #6bc9cb;
+    color: #f1c681;
     width: 70px;
     height: 20px;
     line-height: 20px;
@@ -420,7 +420,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background: url("/images/icon3.png") no-repeat; 
+    background: url("/images/toast.png") no-repeat; 
 
   }
   .passengerList .passengerListToAddress {
@@ -428,7 +428,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .passengerList .passengerListTime {
     background: url("/images/icon5.png") no-repeat; }
   .passengerList .passengerListCar {
-    background: url("/images/icon6.png") no-repeat; }
+    background: url("/images/money_bag.png") no-repeat; }
 
 .passengerMap {
 
@@ -458,7 +458,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-top: 11px;
     padding-left: 15px; }
   .owner .ownerICon1 {
-    background: url("/images/icon3.png") no-repeat top right; }
+    background: url("/images/toast.png") no-repeat top right; }
   .owner .ownerICon2 {
     background: url("/images/icon4.png") no-repeat top right; }
   .owner .ownerICon3 {
@@ -466,7 +466,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .owner .ownerICon4 {
     background: url("/images/icon5.png") no-repeat top right; }
   .owner .ownerICon5 {
-    background: url("/images/icon6.png") no-repeat top right; }
+    background: url("/images/money_bag.png") no-repeat top right; }
   .owner .ownerICon6 {
     background: url("/images/icon9.png") no-repeat top right; }
   .owner .ownerICon7 {
