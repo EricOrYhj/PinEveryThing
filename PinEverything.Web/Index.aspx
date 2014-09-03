@@ -66,7 +66,7 @@
                     <li class="borderColor1"><a href="/pinche.html">拼车</a></li>
                     <li class="borderColor2"><a href="/view/chi/list.aspx">拼吃</a></li>
                     <li class="borderColor3"><a href="/view/wan/list.aspx">拼玩</a></li>
-                    <li class="borderColor4"><a href="/view/you/list.aspx">拼旅</a></li>
+                    <li class="borderColor4"><a href="javascript:alert('敬请期待！');">拼旅</a></li>
                     <div class="clear"></div>
                 </ul>
             </div>
