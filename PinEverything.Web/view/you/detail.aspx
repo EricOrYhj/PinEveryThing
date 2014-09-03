@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="/js/jquery.min.js"></script>
-    <script src="js/detail.js?v=0.0.9"></script>
-    <link href="css/css.css?v=0.0.9" rel="stylesheet">
-    <link href="css/detail.css?v=0.0.9" rel="stylesheet" />
+    <script src="js/detail.js?v=1.0.0"></script>
+    <link href="css/css.css?v=1.0.0" rel="stylesheet">
+    <link href="css/detail.css?v=1.0.0" rel="stylesheet" />
     <title>拼旅详情</title>
 </head>
 <body>

@@ -104,7 +104,6 @@ namespace PinEverything.Services
                 paramsDic.Add("p_msg", pMsg);
                 paramsDic.Add("l_uri", postUrl);
                 paramsDic.Add("l_title", title);
-                paramsDic.Add("s_type", "3");
 
                 string requestURL = HttpPost(Url, paramsDic);
 
