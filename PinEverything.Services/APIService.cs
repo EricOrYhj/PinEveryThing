@@ -89,20 +89,20 @@ namespace PinEverything.Services
         /// <param name="pMsg">动态内容</param>
         /// <param name="title">链接标题</param>
         /// <returns>是否成功</returns>
-        public string postUpdate(string access_token, string pMsg, string title,Guid publicId)
+        public string postUpdate(string access_token, string pMsg, string title,string postUrl)
         {
             string postID = string.Empty;
             if (!string.IsNullOrEmpty(access_token))
             {
                 string Url = "https://api.mingdao.com/post/update";//接口地址
-                string fxUrl = MySpider.ConfigHelper.GetConfigString("PostUrl") + "?publishId=" + publicId+ "";//URL地址
+           
                 //参数
                 Dictionary<string, string> paramsDic = new Dictionary<string, string>();
                 paramsDic.Add("access_token", access_token);
                 paramsDic.Add("format", "json");
                 paramsDic.Add("p_type", "1");
                 paramsDic.Add("p_msg", pMsg);
-                paramsDic.Add("l_uri", fxUrl);
+                paramsDic.Add("l_uri", postUrl);
                 paramsDic.Add("l_title", title);
                 paramsDic.Add("s_type", "3");
 

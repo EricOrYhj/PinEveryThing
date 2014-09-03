@@ -47,7 +47,10 @@ namespace PinEverything.Web.view.you
                     this.startPlace.InnerText = publicInfo.StartPosition;
                     this.destination.InnerText = publicInfo.EndPosition;
                     this.carType.InnerText = publicInfo.CarType;
-                    this.num.InnerText = "限" + publicInfo.UserLimCount + "人";
+                    if (publicInfo.UserLimCount == 0)
+                        this.num.InnerText = "不限人数";
+                    else
+                        this.num.InnerText = "限" + publicInfo.UserLimCount + "人";
                     this.ownerTime.InnerText = publicInfo.StarTime.ToString("yyyy/MM/dd HH:mm:ss");
 
                     //加入的成员信息

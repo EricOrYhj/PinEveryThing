@@ -21,7 +21,12 @@ Owner.AddPublic = function () {
         this.options.endPosition = $("#endPosition").val();
 
         var number_dummy = $("#number_dummy").val();
-        this.options.userLimCount = number_dummy.replace(/[^0-9]/ig, "");
+        if (number_dummy == "不限人数") {
+            this.options.userLimCount = 0;
+        }
+        else {
+            this.options.userLimCount = number_dummy.replace(/[^0-9]/ig, "");
+        }
         this.options.startTime = $(".ownerTime").val();
         var pubType = $("#hidPubType").val();
         if (pubType == "2") {
