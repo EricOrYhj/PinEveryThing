@@ -162,11 +162,13 @@
     <Content Include="view\chi\js\listMap.js" />
     <Content Include="view\chi\js\list.js" />
     <Content Include="view\chi\list.aspx" />
+    <Content Include="view\chi\index.html" />
     <Content Include="view\chi\pub.aspx" />
     <Content Include="view\wan\css\css.css" />
     <Content Include="view\wan\css\detail.css" />
     <Content Include="view\wan\css\list.css" />
     <Content Include="view\wan\detail.aspx" />
+    <Content Include="view\wan\index.html" />
     <Content Include="view\wan\js\detail.js" />
     <Content Include="view\wan\js\list.js" />
     <Content Include="view\wan\js\listMap.js" />
@@ -177,6 +179,7 @@
     <Content Include="view\you\css\detail.css" />
     <Content Include="view\you\css\list.css" />
     <Content Include="view\you\detail.aspx" />
+    <Content Include="view\you\index.html" />
     <Content Include="view\you\js\detail.js" />
     <Content Include="view\you\js\list.js" />
     <Content Include="view\you\js\listMap.js" />
