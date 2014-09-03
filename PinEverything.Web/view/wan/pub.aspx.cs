@@ -26,9 +26,9 @@ namespace PinEverything.Web.view.wan
                 string dateStr = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 this.ownerTime.Value = dateStr;
 
-                if (Session["localState"] != null)
-                    localState = Session["localState"].ToString();
-                this.startPosition.Value = localState;
+                //if (Session["localState"] != null)
+                //    localState = Session["localState"].ToString();
+                //this.startPosition.Value = localState;
                 this.ownerPhone.Value = userDetail.Phone;
             }
             else

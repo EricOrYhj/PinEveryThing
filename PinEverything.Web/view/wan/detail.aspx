@@ -52,13 +52,13 @@
             <li>
                 <div class="ownerICon1"></div>
                 <div class="ownerTitle" id="startPlace" runat="server">
-                    中山西路虹桥路口
+                    玩什么
                 </div>
             </li>
             <li>
                 <div class="ownerICon2"></div>
                 <div class="ownerTitle" id="destination" runat="server">
-                    长宁龙之梦
+                    地点
                 </div>
             </li>
             <li>
@@ -73,7 +73,7 @@
                     2014/09/03
                 </div>
             </li>
-            <li>
+            <%--<li>
                 <div class="ownerICon5"></div>
                 <div class="ownerTitle" id="carType" runat="server">
                     出租车
@@ -82,16 +82,9 @@
             <li>
                 <div class="ownerICon9"></div>
                 <div class="ownerTitle ownerTitleClear detail" id="members" runat="server">
-                    <%--<span>
-                        <img src="/images/1.jpg" alt="" /></span>
-                    <span>
-                        <img src="/images/1.jpg" alt="" /></span>
-                    <span>
-                        <img src="/images/1.jpg" alt="" /></span>
-                    <span>
-                        <img src="/images/1.jpg" alt="" /></span>--%>
+
                 </div>
-            </li>
+            </li>--%>
         </ul>
         <div class="messageTitle">
             留言：
