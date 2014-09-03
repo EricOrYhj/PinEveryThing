@@ -230,7 +230,7 @@ function showCurrPosition(position) {
                     pcList.length,
                     pchList.length,
                     pwList.length,
-                    plList
+                    plList.length
                 );
 
             $('#mapMsg').show().html(infoWStr.toString());
