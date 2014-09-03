@@ -41,11 +41,27 @@ namespace PinEverything.Services
             }
         }
 
-        public EntityList<PublishInfo> QueryPublishInfo(int pageIndex = 1, int pageSize = int.MaxValue)
+        public EntityList<PublishInfo> QueryPublishInfo(int pageIndex = 1, int pageSize = int.MaxValue,string pubType = "1,2")
         {
             EntityList<PublishInfo> result = new EntityList<PublishInfo>();
 
-            result.Table = this.db.Set<PublishInfo>().Where(p => p.Status == 1).OrderByDescending(
+            //var predicate = PredicateBuilder.True<PublishInfo>();
+            //predicate.And(p => p.Status == 1);
+
+            //if (!string.IsNullOrWhiteSpace(pubType))
+            //{
+            //    List<int> typeList = pubType.Split(',').Select(p => int.Parse(p)).ToList();
+            //    //foreach (var item in typeList)
+            //    //{
+            //    //    predicate.Or(p.PubType == )
+            //    //}
+            //    predicate.And(p => typeList.Contains(p.PubType.Value));
+            //}
+
+            List<int> typeList = pubType.Split(',').Select(p => int.Parse(p)).ToList();
+
+
+            result.Table = this.db.Set<PublishInfo>().Where(p => p.Status == 1 && typeList.Contains(p.PubType.Value)).OrderByDescending(
                     p => p.AutoId
                 ).Skip(
                     (pageIndex - 1) * pageSize
@@ -60,11 +76,12 @@ namespace PinEverything.Services
             return result;
         }
 
-        public List<PublishInfo> QueryAllPubInfoForLBS(int isNearByType = 0,Guid? currUserId = null) 
+        public List<PublishInfo> QueryAllPubInfoForLBS(int isNearByType = 0, Guid? currUserId = null, string pubType = "1,2") 
         {
             List<PublishInfo> result = new List<PublishInfo>();
+            List<int> typeList = pubType.Split(',').Select(p => int.Parse(p)).ToList();
 
-            result = this.db.Set<PublishInfo>().Where(p => p.Status == 1).OrderByDescending(
+            result = this.db.Set<PublishInfo>().Where(p => p.Status == 1 && typeList.Contains(p.PubType.Value)).OrderByDescending(
                     p => p.AutoId
                 ).ToList();
 
@@ -91,6 +108,7 @@ namespace PinEverything.Services
             {
                 UserInfo currUser = GetUser(currUserId.Value);
                 result = result.Where(p =>
+                        p.OrginLat != null && p.OrginLng != null && currUser.OrginLng != null && currUser.OrginLat != null &&
                         Common.LBS.Compute.DistanceOfTwoPoints(double.Parse(currUser.OrginLng), double.Parse(currUser.OrginLat), double.Parse(p.OrginLng), double.Parse(p.OrginLat), Common.LBS.Compute.GaussSphere.WGS84) <= 1000
                     ).ToList();
             }
@@ -98,6 +116,7 @@ namespace PinEverything.Services
             {
                 UserInfo currUser = GetUser(currUserId.Value);
                 result = result.Where(p =>
+                        p.OrginLat != null && p.OrginLng != null && currUser.OrginLng != null && currUser.OrginLat != null &&
                         Common.LBS.Compute.DistanceOfTwoPoints(double.Parse(currUser.OrginLng), double.Parse(currUser.OrginLat), double.Parse(p.OrginLng), double.Parse(p.OrginLat), Common.LBS.Compute.GaussSphere.WGS84) > 1000
                     ).ToList();
             }

@@ -12,7 +12,7 @@ Passenger.publicList = function () {
     $.ajax({
         url: "/ajaxpage/user.aspx",
         dataType: "JSON",
-        data: { op: "LoadPublicList", pageIndex: Passenger.options.pageIndex, pageSize: Passenger.options.pageSize },
+        data: { op: "LoadPublicList", pageIndex: Passenger.options.pageIndex, pageSize: Passenger.options.pageSize,pubType:'1,2' },
         beforeSend: function () {
         },
         success: function (data) {

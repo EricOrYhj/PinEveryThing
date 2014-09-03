@@ -176,7 +176,7 @@ function showCurrPosition(position) {
     $.ajax({
         type: 'post',
         url: '/ajaxpage/user.aspx',
-        data: { op: 'UpdateLbs', lat: lat, lng: lng, showNearbyPub: true, showNotNearPub: true },
+        data: { op: 'UpdateLbs', lat: lat, lng: lng, showNearbyPub: true, showNotNearPub: true ,pubType:'1,2'},
         success: function (result) {
 
             //var m = CreateMark(result.lat, result.lng);

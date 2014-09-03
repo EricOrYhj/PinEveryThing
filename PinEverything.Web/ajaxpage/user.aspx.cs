@@ -104,7 +104,7 @@ namespace PinEverything.Web.ajaxpage
                 lat = Convert.ToDouble(Request["lat"]),
                 lng = Convert.ToDouble(Request["lng"]),
                 tLat, tLng;
-
+            string pubType = Request["pubType"];
             Common.LBS.Wgs84ToMgs.transform(lat, lng, out tLat, out tLng);
 
             //更新并返回
@@ -119,7 +119,7 @@ namespace PinEverything.Web.ajaxpage
             //获取不是附近的发布
             if (!string.IsNullOrWhiteSpace(Request["showNotNearPub"]))
             {
-                List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(2, currUser.UserId);
+                List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(2, currUser.UserId, pubType);
 
                 JavaScriptArray arr = new JavaScriptArray();
 
@@ -144,7 +144,7 @@ namespace PinEverything.Web.ajaxpage
             //获取附近发布数据实体（如有分页获取第一页数据）
             if (!string.IsNullOrWhiteSpace(Request["showNearbyPub"]))
             {
-                List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(1, currUser.UserId);
+                List<PublishInfo> resultList = pytService.QueryAllPubInfoForLBS(1, currUser.UserId, pubType);
 
                 JavaScriptArray arr = new JavaScriptArray();
 
@@ -302,12 +302,12 @@ namespace PinEverything.Web.ajaxpage
             {
                 int pageIndex = int.Parse(Request["pageIndex"].ToString());
                 int pageSize = int.Parse(Request["pageSize"].ToString());
-
+                string pubType = Request["pubType"];
                 UserInfo curUserInfo = new UserInfo();
                 curUserInfo = Session["user"] as UserInfo;
 
                 Entites.EntityList<PublishInfo> publishInfoList = new EntityList<PublishInfo>();
-                publishInfoList = pytService.QueryPublishInfo(pageIndex, pageSize);
+                publishInfoList = pytService.QueryPublishInfo(pageIndex, pageSize, pubType);
                 List<PublishInfo> publicInfo = new List<PublishInfo>();
                 publicInfo = publishInfoList.Table;
 
