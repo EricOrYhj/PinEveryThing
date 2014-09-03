@@ -173,6 +173,16 @@
     <Content Include="view\wan\js\pub.js" />
     <Content Include="view\wan\list.aspx" />
     <Content Include="view\wan\pub.aspx" />
+    <Content Include="view\you\css\css.css" />
+    <Content Include="view\you\css\detail.css" />
+    <Content Include="view\you\css\list.css" />
+    <Content Include="view\you\detail.aspx" />
+    <Content Include="view\you\js\detail.js" />
+    <Content Include="view\you\js\list.js" />
+    <Content Include="view\you\js\listMap.js" />
+    <Content Include="view\you\js\pub.js" />
+    <Content Include="view\you\list.aspx" />
+    <Content Include="view\you\pub.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -288,6 +298,27 @@
     <Compile Include="view\wan\pub.aspx.designer.cs">
       <DependentUpon>pub.aspx</DependentUpon>
     </Compile>
+    <Compile Include="view\you\detail.aspx.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\you\detail.aspx.designer.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\you\list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\you\list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\you\pub.aspx.cs">
+      <DependentUpon>pub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\you\pub.aspx.designer.cs">
+      <DependentUpon>pub.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Web.config" />
@@ -310,9 +341,7 @@
       <Name>PinEverything.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="view\you\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

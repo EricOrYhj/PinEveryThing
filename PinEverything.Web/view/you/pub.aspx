@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pub.aspx.cs" Inherits="PinEverything.Web.view.wan.pub" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pub.aspx.cs" Inherits="PinEverything.Web.view.you.pub" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -17,17 +17,17 @@
 <link href="/css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
 <link href="/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
 <link href="/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
-<title>发布拼玩</title>
+<title>发布拼旅</title>
 </head>
 <body>
-    <input type="hidden" id="hidPubType" runat="server" value="4" />
+    <input type="hidden" id="hidPubType" runat="server" value="5" />
 <div class="sidebarBg">
     <div class="sidebarLeft">
         <a href="javascript:history.go(-1)"><img src="/images/arrow.png" alt=""/></a>
     </div>
     <div class="sidebarRight"></div>
     <div class="sidebarTitle">
-        发布拼玩
+        发布拼旅
     </div>
     <div class="clear"></div>
 </div>
@@ -128,7 +128,7 @@
             <textarea class="txtMessage" placeholder="填写留言信息"></textarea>
         </div>
     </div>
-    <a href="javascript:Owner.AddPublic();" id="messageBtn">发布拼玩</a>
+    <a href="javascript:Owner.AddPublic();" id="messageBtn">发布拼旅</a>
 </div>
 </body>
 </html>

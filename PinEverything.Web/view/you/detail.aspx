@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="PinEverything.Web.view.wan.detail" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="PinEverything.Web.view.you.detail" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -10,7 +9,7 @@
     <script src="js/detail.js?v=0.0.9"></script>
     <link href="css/css.css?v=0.0.9" rel="stylesheet">
     <link href="css/detail.css?v=0.0.9" rel="stylesheet" />
-    <title>拼玩详情</title>
+    <title>拼旅详情</title>
 </head>
 <body>
     <input type="hidden" id="hidPublishId" runat="server" />
@@ -24,7 +23,7 @@
             <a href="" id="exit">退出</a>--%>
         </div>
         <div class="sidebarTitle">
-            拼玩详情
+            拼旅详情
         </div>
         <div class="clear"></div>
     </div>

@@ -10,7 +10,7 @@ Owner.options = {
     carColor: "",
     ownerPhone: "",
     note: "",
-    pubType: "1"//发布类型
+    pubType: "5"//发布类型
 };
 
 //发布信息
