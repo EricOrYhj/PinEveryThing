@@ -36,7 +36,27 @@
     </div>
     <div class="indexContent">
         <div class="passengerMap">
-            <div id="mapMsg"></div>
+            <div id="mapMsg">
+               <div id="floatingCirclesG">
+<div class="f_circleG" id="frotateG_01">
+</div>
+<div class="f_circleG" id="frotateG_02">
+</div>
+<div class="f_circleG" id="frotateG_03">
+</div>
+<div class="f_circleG" id="frotateG_04">
+</div>
+<div class="f_circleG" id="frotateG_05">
+</div>
+<div class="f_circleG" id="frotateG_06">
+</div>
+<div class="f_circleG" id="frotateG_07">
+</div>
+<div class="f_circleG" id="frotateG_08">
+</div>
+</div>
+            <span class="loadMsg">正在扫描附近信息。。。</span>
+            </div>
             <div id="container"></div>
             <%--<div id="geocoderResult"></div>--%>
         </div>

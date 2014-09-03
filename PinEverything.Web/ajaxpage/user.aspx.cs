@@ -179,6 +179,8 @@ namespace PinEverything.Web.ajaxpage
                     jObj.Add("JoinType", joinType);
                     jObj.Add("CreateTime", item.CreateTime.ToString("yyyy-MM-dd"));
 
+                    jObj.Add("PubType", item.PubType);
+
                     arr.Add(jObj);
                 }
 

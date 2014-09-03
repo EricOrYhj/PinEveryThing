@@ -197,16 +197,45 @@ function showCurrPosition(position) {
 
             var infoWStr = new StringBuilder();
 
-            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近1000米内有{0}条发布信息</div><a href="/passenger.aspx">点击查看列表</a></div>',
-                    result.nearbyPubList.length
+            var pcList = [];//拼车列表 1，2
+            var pchList = [];//拼吃 3
+            var pwList = [];//拼玩列表 4
+            var plList = [];//拼旅 5
+
+            for (var i = 0; i < result.nearbyPubList.length; i++) {
+                switch (result.nearbyPubList[i].PubType) {
+                    case 1:
+                        pcList.push(result.nearbyPubList[i]);
+                        break;
+                    case 2:
+                        pcList.push(result.nearbyPubList[i]);
+                        break;
+                    case 3:
+                        pchList.push(result.nearbyPubList[i]);
+                        break;
+                    case 4:
+                        pwList.push(result.nearbyPubList[i]);
+                        break;
+                    case 5:
+                        plList.push(result.nearbyPubList[i]);
+                        break;
+                }
+
+            }
+
+            
+
+            infoWStr.AppendFormat('<div class="winfoTitle">当前您附近1000米内有总共有{0}条发布信息({1}拼车、{2}拼吃、{3}拼玩、{4}拼旅)</div>',
+                    result.nearbyPubList.length,
+                    pcList.length,
+                    pchList.length,
+                    pwList.length,
+                    plList
                 );
 
             $('#mapMsg').show().html(infoWStr.toString());
 
-            //弹出标注是我的位置
-            //var infoW = CreateInfoWindow(m, infoWStr.toString());
-            //infoW.open(mapObj, m.getPosition());
-
+            //----------------------------------------------------------------------------------------
             //添加附近的标注点
             for (var i = 0; i < result.nearbyPubList.length; i++) {
                 var pubMarker = new AMap.Marker({
@@ -248,10 +277,8 @@ function showCurrPosition(position) {
 
                 markers.push(pubMarker);
             }
-
-
             addCluster(0);
-
+            //----------------------------------------------------------------------------------------
         }
     });
 }
