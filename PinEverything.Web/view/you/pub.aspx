@@ -51,6 +51,7 @@
             <div class="ownerICon3"></div>
             <div class="ownerTitle">
                 <select id="number" data-role="none">
+                    <option value="0">不限人数</option>
                     <option value="1">限1人</option>
                     <option value="2">限2人</option>
                     <option value="3">限3人</option>
@@ -75,24 +76,14 @@
             <div class="ownerICon5"></div>
             <div class="ownerTitle">
                 <select id="car" data-role="none">
-                    <option value="大众">大众</option>
-                    <option value="本田">本田</option>
-                    <option value="福特">福特</option>
-                    <option value="雪弗兰">雪弗兰</option>
-                    <option value="奔驰">奔驰</option>
-                    <option value="宝马">宝马</option>
-                    <option value="长城">长城</option>
-                    <option value="奥迪">奥迪</option>
-                    <option value="丰田">丰田</option>
-                    <option value="别克">别克</option>
-                    <option value="沃尔沃">沃尔沃</option>
-                    <option value="雪铁龙">雪铁龙</option>
-                    <option value="其他">其他</option>
+                    <option value="自驾游">自驾游</option>
+                    <option value="跟团游">跟团游</option>
+                    <option value="自由行">自由行</option>
                 </select>
             </div>
             <div class="ownerArrow"></div>
         </li>
-        <li style="display:none;" id="ifTaxi">
+        <%--<li style="display:none;" id="ifTaxi">
             <div class="ownerICon5"></div>
             <div class="ownerTitle">
                 出租车
@@ -113,7 +104,7 @@
                 </select>
             </div>
             <div class="ownerArrow"></div>
-        </li>
+        </li>--%>
         <li class="ownerInput">
             <div class="ownerICon7"></div>
             <div class="ownerTitle ownerTitleClear">

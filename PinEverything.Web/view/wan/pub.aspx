@@ -36,14 +36,14 @@
         <li class="ownerInput">
             <div class="ownerICon1"></div>
             <div class="ownerTitle">
-                <input type="text" class="address" placeholder="请输入始发地" id="startPosition" runat="server"/>
+                <input type="text" class="address" placeholder="玩什么" id="startPosition" runat="server"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
         <li class="ownerInput">
             <div class="ownerICon2"></div>
             <div class="ownerTitle">
-                <input type="text" class="address" placeholder="请输入目的地" id="endPosition" runat="server"/>
+                <input type="text" class="address" placeholder="请输入地点" id="endPosition" runat="server"/>
             </div>
             <div class="ownerArrow"></div>
         </li>
@@ -51,6 +51,7 @@
             <div class="ownerICon3"></div>
             <div class="ownerTitle">
                 <select id="number" data-role="none">
+                    <option value="0">不限人数</option>
                     <option value="1">限1人</option>
                     <option value="2">限2人</option>
                     <option value="3">限3人</option>
@@ -71,7 +72,7 @@
             </div>
             <div class="ownerArrow"></div>
         </li>
-        <li id="ifCar">
+        <%--<li id="ifCar">
             <div class="ownerICon5"></div>
             <div class="ownerTitle">
                 <select id="car" data-role="none">
@@ -113,7 +114,7 @@
                 </select>
             </div>
             <div class="ownerArrow"></div>
-        </li>
+        </li>--%>
         <li class="ownerInput">
             <div class="ownerICon7"></div>
             <div class="ownerTitle ownerTitleClear">
