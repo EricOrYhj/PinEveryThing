@@ -25,7 +25,7 @@
                     <img src="/images/arrow.png" alt="" /></a>
             </div>
             <div class="sidebarPlay">
-                <a href="pub.aspx?pubType=3">发布</a>
+                <a href="pub.aspx?pubType=5">发布</a>
             </div>
             <div class="sidebarTitle">
                 拼旅列表
