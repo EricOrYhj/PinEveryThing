@@ -285,6 +285,12 @@ namespace PinEverything.Web.ajaxpage
                 }
                 else
                     resultObj.Add("MSG", "N");
+
+                if (!string.IsNullOrEmpty(note))
+                {
+                    //插入对话表
+                    bool dialogFlag = pytService.AddDialogMsg(Guid.NewGuid(), publicID, Guid.NewGuid(), currUser.UserId, currUser.UserId, note, 1, lat, lng);
+                }
             }
             else
                 resultObj.Add("MSG", "N");
@@ -402,6 +408,7 @@ namespace PinEverything.Web.ajaxpage
                                 JavaScriptObject msgObj = new JavaScriptObject();
                                 msgObj.Add("userName", userInfo.UserName);
                                 msgObj.Add("userAvatar", userInfo.Avatar);
+                                msgObj.Add("creatTime", DateTime.Now.ToString("yyyy-MM-dd"));
                                 msgObj.Add("msg", msg);
 
                                 resultObj.Add("MSG", "Y");
@@ -456,6 +463,8 @@ namespace PinEverything.Web.ajaxpage
                         publicObj.Add("Msg", dialogItem.Msg);
                         publicObj.Add("FromUserId", dialogItem.FromUserId);
                         publicObj.Add("ToUserId", dialogItem.ToUserId);
+                        string createTime=dialogItem.CreateTime.ToString("yyyy-MM-dd");
+                        publicObj.Add("CreatTime", createTime);
                         if (fromuserInfo != null)
                         {
                             publicObj.Add("FromUserName", fromuserInfo.UserName);
@@ -537,6 +546,7 @@ namespace PinEverything.Web.ajaxpage
                     JavaScriptObject msgObj = new JavaScriptObject();
                     msgObj.Add("userName", userInfo.UserName);
                     msgObj.Add("userAvatar", userInfo.Avatar);
+                    msgObj.Add("creatTime", DateTime.Now.ToString("yyyy-MM-dd"));
                     msgObj.Add("msg", msg);
 
                     resultObj.Add("MSG", "Y");
