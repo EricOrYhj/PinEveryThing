@@ -76,7 +76,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .headerLeft .headerLeftIcon {
     width: 36px;
     height: 36px;
-    background: url("../images/weizhi.png") no-repeat;
+    background: url("/images/weizhi.png") no-repeat;
 
 
 
@@ -92,7 +92,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .headerRight .headerRightIcon {
     width: 36px;
     height: 36px;
-    background: url("../images/sz.jpg") no-repeat;
+    background: url("/images/sz.jpg") no-repeat;
     display: block; }
 
 .headerContent {
@@ -232,7 +232,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
       text-align: center; }
 
 .pincheBg {
-  background: url("../images/pinchebg.jpg") no-repeat top center; }
+  background: url("/images/pinchebg.jpg") no-repeat top center; }
 
 .pincheDescription {
   padding-top: 40px;
@@ -308,13 +308,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .passengerTab .passengerTabLeftIcon, .passengerTab .passengerTabRightIcon {
     width: 25px;
     height: 25px;
-    background: url("../images/icon1.png") no-repeat;
+    background: url("/images/icon1.png") no-repeat;
     display: inline-block;
     vertical-align: top;
     margin-top: 17px;
     margin-right: 8px; }
   .passengerTab .passengerTabRightIcon {
-    background: url("../images/icon2.png") no-repeat; }
+    background: url("/images/icon2.png") no-repeat; }
 
 .passengerList {
   padding: 15px 20px;
@@ -420,15 +420,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background: url("../images/icon3.png") no-repeat; 
+    background: url("/images/icon3.png") no-repeat; 
 
   }
   .passengerList .passengerListToAddress {
-    background: url("../images/icon4.png") no-repeat; }
+    background: url("/images/icon4.png") no-repeat; }
   .passengerList .passengerListTime {
-    background: url("../images/icon5.png") no-repeat; }
+    background: url("/images/icon5.png") no-repeat; }
   .passengerList .passengerListCar {
-    background: url("../images/icon6.png") no-repeat; }
+    background: url("/images/icon6.png") no-repeat; }
 
 .passengerMap {
 
@@ -458,26 +458,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-top: 11px;
     padding-left: 15px; }
   .owner .ownerICon1 {
-    background: url("../images/icon3.png") no-repeat top right; }
+    background: url("/images/icon3.png") no-repeat top right; }
   .owner .ownerICon2 {
-    background: url("../images/icon4.png") no-repeat top right; }
+    background: url("/images/icon4.png") no-repeat top right; }
   .owner .ownerICon3 {
-    background: url("../images/icon8.png") no-repeat top right; }
+    background: url("/images/icon8.png") no-repeat top right; }
   .owner .ownerICon4 {
-    background: url("../images/icon5.png") no-repeat top right; }
+    background: url("/images/icon5.png") no-repeat top right; }
   .owner .ownerICon5 {
-    background: url("../images/icon6.png") no-repeat top right; }
+    background: url("/images/icon6.png") no-repeat top right; }
   .owner .ownerICon6 {
-    background: url("../images/icon9.png") no-repeat top right; }
+    background: url("/images/icon9.png") no-repeat top right; }
   .owner .ownerICon7 {
-    background: url("../images/icon10.png") no-repeat top right; }
+    background: url("/images/icon10.png") no-repeat top right; }
   .owner .ownerICon8 {
     width: 24px;
     height: 24px;
     margin-top: 7px;
-    background: url("../images/icon11.png") no-repeat top right; }
+    background: url("/images/icon11.png") no-repeat top right; }
   .owner .ownerICon9 {
-    background: url("../images/icon12.png") no-repeat top right; padding-bottom: 9px;}
+    background: url("/images/icon12.png") no-repeat top right; padding-bottom: 9px;}
   .owner .ownerTitle {
 
     line-height: 39px;
@@ -498,7 +498,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 24px;
     height: 24px; }
   .owner .active .ownerArrow {
-    background: url("../images/icon15.png") no-repeat; }
+    background: url("/images/icon15.png") no-repeat; }
   .owner .message {
     margin-top: 25px;
     display: -moz-box;
@@ -652,7 +652,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   .thinkMessage span {
     width: 20px;
     height: 18px;
-    background: url("../images/icon13.png") no-repeat;
+    background: url("/images/icon13.png") no-repeat;
     display: inline-block;
     vertical-align: top;
     margin: 15px 5px 0 0; }
