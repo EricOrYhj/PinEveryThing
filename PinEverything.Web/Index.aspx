@@ -22,7 +22,7 @@
                 <a href="javascript:;" class="headerLeftIcon"></a>
             </div>
             <div class="headerRight">
-                <a href="/list.aspx" class=""></a>
+                <a href="list.aspx" class=""><img src="images/history.png" alt=""/></a>
             </div>
             <div class="headerContent">
                 <div class="headerContentIcon">

@@ -27,8 +27,29 @@ List.hisPubList = function () {
                     var publishId = pubItem.PublishId;
                     var pubTitle = pubItem.PubTitle;
                     var createTime = pubItem.CreateTime;
-                    html = html + '<a href="/detail.aspx?publishId=' + publishId + '" ><li>';
+                    var pubType = pubItem.PubType;
+                    var pubName="拼车"
+                    if (pubType == "3") {
+                        html = html + '<a href="/view/chi/detail.aspx?publishId=' + publishId + '" ><li>';
+                        pubName = "拼吃";
+                    }
+                    else if (pubType == "4") {
+                        html = html + '<a href="/view/wan/detail.aspx?publishId=' + publishId + '" ><li>';
+                        pubName = "拼玩";
+                    }
+                    else if (pubType == "5") {
+                        html = html + '<a href="/view/wan/detail.aspx?publishId=' + publishId + '" ><li>';
+                        pubName = "拼游";
+                    }
+                    else {
+                        html = html + '<a href="/detail.aspx?publishId=' + publishId + '" ><li>';
+                        if (pubType == "2")
+                        {
+                            pubName = "打车";
+                        }
+                    }
                     html = html + ' <div class="listTitle">' + pubTitle + '</div>';
+                    html = html + ' <div style="position: absolute;top: 0;right: 100px;font-size: 12px;">' + pubName + '</div>';
                     html = html + '<div class="listTime">' + createTime + '</div>';
                     html = html + '</li></a>';
                 }
@@ -59,8 +80,28 @@ List.hisJoinList = function () {
                     var publishId = pubItem.PublishId;
                     var pubTitle = pubItem.PubTitle;
                     var createTime = pubItem.CreateTime;
-                    html = html + '<a href="/detail.aspx?publishId=' + publishId + '" ><li>';
+                    var pubType = pubItem.PubType;
+                    var pubName = "拼车"
+                    if (pubType == "3") {
+                        html = html + '<a href="/view/chi/detail.aspx?publishId=' + publishId + '" ><li>';
+                        pubName = "拼吃";
+                    }
+                    else if (pubType == "4") {
+                        html = html + '<a href="/view/wan/detail.aspx?publishId=' + publishId + '" ><li>';
+                        pubName = "拼玩";
+                    }
+                    else if (pubType == "5") {
+                        html = html + '<a href="/view/wan/detail.aspx?publishId=' + publishId + '" ><li>';
+                        pubName = "拼游";
+                    }
+                    else {
+                        html = html + '<a href="/detail.aspx?publishId=' + publishId + '" ><li>';
+                        if (pubType == "2") {
+                            pubName = "打车";
+                        }
+                    }
                     html = html + ' <div class="listTitle">' + pubTitle + '</div>';
+                    html = html + ' <div style="position: absolute;top: 0;right: 100px;font-size: 12px;">' + pubName + '</div>';
                     html = html + '<div class="listTime">' + createTime + '</div>';
                     html = html + '</li></a>';
                 }

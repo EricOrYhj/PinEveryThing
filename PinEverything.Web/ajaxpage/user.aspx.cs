@@ -596,6 +596,7 @@ namespace PinEverything.Web.ajaxpage
                     publicObj.Add("PubTitle", hisPubItem.PubTitle);
                     string creatTime = hisPubItem.CreateTime.ToString("yyyyMMdd");
                     publicObj.Add("CreateTime", creatTime);
+                    publicObj.Add("PubType", hisPubItem.PubType);
 
                     hisPubArr.Add(publicObj);
                 }
@@ -642,6 +643,7 @@ namespace PinEverything.Web.ajaxpage
                         string creatTime = publicInfo.CreateTime.ToString("yyyyMMdd");
                         publicObj.Add("CreateTime", creatTime);
                         //publicObj.Add("CreateTime", publicInfo.CreateTime);
+                        publicObj.Add("PubType", publicInfo.PubType);
                         hisJoinArr.Add(publicObj);
                     }
                 }
