@@ -54,7 +54,7 @@ Owner.AddPublic = function () {
                 if (data.MSG == "N") {
                     alert("发布失败");
                 } else if (data.MSG == "Y") {
-                    window.location.href = "/passenger.aspx";
+                    window.location.href = "list.aspx";
                 }
             }
         });

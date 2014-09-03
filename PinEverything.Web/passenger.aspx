@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="/js/jquery.min.js"></script>
-    <script src="/js/Common.js?v=0.0.8"></script>
-    <script src="/js/passenger.js?v=0.0.8"></script>
+    <script src="/js/Common.js?v=0.0.9"></script>
+    <script src="/js/passenger.js?v=0.0.9"></script>
     <script type="text/javascript"
         src="http://webapi.amap.com/maps?v=1.3&key=638e916deadfc862f823942b67a01c09">
     </script>
-    <script src="/js/passenderMap.js?v=0.0.8"></script>
-    <link href="css/css.css?v=0.0.8" rel="stylesheet">
-    <link href="css/passender.css?v=0.0.8" rel="stylesheet" />
+    <script src="/js/passenderMap.js?v=0.0.9"></script>
+    <link href="css/css.css?v=0.0.9" rel="stylesheet">
+    <link href="css/passender.css?v=0.0.9" rel="stylesheet" />
     
     <title>我是乘客</title>
 </head>

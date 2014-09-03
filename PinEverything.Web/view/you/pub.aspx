@@ -13,7 +13,7 @@
 <script src="/js/mobiscroll.datetime.js"></script>
 <script src="/js/mobiscroll.select.js"></script>
 <script src="/js/mobiscroll.i18n.zh.js"></script>
-<script src="js/pub.js?v=0.0.8"></script>
+<script src="js/pub.js?v=0.0.9"></script>
 <link href="/css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
 <link href="/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
 <link href="/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
