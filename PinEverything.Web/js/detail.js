@@ -25,6 +25,7 @@ Detail.JoinPublic = function () {
                     var msgObj = data.msgObj;
                     var userName = msgObj.userName;
                     var userAvatar = msgObj.userAvatar;
+                    var creatTime = msgObj.creatTime;
                     var msg = msgObj.msg;
 
                     var userHtml = '<span title="' + userName + '"><img src="' + userAvatar + '" alt="" /></span>';
@@ -38,7 +39,7 @@ Detail.JoinPublic = function () {
                     dialogHtml = dialogHtml + '<div class="messageListRight">';
                     dialogHtml = dialogHtml + '<div class="messageListTitle">' + userName + '</div>';
                     dialogHtml = dialogHtml + '<div class="messageListContent">' + msg + '</div>';
-                    dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
+                    dialogHtml = dialogHtml + '<div class="messageListTime">' + creatTime + '</div>';
                     dialogHtml = dialogHtml + '</div>';
                     dialogHtml = dialogHtml + ' </li>';
                     $("#messageUl").prepend(dialogHtml);
@@ -120,6 +121,7 @@ Detail.LoadDialogMsg = function () {
                     var fromUserName = dialogItem.FromUserName;
                     var fromUserAvatar = dialogItem.FromUserAvatar;
                     var msg = dialogItem.Msg;
+                    var creatTime = dialogItem.CreatTime;
                     html = html + '<li>';
                     html = html + '<div class="messageListLeft detail">';
                     html = html + '<span><img src="' + fromUserAvatar + '" width="20px" height="20px" alt=""/></span>';
@@ -127,7 +129,7 @@ Detail.LoadDialogMsg = function () {
                     html = html + '<div class="messageListRight">';
                     html = html + '<div class="messageListTitle">' + fromUserName + '</div>';
                     html = html + '<div class="messageListContent">' + msg + '</div>';
-                    html = html + '<div class="messageListTime">2014-8-30 1:45</div>';
+                    html = html + '<div class="messageListTime">' + creatTime + '</div>';
                     html = html + '</div>';
                     html = html + ' </li>';
                 }
@@ -168,6 +170,7 @@ Detail.ContactOwner = function () {
                 var msgObj = data.msgObj;
                 var userName = msgObj.userName;
                 var userAvatar = msgObj.userAvatar;
+                var creatTime = msgObj.creatTime;
                 var msg = msgObj.msg;
 
                 var dialogHtml = '';
@@ -178,7 +181,7 @@ Detail.ContactOwner = function () {
                 dialogHtml = dialogHtml + '<div class="messageListRight">';
                 dialogHtml = dialogHtml + '<div class="messageListTitle">' + userName + '</div>';
                 dialogHtml = dialogHtml + '<div class="messageListContent">' + msg + '</div>';
-                dialogHtml = dialogHtml + '<div class="messageListTime">2014-8-30 1:45</div>';
+                dialogHtml = dialogHtml + '<div class="messageListTime">' + creatTime + '</div>';
                 dialogHtml = dialogHtml + '</div>';
                 dialogHtml = dialogHtml + ' </li>';
                 $("#messageUl").prepend(dialogHtml);

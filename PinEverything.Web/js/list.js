@@ -27,10 +27,10 @@ List.hisPubList = function () {
                     var publishId = pubItem.PublishId;
                     var pubTitle = pubItem.PubTitle;
                     var createTime = pubItem.CreateTime;
-                    html = html + '<li>';
-                    html = html + ' <a href="/detail.aspx?publishId=' + publishId + '" class="listTitle">' + pubTitle + '</a>';
+                    html = html + '<a href="/detail.aspx?publishId=' + publishId + '" ><li>';
+                    html = html + ' <div class="listTitle">' + pubTitle + '</div>';
                     html = html + '<div class="listTime">' + createTime + '</div>';
-                    html = html + '</li>';
+                    html = html + '</li></a>';
                 }
                 $("#publist").find(" #pubUl").append(html);
             }
@@ -59,10 +59,10 @@ List.hisJoinList = function () {
                     var publishId = pubItem.PublishId;
                     var pubTitle = pubItem.PubTitle;
                     var createTime = pubItem.CreateTime;
-                    html = html + '<li>';
-                    html = html + ' <a href="/detail.aspx?publishId=' + publishId + '" class="listTitle">' + pubTitle + '</a>';
+                    html = html + '<a href="/detail.aspx?publishId=' + publishId + '" ><li>';
+                    html = html + ' <div class="listTitle">' + pubTitle + '</div>';
                     html = html + '<div class="listTime">' + createTime + '</div>';
-                    html = html + '</li>';
+                    html = html + '</li></a>';
                 }
                 $("#joinList").find(" #joinUl").append(html);
             }

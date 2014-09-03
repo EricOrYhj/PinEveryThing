@@ -158,7 +158,7 @@ namespace PinEverything.Services
                 postDic.Add("p_id", p_id);//动态ID
                 postDic.Add("r_msg", msg);//消息内容
                 postDic.Add("format", "json");
-                string postRequest = HttpPost(postUrl, paramsDic);
+                string postRequest = HttpPost(postUrl, postDic);
             }
             return flag;
         }
