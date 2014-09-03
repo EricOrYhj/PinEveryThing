@@ -12,7 +12,7 @@ Passenger.publicList = function () {
     $.ajax({
         url: "/ajaxpage/user.aspx",
         dataType: "JSON",
-        data: { op: "LoadPublicList", pageIndex: Passenger.options.pageIndex, pageSize: Passenger.options.pageSize,pubType:'1,2' },
+        data: { op: "LoadPublicList", pageIndex: Passenger.options.pageIndex, pageSize: Passenger.options.pageSize,pubType:'3' },
         beforeSend: function () {
         },
         success: function (data) {
@@ -45,7 +45,7 @@ Passenger.publicList = function () {
                     joinColor = "Yellow";
                     if (joinType == 1) {
                         joinType = "发布人";
-                        operateStr.AppendFormat('<a class="btn" href="/detail.aspx?publishId={0}">详情</a>', publishId);
+                        operateStr.AppendFormat('<a class="btn" href="detail.aspx?publishId={0}">详情</a>', publishId);
                     }
                     else if (joinType == 2) {
                         joinType = "已加入";
@@ -69,7 +69,7 @@ Passenger.publicList = function () {
                     html += '<img src="' + avatar + '" alt="" style="width:70px;"/></div>';
                     html += '<div class="passengerListLeftName">' + userName + '</div>';
                     html += '</div>';
-                    html += '<a href="/detail.aspx?publishId=' + publishId + '">';
+                    html += '<a href="detail.aspx?publishId=' + publishId + '">';
                     html += '<div class="passengerListRight">';
                     html += '<span class="passengerListArrow"></span>';
                     html += ' <span class="passengerListArrowInner"></span>';

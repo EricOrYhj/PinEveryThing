@@ -176,7 +176,7 @@ function showCurrPosition(position) {
     $.ajax({
         type: 'post',
         url: '/ajaxpage/user.aspx',
-        data: { op: 'UpdateLbs', lat: lat, lng: lng, showNearbyPub: true, showNotNearPub: true },
+        data: { op: 'UpdateLbs', lat: lat, lng: lng, showNearbyPub: true, showNotNearPub: true ,pubType:'1,2'},
         success: function (result) {
 
             //var m = CreateMark(result.lat, result.lng);
@@ -189,6 +189,9 @@ function showCurrPosition(position) {
             //    icon: "http://webapi.amap.com/images/0.png",
             //    draggable:true
             //});
+
+
+            geocoder(new AMap.LngLat(result.lng, result.lat));
 
             PanTo(result.lat, result.lng);
 
@@ -371,37 +374,22 @@ function geocoder(position) {
         //逆地理编码
         MGeocoder.getAddress(position);
     });
-    //加点
-    var marker = new AMap.Marker({
-        map: mapObj,
-        icon: new AMap.Icon({
-            image: "http://api.amap.com/Public/images/js/mark.png",
-            size: new AMap.Size(58, 30),
-            imageOffset: new AMap.Pixel(-32, -0)
-        }),
-        position: position,
-        offset: new AMap.Pixel(-5, -30)
-    });
-    mapObj.setFitView();
 }
 
 //回调函数
 function geocoder_CallBack(data) {
-    var roadinfo = new StringBuilder();
-    //返回地址描述
-    address = data.regeocode.formattedAddress;
-    //返回周边道路信息
-    roadinfo.Append("<div>");
-    roadinfo.Append("<div class='roadInfoTitle'>周边道路信息</div>");
-    for (var i = 0; i < data.regeocode.roads.length; i++) {
-        //var color = (i % 2 === 0 ? '#fff' : '#eee');
-        //roadinfo += "<tr style='background-color:" + color + "; margin:0; padding:0;'><td>道路：" + data.regeocode.roads[i].name + "</td><td>方向：" + data.regeocode.roads[i].direction + "</td><td>距离：" + data.regeocode.roads[i].distance + "米</td></tr>";
-        roadinfo.AppendFormat("<div class='roadInfo'>道路：{0}&nbsp;&nbsp;方向：{1}&nbsp;&nbsp;距离：{2}</div>",
-                data.regeocode.roads[i].name,
-                data.regeocode.roads[i].direction,
-                data.regeocode.roads[i].distance
-            );
+    var road = '';
+
+    if (data.regeocode.roads.length > 0) {
+        road = data.regeocode.roads[0].name;
+
+        $.ajax({
+            type: 'post',
+            url: '/ajaxpage/user.aspx',
+            data: { op: 'UpdateLocalState', value: road },
+            success: function (result) {
+
+            }
+        });
     }
-    roadinfo.Append("</div>");
-    document.getElementById("geocoderResult").innerHTML = roadinfo.toString();
 }
