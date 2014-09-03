@@ -1,0 +1,816 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+html {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+q, blockquote {
+  quotes: none; }
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+body
+{
+      font-family: "Microsoft YaHei";
+}
+
+a img {
+  border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+.rounded {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px; }
+
+.clear {
+  clear: both; }
+
+.indexBg {
+  background: #384160;
+  width: 100%; }
+
+.header {
+  width: 85%;
+  margin: 0 auto;
+  padding-top: 30px; }
+
+.headerLeft {
+  float: left;
+  width: 36px;
+  height: 36px; }
+  .headerLeft .headerLeftIcon {
+    width: 36px;
+    height: 36px;
+    background: url("../images/weizhi.png") no-repeat;
+
+
+
+
+
+
+    display: block; }
+
+.headerRight {
+  float: right;
+  width: 36px;
+  height: 36px; }
+  .headerRight .headerRightIcon {
+    width: 36px;
+    height: 36px;
+    background: url("../images/sz.jpg") no-repeat;
+    display: block; }
+
+.headerContent {
+  text-align: center;
+  }
+  .headerContent .headerContentIcon {
+    border: 3px solid #626882;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    width: 106px;
+    height: 106px;
+    margin: 0 auto;
+    overflow: hidden; }
+    .headerContent .headerContentIcon span
+    {
+      border: 3px solid #384160;
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%; 
+      display: block;
+    }
+    .headerContent .headerContentIcon span div
+    {
+        margin: -8px 0 0 -8px;
+    }
+    .headerContent .headerContentIcon img {
+      width: 120px;
+      height: 120px;
+    }
+  .headerContent .headerContentTitle {
+    font-size: 20px;
+    font-family: "sans-serif";
+    color: #fff;
+    font-weight: bold;
+    margin-top: 10px; }
+  .headerContent .headerContentArrow {
+    border-width: 0 12px 12px 12px;
+    border-color: transparent;
+    border-style: solid;
+    border-bottom-color: #444d6c;
+    width: 0;
+    height: 0;
+    margin: 10px auto 0;
+    position: relative;
+    -webkit-box-shadow: 0 -3px 3px #37405f;
+    -moz-box-shadow: 0 -3px 3px #37405f;
+    box-shadow: 0 -3px 3px #37405f; }
+
+.indexContent {
+  background: #444d6c;
+  width: 100%;
+  height: 400px;
+  -webkit-box-shadow: 0 -3px 3px #37405f;
+  -moz-box-shadow: 0 -3px 3px #37405f;
+  box-shadow: 0 -3px 3px #37405f; }
+
+.indexContentMain {
+  width: 320px;
+  margin: 0 auto; }
+  .indexContentMain li {
+    width: 100px;
+    height: 100px;
+    margin: 24px;
+    background: #353e5d;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+    border: 3px solid #fff;
+    font-size: 20px;
+    line-height: 100px;
+    text-align: center; }
+    .indexContentMain li a {
+      color: #fff;
+      display: block;
+      text-decoration: none; }
+  .indexContentMain .borderColor1 {
+    border-color: #71c9cd; }
+  .indexContentMain .borderColor2 {
+    border-color: #f1c681; }
+  .indexContentMain .borderColor3 {
+    border-color: #fa8caf; }
+  .indexContentMain .borderColor4 {
+    border-color: #84cf97; }
+
+.sidebarBg {
+  width: 100%;
+  height: 46px;
+  background: #80d1d4; }
+  .sidebarBg .sidebarLeft {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-left: 15px; }
+    .sidebarBg .sidebarLeft img {
+      padding-top: 6px; }
+  .sidebarBg .sidebarPlayWidth {
+    width: 46px; }
+  .sidebarBg .sidebarRight {
+    float: right;
+    width: 32px;
+    margin-right: 15px;
+    height: 32px; }
+    .sidebarBg .sidebarRight img {
+      padding-top: 9px; }
+  .sidebarBg .sidebarTitle {
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    padding-top: 15px; }
+  .sidebarBg .sidebarPlay {
+    float: right;
+    /*width: 46px;*/
+    margin-right: 15px;
+    font-size: 12px;
+    padding-top: 10px; }
+    .sidebarBg .sidebarPlay a {
+      display: block;
+      padding: 6px 10px;
+      color: #fff;
+      text-decoration: none;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px;
+      border: 1px solid #fff;
+      text-align: center; }
+
+.pincheBg {
+  background: url("../images/pinchebg.jpg") no-repeat top center; }
+
+.pincheDescription {
+  padding-top: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Microsoft YaHei"; }
+  .pincheDescription p {
+    width: 100%;
+    text-align: center;
+    line-height: 24px; }
+
+.pinchePassenger {
+  width: 90%;
+  height: 50px;
+  line-height: 50px;
+  border: 2px solid #86a6a1;
+  text-align: center;
+  font-size: 20px;
+  margin: 60px auto 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-family: "Microsoft YaHei"; }
+  .pinchePassenger a {
+    color: #86a6a1;
+    text-decoration: none;
+    display: block; }
+
+.pincheOwner {
+  width: 90%;
+  height: 50px;
+  line-height: 50px;
+  border: 2px solid #86a6a1;
+  text-align: center;
+  font-size: 20px;
+  margin: 22px auto 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-family: "Microsoft YaHei"; }
+  .pincheOwner a {
+    color: #86a6a1;
+    text-decoration: none;
+    display: block; }
+
+.passengerTab {
+  width: 100%;
+  border-top: 1px solid #6bc9cb;
+  background: #80d1d4; }
+  .passengerTab .passengerTabLeft, .passengerTab .passengerTabRight {
+    float: left;
+    width: 50%;
+    height: 60px;
+    font-size: 20px;
+    line-height: 60px;
+    color: #fff;
+    text-align: center; }
+  .passengerTab .active {
+    background: #6bc9cb; }
+    .passengerTab .active .passengerTabArrow {
+      border-width: 0 12px 12px 12px;
+      border-color: transparent;
+      border-style: solid;
+      border-bottom-color: #f0f0f0;
+      width: 0;
+      height: 0;
+      margin: -12px auto 0;
+      position: relative; }
+  .passengerTab .passengerTabLeftIcon, .passengerTab .passengerTabRightIcon {
+    width: 25px;
+    height: 25px;
+    background: url("../images/icon1.png") no-repeat;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 17px;
+    margin-right: 8px; }
+  .passengerTab .passengerTabRightIcon {
+    background: url("../images/icon2.png") no-repeat; }
+
+.passengerList {
+  padding: 15px 20px;
+  background: #f0f0f0; }
+  .passengerList li {
+    margin-bottom: 15px; }
+    .passengerList li .passengerListLeft {
+      width: 70px;
+      float: left;
+      margin-right: 10px; }
+    .passengerList li .passengerListRight {
+      float: left;
+      width: 193px;
+      margin-left: 5px;
+      height: 103px;
+      border: 1px solid #6dc5d7;
+      background: #fff;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px;
+      position: relative;
+      font-family: "Microsoft YaHei";
+      font-size: 14px;
+      color: #6a6a6a; }
+      .passengerList li .passengerListRight a {
+        text-decoration: none;
+        color: #6a6a6a; }
+    .passengerList li .passengerListArrow {
+      position: absolute;
+      top: 22px;
+      left: -20px;
+      border-color: transparent;
+      border-right-color: #6dc5d7;
+      border-width: 10px;
+      width: 0;
+      height: 0;
+      border-style: solid; }
+    .passengerList li .passengerListArrowInner {
+      position: absolute;
+      top: 22px;
+      left: -19px;
+      border-color: transparent;
+      border-right-color: #fff;
+      border-width: 10px;
+      width: 0;
+      height: 0;
+      border-style: solid; }
+    .passengerList li .passengerListDate {
+      position: absolute;
+      bottom: 7px;
+      right: 6px;
+      font-size: 12px;
+      color: #999; }
+  .passengerList .passengerListPosition .passengerListLeft {
+    width: 70px;
+    float: right;
+    margin-right: 0;
+    margin-left: 10px; }
+  .passengerList .passengerListPosition .passengerListRight {
+    float: right;
+    margin-left: 0;
+    margin-right: 5px; }
+  .passengerList .passengerListPosition .passengerListArrow {
+    left: 194px;
+    border-color: transparent;
+    border-left-color: #6dc5d7; }
+  .passengerList .passengerListPosition .passengerListArrowInner {
+    left: 193px;
+    border-color: transparent;
+    border-left-color: #fff; }
+  .passengerList .passengerListLeftHead {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%; }
+  .passengerList .passengerListLeftName {
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+    color: #6bc9cb;
+    width: 70px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .passengerList .passengerListFromAddress, .passengerList .passengerListToAddress, .passengerList .passengerListTime, .passengerList .passengerListCar {
+    width: 170px;
+    height: 18px;
+    margin-left: 14px;
+    text-indent: 25px;
+    line-height: 18px;
+    margin-top: 6px; }
+  .passengerList .passengerListFromAddress {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: url("../images/icon3.png") no-repeat; 
+
+  }
+  .passengerList .passengerListToAddress {
+    background: url("../images/icon4.png") no-repeat; }
+  .passengerList .passengerListTime {
+    background: url("../images/icon5.png") no-repeat; }
+  .passengerList .passengerListCar {
+    background: url("../images/icon6.png") no-repeat; }
+
+.passengerMap {
+
+    height:100%;
+
+  display: none; }
+
+.owner {
+  background: #f0f0f0;
+  padding-bottom: 20px; }
+  .owner li {
+
+    position: relative;
+    background: #fff;
+    font-weight: normal;
+    text-decoration: none;
+    display: -moz-box;
+    display: -webkit-box;
+
+
+
+    display: box; }
+  .owner .ownerICon1, .owner .ownerICon2, .owner .ownerICon3, .owner .ownerICon4, .owner .ownerICon5, .owner .ownerICon6, .owner .ownerICon7, .owner .ownerICon8, .owner .ownerICon9 {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-top: 11px;
+    padding-left: 15px; }
+  .owner .ownerICon1 {
+    background: url("../images/icon3.png") no-repeat top right; }
+  .owner .ownerICon2 {
+    background: url("../images/icon4.png") no-repeat top right; }
+  .owner .ownerICon3 {
+    background: url("../images/icon8.png") no-repeat top right; }
+  .owner .ownerICon4 {
+    background: url("../images/icon5.png") no-repeat top right; }
+  .owner .ownerICon5 {
+    background: url("../images/icon6.png") no-repeat top right; }
+  .owner .ownerICon6 {
+    background: url("../images/icon9.png") no-repeat top right; }
+  .owner .ownerICon7 {
+    background: url("../images/icon10.png") no-repeat top right; }
+  .owner .ownerICon8 {
+    width: 24px;
+    height: 24px;
+    margin-top: 7px;
+    background: url("../images/icon11.png") no-repeat top right; }
+  .owner .ownerICon9 {
+    background: url("../images/icon12.png") no-repeat top right; padding-bottom: 9px;}
+  .owner .ownerTitle {
+
+    line-height: 39px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    border-bottom: 1px solid #dfdfdf;
+    color: #595959;
+    margin-left: 10px;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1; }
+  .owner .ownerTitleClear {
+    border-bottom: 0; }
+  .owner .ownerArrow {
+    position: absolute;
+    top: 8px;
+    right: 10px;    
+    width: 24px;
+    height: 24px; }
+  .owner .active .ownerArrow {
+    background: url("../images/icon15.png") no-repeat; }
+  .owner .message {
+    margin-top: 25px;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+    position: relative;
+    background: #fff;
+    padding: 1px 0; }
+    .owner .message .ownerTitle {
+      color: #d0d0d0; }
+  .owner #messageBtn {
+    border-style: none;
+    background: #7fd490;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    width: 250px;
+    margin: 30px auto 0;
+    font-size: 16px;
+    color: #fff;
+    font-family: "Microsoft YaHei";
+    display: block;
+
+    text-decoration: none;
+    text-shadow: 0 0 0; }
+
+.list {
+  background: #f0f0f0; }
+  .list li {
+    border-bottom: 1px solid #dfdfdf;
+    color: #595959;
+    height: 40px;
+    line-height: 40px;
+    position: relative; }
+  .list .listTitle {
+    font-size: 12px;
+    font-family: "Microsoft YaHei";
+    color: #595959;
+    text-decoration: none;
+    text-indent: 15px;
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .list .listTime {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 12px; }
+  .list .listBg {
+    background: #f7f7f7; }
+  .list .loadMore {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #3ecfd4; }
+
+#join, #exit {
+  display: none; }
+
+.detail span {
+  width: 20px;
+  padding-top: 10px;
+  display: inline-block;
+  margin-right: 5px; }
+  .detail span img {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    display: block; }
+
+.detailMeaasge {
+  background: #fff;
+  padding: 10px 15px; }
+  .detailMeaasge .detailMeaasgeHead {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    float: left; }
+  .detailMeaasge .detailMeaasgeName {
+    float: left;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    color: #6bc9cb;
+    width: 130px;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .detailMeaasge .detailMeaasgeContact {
+    width: 70px;
+    float: right;
+    margin-top: 20px; }
+    .detailMeaasge .detailMeaasgeContact a {
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      color: #fff;
+      font-size: 12px;
+      background: #7fd48f;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px;
+      display: block;
+      text-decoration: none;
+      text-align: center; }
+
+.messageTitle {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-indent: 15px;
+  font-size: 14px;
+  color: #999;
+  font-family: "Microsoft YaHei";
+  border-top: 1px solid #ccc; }
+
+.thinkMessage {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-family: "Microsoft YaHei";
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  color: #7fd1d4; }
+  .thinkMessage span {
+    width: 20px;
+    height: 18px;
+    background: url("../images/icon13.png") no-repeat;
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 5px 0 0; }
+
+.messageList li {
+  padding: 0 15px;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  border-bottom: 1px solid #ccc;
+  font-family: "Microsoft YaHei";
+  padding-bottom: 10px; }
+.messageList li:last-child {
+  border: 0; }
+.messageList .messageListLeft {
+  width: 20px; }
+.messageList .messageListRight {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  margin-left: 10px; }
+  .messageList .messageListRight .messageListTitle {
+    padding-top: 12px;
+    font-size: 16px; }
+  .messageList .messageListRight .messageListContent {
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    margin-top: 5px; }
+  .messageList .messageListRight .messageListTime {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px; }
+
+
+
+.address {
+  width: 95%;
+  margin: 0 auto;
+  background: #fff;
+  color: #595959;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  border: 0;
+  padding: 5px; }
+
+
+
+
+
+.ui-btn {
+  background: #22aadd;
+  color: #fff;
+  margin: 8px 10px 8px 0;
+  height: 32px;
+  line-height: 32px;
+  width: 80px;
+  text-align: center;
+  display: inline-block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px; }
+
+
+
+
+
+.ownerOperation {
+  display: none; }
+
+
+
+.ownerTime, #car_dummy, #color_dummy, #number_dummy {
+  border: 0;
+  background: transparent;
+  height: 39px;
+  width: 100%;
+  color: #595959;
+  font-size: 14px;
+  font-family: "Microsoft YaHei"; }
+
+.txtMessageBox {
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  border-bottom: 1px solid #dfdfdf;
+  color: #595959;
+  margin-left: 10px;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  height: 36px;
+  border: 1px solid #ccc; }
+
+.txtMessage {
+  border: 0;
+  width: 98%;
+  resize: none;
+  padding: 0;
+  line-height: 18px;
+  padding: 0 1%;
+  font-family: "Microsoft YaHei";
+  height: 36px; }
+
+.modelTitle {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-family: "Microsoft YaHei";
+  margin-top: 10px; }
+
+#messageBox .modelTitle {
+  margin-bottom: 15px; }
+
+  owner .content {
+    outline:none;
+}
+
+ #container {
+    height: 100%;
+}
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.textmessage {
+  
+}
+
+.loadMorePub {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #3ecfd4; }
+.amap-info-content{
+    font-size:12px;
+}
+
+.detailMeaasge #userAvatar img
+{
+    width: 70px;
+}
+
+.positionFixed
+{
+    position: fixed;top: 0;left: 0;width: 100%;z-index: 100;
+}
+
+#txtMessage
+{
+    height: 72px;
+}
