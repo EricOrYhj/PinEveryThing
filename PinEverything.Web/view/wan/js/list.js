@@ -103,7 +103,7 @@ Passenger.JoinPublic = function (publishId) {
                 if (data.MSG == "N") {
                     alert("加入失败");
                 } else if (data.MSG == "Y") {
-                    window.location.href = "/detail.aspx?publishId=" + publishId + "";
+                    window.location.href = "detail.aspx?publishId=" + publishId + "";
                     alert("加入成功");
                 }
                 else if (data.MSG == "S") {
@@ -130,7 +130,7 @@ Passenger.ExitJoin = function (publishId) {
                     alert("退出失败");
                 } else if (data.MSG == "Y") {
                     alert("你已退出");
-                    window.location.href = "/passenger.aspx";
+                    window.location.href = "list.aspx";
                 }
             }
         });

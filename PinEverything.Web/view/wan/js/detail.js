@@ -72,7 +72,7 @@ Detail.ExitJoin = function () {
                 if (data.MSG == "N") {
                     alert("退出失败");
                 } else if (data.MSG == "Y") {
-                    window.location.href = "/list.aspx";
+                    window.location.href = "list.aspx";
                 }
             }
         });
@@ -93,7 +93,7 @@ Detail.CanclePublic = function () {
                 if (data.MSG == "N") {
                     alert("取消发布失败");
                 } else if (data.MSG == "Y") {
-                    window.location.href = "/list.aspx";
+                    window.location.href = "list.aspx";
                 }
             }
         });

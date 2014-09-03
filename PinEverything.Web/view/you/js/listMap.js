@@ -307,7 +307,7 @@ function showCurrPosition(position) {
                 });
 
                 var showInfoStr = new StringBuilder();
-                showInfoStr.AppendFormat('<div class="winfoTitle">{0}发布了一条内容</div><div class="">{1}</div><div class=""><a href="/detail.aspx?publishId={2}">点击进入详情</a></div>',
+                showInfoStr.AppendFormat('<div class="winfoTitle">{0}发布了一条内容</div><div class="">{1}</div><div class=""><a href="detail.aspx?publishId={2}">点击进入详情</a></div>',
                         result.notNearbyPubList[i].UserName,
                         result.notNearbyPubList[i].PubTitle,
                         result.notNearbyPubList[i].PublishId
