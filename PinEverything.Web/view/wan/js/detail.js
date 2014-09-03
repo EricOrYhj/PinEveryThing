@@ -5,7 +5,7 @@ Detail.options = {
     publishId: "",
     pageIndex: "1",
     pageSize: "20",
-    pubType: "3"//发布类型
+    pubType: "4"//发布类型
 };
 
 //加入

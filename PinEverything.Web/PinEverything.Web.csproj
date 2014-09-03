@@ -155,14 +155,24 @@
     <Content Include="test.aspx" />
     <Content Include="view\chi\css\css.css" />
     <Content Include="view\chi\css\detail.css" />
-    <Content Include="view\chi\css\passender.css" />
+    <Content Include="view\chi\css\list.css" />
     <Content Include="view\chi\detail.aspx" />
     <Content Include="view\chi\js\detail.js" />
-    <Content Include="view\chi\js\owner.js" />
-    <Content Include="view\chi\js\passenderMap.js" />
-    <Content Include="view\chi\js\passenger.js" />
+    <Content Include="view\chi\js\pub.js" />
+    <Content Include="view\chi\js\listMap.js" />
+    <Content Include="view\chi\js\list.js" />
     <Content Include="view\chi\list.aspx" />
     <Content Include="view\chi\pub.aspx" />
+    <Content Include="view\wan\css\css.css" />
+    <Content Include="view\wan\css\detail.css" />
+    <Content Include="view\wan\css\list.css" />
+    <Content Include="view\wan\detail.aspx" />
+    <Content Include="view\wan\js\detail.js" />
+    <Content Include="view\wan\js\list.js" />
+    <Content Include="view\wan\js\listMap.js" />
+    <Content Include="view\wan\js\pub.js" />
+    <Content Include="view\wan\list.aspx" />
+    <Content Include="view\wan\pub.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -257,6 +267,27 @@
     <Compile Include="view\chi\pub.aspx.designer.cs">
       <DependentUpon>pub.aspx</DependentUpon>
     </Compile>
+    <Compile Include="view\wan\detail.aspx.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\wan\detail.aspx.designer.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\wan\list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\wan\list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\wan\pub.aspx.cs">
+      <DependentUpon>pub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\wan\pub.aspx.designer.cs">
+      <DependentUpon>pub.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Web.config" />
@@ -280,8 +311,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="view\wan\css\" />
-    <Folder Include="view\wan\js\" />
     <Folder Include="view\you\" />
   </ItemGroup>
   <PropertyGroup>
