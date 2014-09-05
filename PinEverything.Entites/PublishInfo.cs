@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PinEverything.Entites
 {
-    public class PublishInfo:EntityBase
+    public class PublishInfo : EntityBase
     {
         public PublishInfo()
         { }
@@ -141,5 +141,15 @@ namespace PinEverything.Entites
         public DateTime EndTime { get; set; }
         public string PostID { get; set; }
         #endregion Model
+
+
+        public string ExTitle
+        {
+            get
+            {
+                return "这个是扩展字段：" + PubTitle;
+            }
+        }
+
     }
 }
